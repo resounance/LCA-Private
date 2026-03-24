@@ -37,7 +37,7 @@ export default function StickyNav() {
     >
       <div className="max-w-6xl mx-auto px-4 flex items-center justify-between h-14">
         <span className="font-display font-bold text-sm tracking-wider text-foreground">
-          TEX2TEX<span className="text-ep-coral">®</span>
+          TEX2TEX<span className="text-muted-foreground">®</span>
         </span>
         <div className="hidden md:flex gap-1">
           {navItems.map((item) => (

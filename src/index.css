@@ -36,17 +36,17 @@
 
     --radius: 0.75rem;
 
-    /* EarthProtex brand tokens */
-    --ep-coral: 4 78% 63%;
-    --ep-coral-light: 4 78% 95%;
-    --ep-purple: 270 50% 45%;
-    --ep-purple-light: 270 50% 95%;
-    --ep-teal: 175 60% 40%;
-    --ep-teal-light: 175 60% 95%;
-    --ep-slate: 220 15% 50%;
-    --ep-slate-light: 220 15% 96%;
-    --ep-green: 150 50% 40%;
-    --ep-green-light: 150 50% 95%;
+    /* EarthProtex brand tokens — monochrome */
+    --ep-coral: 0 0% 15%;
+    --ep-coral-light: 0 0% 96%;
+    --ep-purple: 0 0% 25%;
+    --ep-purple-light: 0 0% 96%;
+    --ep-teal: 0 0% 20%;
+    --ep-teal-light: 0 0% 96%;
+    --ep-slate: 0 0% 40%;
+    --ep-slate-light: 0 0% 96%;
+    --ep-green: 0 0% 15%;
+    --ep-green-light: 0 0% 96%;
 
     --sidebar-background: 0 0% 98%;
     --sidebar-foreground: 240 5.3% 26.1%;
@@ -105,14 +105,14 @@
 @layer utilities {
   .text-gradient-coral {
     @apply bg-clip-text text-transparent;
-    background-image: linear-gradient(135deg, hsl(var(--ep-coral)), hsl(4 78% 50%));
+    background-image: linear-gradient(135deg, hsl(0 0% 15%), hsl(0 0% 30%));
   }
   .text-gradient-purple {
     @apply bg-clip-text text-transparent;
-    background-image: linear-gradient(135deg, hsl(var(--ep-purple)), hsl(290 50% 50%));
+    background-image: linear-gradient(135deg, hsl(0 0% 25%), hsl(0 0% 40%));
   }
   .text-gradient-teal {
     @apply bg-clip-text text-transparent;
-    background-image: linear-gradient(135deg, hsl(var(--ep-teal)), hsl(190 60% 45%));
+    background-image: linear-gradient(135deg, hsl(0 0% 20%), hsl(0 0% 35%));
   }
 }

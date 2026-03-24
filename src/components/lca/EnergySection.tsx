@@ -20,17 +20,17 @@ export default function EnergySection() {
           badge="Energy Demand"
           title="Non-Renewable Energy"
           subtitle="Cumulative energy demand from non-renewable sources (MJ) per 1 kg of fiber."
-          colorClass="text-ep-purple"
-          bgClass="bg-ep-purple-light"
-          borderClass="border-ep-purple/20"
+          colorClass="text-foreground"
+          bgClass="bg-muted"
+          borderClass="border-border"
         />
 
         <div className="grid lg:grid-cols-3 gap-8 items-start">
           <div className="lg:col-span-2">
             <ComparisonChart
               data={data}
-              highlightColor="hsl(270 50% 45%)"
-              baseColor="hsl(270 50% 82%)"
+              highlightColor="hsl(0 0% 15%)"
+              baseColor="hsl(0 0% 75%)"
               unit="MJ"
               formatValue={(v) => v.toFixed(1)}
             />
@@ -40,12 +40,12 @@ export default function EnergySection() {
               percentage="97% less"
               comparedTo="than Virgin PET production"
               equivalence="Powering a 60W light for 424 hours"
-              equivalenceIcon={<Lightbulb className="w-5 h-5 text-ep-purple shrink-0" />}
-              bgClass="bg-ep-purple-light"
-              textClass="text-ep-purple"
-              borderClass="border-ep-purple/20"
+              equivalenceIcon={<Lightbulb className="w-5 h-5 text-foreground shrink-0" />}
+              bgClass="bg-muted"
+              textClass="text-foreground"
+              borderClass="border-border"
             />
-            <div className="rounded-2xl border border-ep-purple/20 bg-background p-5">
+            <div className="rounded-2xl border border-border bg-background p-5">
               <p className="text-sm text-muted-foreground leading-relaxed">
                 Virgin PET consumes <strong className="text-foreground">29× more energy</strong> than
                 Tex2Tex®. Even the best alternative recycling process uses 4× as much non-renewable energy.

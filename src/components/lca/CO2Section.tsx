@@ -14,23 +14,23 @@ const data = [
 
 export default function CO2Section() {
   return (
-    <section id="co2" className="py-20 px-4 bg-ep-coral-light/30">
+    <section id="co2" className="py-20 px-4 bg-muted/40">
       <div className="max-w-6xl mx-auto">
         <SectionHeader
           badge="Carbon Footprint"
           title="CO₂ Emissions"
           subtitle="Global warming potential measured in kg CO₂ equivalents per 1 kg of fiber produced."
-          colorClass="text-ep-coral"
-          bgClass="bg-ep-coral-light"
-          borderClass="border-ep-coral/20"
+          colorClass="text-foreground"
+          bgClass="bg-muted"
+          borderClass="border-border"
         />
 
         <div className="grid lg:grid-cols-3 gap-8 items-start">
           <div className="lg:col-span-2">
             <ComparisonChart
               data={data}
-              highlightColor="hsl(4 78% 63%)"
-              baseColor="hsl(4 78% 85%)"
+              highlightColor="hsl(0 0% 15%)"
+              baseColor="hsl(0 0% 75%)"
               unit="kg CO₂e"
             />
           </div>
@@ -39,12 +39,12 @@ export default function CO2Section() {
               percentage="84% less"
               comparedTo="than Virgin PET production"
               equivalence="Equivalent to driving a car 28 km"
-              equivalenceIcon={<Car className="w-5 h-5 text-ep-coral shrink-0" />}
-              bgClass="bg-ep-coral-light"
-              textClass="text-ep-coral"
-              borderClass="border-ep-coral/20"
+              equivalenceIcon={<Car className="w-5 h-5 text-foreground shrink-0" />}
+              bgClass="bg-muted"
+              textClass="text-foreground"
+              borderClass="border-border"
             />
-            <div className="rounded-2xl border border-ep-coral/20 bg-background p-5">
+            <div className="rounded-2xl border border-border bg-background p-5">
               <p className="text-sm text-muted-foreground leading-relaxed">
                 Tex2Tex® achieves the lowest carbon footprint of any RPET fiber process by using a{" "}
                 <strong className="text-foreground">short-loop, direct fiber-to-fiber</strong> conversion
