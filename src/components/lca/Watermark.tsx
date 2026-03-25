@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import earthprotexLogo from "@/assets/earthprotex-logo.svg";
 
 const Watermark = () => {
   const [timestamp, setTimestamp] = useState(new Date().toLocaleString("pt-BR"));
@@ -10,8 +11,7 @@ const Watermark = () => {
     return () => clearInterval(interval);
   }, []);
 
-  // Generate grid of watermark text
-  const items = Array.from({ length: 40 }, (_, i) => i);
+  const items = Array.from({ length: 30 }, (_, i) => i);
 
   return (
     <div
@@ -20,19 +20,24 @@ const Watermark = () => {
       aria-hidden="true"
     >
       <div
-        className="absolute inset-0 flex flex-wrap gap-24 p-8"
+        className="absolute inset-0 flex flex-wrap items-center justify-center gap-x-32 gap-y-28 p-8"
         style={{
           transform: "rotate(-30deg) scale(1.5)",
           transformOrigin: "center center",
-          opacity: 0.06,
+          opacity: 0.045,
         }}
       >
         {items.map((i) => (
-          <div
-            key={i}
-            className="text-foreground text-sm font-semibold whitespace-nowrap font-['Space_Grotesk'] tracking-wider"
-          >
-            CONFIDENTIAL • {timestamp}
+          <div key={i} className="flex flex-col items-center gap-1">
+            <img
+              src={earthprotexLogo}
+              alt=""
+              className="w-32 h-auto"
+              draggable={false}
+            />
+            <span className="text-foreground text-[10px] font-medium whitespace-nowrap font-['Space_Grotesk'] tracking-wider">
+              {timestamp}
+            </span>
           </div>
         ))}
       </div>
