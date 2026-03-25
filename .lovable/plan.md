@@ -1,50 +1,47 @@
 
-## Página Web Interativa — Tex2Tex® Impact Indicators (EarthProtex)
 
-### Visão Geral
-Uma landing page moderna e interativa apresentando os dados de impacto ambiental da fibra Tex2Tex® RPET, com animações, gráficos interativos e navegação por seções.
+## Plano Revisado — Proteção de Conteúdo Tex2Tex®
 
-### Estrutura da Página
+### Problema com Tokens Expiráveis
+Concordo — o QR code é fixo na apresentação e o cliente pode escanear dias depois. Token com expiração é impraticável nesse cenário.
 
-**1. Hero Section**
-- Título "TEX2TEX® IMPACT INDICATORS" com subtítulo "Staple fiber measured impact data"
-- 4 cards de indicadores-chave com animação de contagem (counter-up): CO₂ (0.63 kg), Energia (3.25 mj), Água (0.19 L), Resíduos (0.0 kg)
-- Cada card com ícone, cor temática (vermelho, roxo, teal, cinza) e descrição
-- Nota: *Based on 1kg of Tex2Tex® RPET Fiber (Cradle-to-Gate)*
+### Alternativa: Senha Simples + Painel de Controle
 
-**2. Seção CO₂ Emissions**
-- Gráfico de barras interativo (Recharts) comparando Tex2Tex® vs concorrentes (Bottle Thermo-Mechanical, via Pellets, Chemical BHE, Chemical DMT, Virgin PET)
-- Valores: 0.63, 0.96, 1.88, 2.59, 3.08, 4.06
-- Labels "Xx more than Tex2Tex®" ao hover
-- Card destaque: "84% less than virgin" + equivalência "driving a car 28km"
-- Cor temática: coral/vermelho
+Em vez de links temporários, o acesso será controlado por uma **senha única** que você pode trocar quando quiser:
 
-**3. Seção Non-Renewable Energy**
-- Gráfico de barras comparativo: 3.25, 13, 23, 39, 51, 95
-- Labels de comparação (4x, 7x, 12x, 16x, 29x)
-- Card destaque: "97% less than virgin" + equivalência "60 watt light for 424hrs"
-- Cor temática: roxo
+- O QR code aponta sempre para a mesma URL (`/`)
+- Ao acessar, o visitante vê uma tela de senha limpa e minimalista
+- Você define/altera a senha a qualquer momento via `/admin` (protegido por senha master)
+- Após digitar a senha correta, ela fica em `sessionStorage` — ao fechar o navegador, precisa digitar novamente
+- Se quiser "revogar" o acesso após um evento, basta trocar a senha
 
-**4. Seção Water Consumption**
-- Texto explicativo sobre o processo (0.19 L/kg, +80% reciclagem)
-- Gráfico de barras: Tex2Tex 0.19 vs Bottle Thermo-Mechanical 2.31 vs Virgin PET 65.98
-- Card destaque: "99.7% less than virgin" + equivalência "312 glasses of water (200ml)"
-- Cor temática: teal
+Isso é simples, prático, e resolve o problema: se um competidor pegar o QR code, sem a senha não entra. E você pode trocar a senha entre eventos.
 
-**5. Seção Zero Solid Waste**
-- Texto sobre Circular Production e Zero Solid Waste Handling
-- Card destaque: "ZERO-WASTE PRODUCTION SYSTEM"
-- Cor temática: cinza
+### Resumo do Plano Final
 
-### Interatividade
-- Scroll-triggered animations (fade-in das seções)
-- Contadores animados nos KPIs do hero
-- Tooltips nos gráficos ao hover com valores detalhados
-- Navegação sticky com links para cada seção
-- Design responsivo mobile-first
+**Camada 1 — Gate de Senha**
+- `PasswordGate.tsx`: tela de senha antes do conteúdo (rota `/`)
+- `AdminPanel.tsx`: rota `/admin` para definir a senha ativa (protegido por senha master separada)
+- Senha armazenada em `localStorage` (persiste para o admin) e validação via `sessionStorage` (visitante)
 
-### Estilo Visual
-- Paleta fiel ao branding EarthProtex (cores coral, roxo, teal, cinza)
-- Tipografia clean e moderna
-- Gradientes sutis nos cards de destaque
-- Fundo branco com seções alternadas
+**Camada 2 — Proteções Anti-Cópia** (aprovado)
+- `ContentProtection.tsx`: wrapper com `user-select: none`, bloqueio de clique direito, Ctrl+C/P/S, PrintScreen
+- CSS `@media print` escondendo o conteúdo
+
+**Camada 3 — Marca d'Água Dinâmica** (aprovado)
+- `Watermark.tsx`: overlay fixo com "CONFIDENTIAL" + data/hora, rotacionado -45deg, opacidade ~6-8%, atualiza a cada minuto
+
+### Arquivos
+
+| Arquivo | Ação |
+|---|---|
+| `src/components/lca/PasswordGate.tsx` | Criar — tela de senha |
+| `src/pages/AdminPanel.tsx` | Criar — painel para trocar senha |
+| `src/components/lca/ContentProtection.tsx` | Criar — wrapper anti-cópia |
+| `src/components/lca/Watermark.tsx` | Criar — marca d'água dinâmica |
+| `src/pages/Index.tsx` | Modificar — envolver conteúdo com PasswordGate + ContentProtection + Watermark |
+| `src/App.tsx` | Modificar — adicionar rota `/admin` |
+
+### Nota sobre segurança
+Como tudo roda client-side, a senha pode ser encontrada por alguém técnico inspecionando o código. Para a maioria dos cenários de apresentação comercial isso é suficiente. Se no futuro precisar de algo mais robusto, podemos migrar para Supabase com autenticação real.
+
