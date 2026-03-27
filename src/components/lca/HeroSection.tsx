@@ -1,6 +1,7 @@
-import { motion } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
 import { Cloud, Zap, Droplets, Recycle } from "lucide-react";
-import { useCountUp } from "@/hooks/useCountUp";
+import { useRef } from "react";
+import AnimatedCounter from "./AnimatedCounter";
 
 const indicators = [
   { icon: Cloud, value: 0.63, unit: "kg CO₂e", label: "Carbon Emissions", decimals: 2 },
@@ -10,24 +11,23 @@ const indicators = [
 ];
 
 function KpiCard({ icon: Icon, value, unit, label, decimals, index }: typeof indicators[0] & { index: number }) {
-  const { count, ref } = useCountUp(value, 2000);
-
   return (
     <motion.div
-      ref={ref}
-      initial={{ opacity: 0, y: 30 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.6, delay: index * 0.15 }}
-      className="relative rounded-2xl border border-border bg-card p-6 flex flex-col items-center text-center gap-3 hover:scale-105 transition-transform duration-300"
+      initial={{ opacity: 0, y: 30, filter: "blur(6px)" }}
+      animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+      transition={{ duration: 0.6, delay: 0.8 + index * 0.12, ease: [0.16, 1, 0.3, 1] }}
+      className="deck-card-glass-stat p-6 flex flex-col items-center text-center gap-3"
     >
-      <div className="w-12 h-12 rounded-xl flex items-center justify-center bg-muted">
+      <div className="w-12 h-12 rounded-xl flex items-center justify-center bg-muted/50">
         <Icon className="w-6 h-6 text-foreground" />
       </div>
       <div>
-        <span className="text-4xl font-display font-bold text-foreground tabular-nums">
-          {count.toFixed(decimals)}
-        </span>
-        <span className="text-lg font-display font-medium text-muted-foreground ml-1">{unit}</span>
+        <AnimatedCounter
+          value={value}
+          decimals={decimals}
+          className="text-4xl font-heading font-bold text-foreground tabular-nums"
+        />
+        <span className="text-lg font-heading font-medium text-muted-foreground ml-1">{unit}</span>
       </div>
       <p className="text-sm text-muted-foreground font-medium">{label}</p>
     </motion.div>
@@ -35,13 +35,24 @@ function KpiCard({ icon: Icon, value, unit, label, decimals, index }: typeof ind
 }
 
 export default function HeroSection() {
+  const sectionRef = useRef<HTMLElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ["start start", "end start"],
+  });
+  const contentOpacity = useTransform(scrollYProgress, [0, 0.4], [1, 0]);
+  const contentY = useTransform(scrollYProgress, [0, 0.4], ["0%", "-8%"]);
+
   return (
-    <section id="hero" className="min-h-screen flex flex-col justify-center pt-20 pb-16 px-4">
-      <div className="max-w-6xl mx-auto w-full">
+    <section ref={sectionRef} id="hero" className="min-h-screen flex flex-col justify-center pt-20 pb-16 px-4 relative">
+      <motion.div
+        className="max-w-6xl mx-auto w-full"
+        style={{ opacity: contentOpacity, y: contentY }}
+      >
         <motion.div
-          initial={{ opacity: 0, y: -20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
+          initial={{ opacity: 0, y: -20, filter: "blur(10px)" }}
+          animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+          transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
           className="text-center mb-16"
         >
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-muted border border-border mb-6">
@@ -50,16 +61,25 @@ export default function HeroSection() {
               Life Cycle Assessment
             </span>
           </div>
-          <h1 className="text-5xl md:text-7xl font-display font-bold text-foreground tracking-tight leading-tight">
+          <h1 className="font-heading font-black text-foreground tracking-tight leading-[0.95]" style={{ fontSize: "clamp(2.5rem, 7vw, 6rem)" }}>
             TEX2TEX<span className="text-muted-foreground">®</span>
-            <br />
-            <span className="text-muted-foreground text-3xl md:text-5xl font-medium">
-              Impact Indicators
-            </span>
           </h1>
-          <p className="text-muted-foreground mt-6 max-w-xl mx-auto text-lg">
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.3 }}
+            className="text-muted-foreground mt-4 text-2xl md:text-3xl font-heading font-medium"
+          >
+            Impact Indicators
+          </motion.p>
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.5 }}
+            className="text-muted-foreground mt-6 max-w-xl mx-auto text-base font-light tracking-wide"
+          >
             Staple fiber measured impact data — the most sustainable RPET fiber production process available.
-          </p>
+          </motion.p>
         </motion.div>
 
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
@@ -71,12 +91,12 @@ export default function HeroSection() {
         <motion.p
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ delay: 1.2 }}
-          className="text-center text-xs text-muted-foreground mt-8 italic"
+          transition={{ delay: 1.6 }}
+          className="text-center text-xs text-muted-foreground mt-8 italic font-light"
         >
           Based on 1 kg of Tex2Tex® RPET Fiber (Cradle-to-Gate) · LCA by EarthProtex
         </motion.p>
-      </div>
+      </motion.div>
     </section>
   );
 }

@@ -1,38 +1,84 @@
-@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap');
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
+@font-face {
+  font-family: 'Nexa';
+  src: url('/fonts/NexaLight.otf') format('opentype');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Nexa';
+  src: url('/fonts/NexaBook.otf') format('opentype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Nexa';
+  src: url('/fonts/NexaRegular.otf') format('opentype');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Nexa';
+  src: url('/fonts/NexaBold.otf') format('opentype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Nexa';
+  src: url('/fonts/NexaHeavy.otf') format('opentype');
+  font-weight: 800;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Nexa';
+  src: url('/fonts/NexaBlack.otf') format('opentype');
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
+
 @layer base {
   :root {
     --background: 0 0% 100%;
-    --foreground: 220 20% 10%;
+    --foreground: 0 0% 8%;
 
     --card: 0 0% 100%;
-    --card-foreground: 220 20% 10%;
+    --card-foreground: 0 0% 8%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 220 20% 10%;
+    --popover-foreground: 0 0% 8%;
 
-    --primary: 220 20% 10%;
+    --primary: 0 0% 12%;
     --primary-foreground: 0 0% 100%;
 
     --secondary: 220 14% 96%;
-    --secondary-foreground: 220 20% 10%;
+    --secondary-foreground: 0 0% 8%;
 
-    --muted: 220 14% 96%;
-    --muted-foreground: 220 10% 46%;
+    --muted: 0 0% 96%;
+    --muted-foreground: 210 8% 35%;
 
-    --accent: 220 14% 96%;
-    --accent-foreground: 220 20% 10%;
+    --accent: 220 15% 20%;
+    --accent-foreground: 0 0% 96%;
 
     --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 220 13% 91%;
-    --input: 220 13% 91%;
-    --ring: 220 20% 10%;
+    --border: 0 0% 90%;
+    --input: 0 0% 90%;
+    --ring: 0 0% 12%;
 
     --radius: 0.75rem;
 
@@ -48,6 +94,11 @@
     --ep-green: 0 0% 15%;
     --ep-green-light: 0 0% 96%;
 
+    /* Liquid glass */
+    --lg-bg-color: rgba(255, 255, 255, 0.18);
+    --lg-highlight: rgba(255, 255, 255, 0.6);
+    --lg-text: #ffffff;
+
     --sidebar-background: 0 0% 98%;
     --sidebar-foreground: 240 5.3% 26.1%;
     --sidebar-primary: 240 5.9% 10%;
@@ -59,25 +110,27 @@
   }
 
   .dark {
-    --background: 220 20% 6%;
+    --background: 0 0% 4%;
     --foreground: 0 0% 95%;
-    --card: 220 20% 8%;
+    --card: 0 0% 8%;
     --card-foreground: 0 0% 95%;
-    --popover: 220 20% 8%;
+    --popover: 0 0% 8%;
     --popover-foreground: 0 0% 95%;
-    --primary: 0 0% 95%;
-    --primary-foreground: 220 20% 6%;
-    --secondary: 220 15% 15%;
-    --secondary-foreground: 0 0% 95%;
-    --muted: 220 15% 15%;
-    --muted-foreground: 220 10% 60%;
-    --accent: 220 15% 15%;
-    --accent-foreground: 0 0% 95%;
-    --destructive: 0 63% 31%;
+    --primary: 0 0% 90%;
+    --primary-foreground: 0 0% 4%;
+    --secondary: 0 0% 55%;
+    --secondary-foreground: 0 0% 4%;
+    --muted: 0 0% 12%;
+    --muted-foreground: 0 0% 60%;
+    --accent: 0 0% 80%;
+    --accent-foreground: 0 0% 4%;
+    --destructive: 0 62% 30%;
     --destructive-foreground: 0 0% 95%;
-    --border: 220 15% 18%;
-    --input: 220 15% 18%;
-    --ring: 220 10% 70%;
+    --border: 0 0% 16%;
+    --input: 0 0% 16%;
+    --ring: 0 0% 90%;
+    --lg-bg-color: rgba(255, 255, 255, 0.08);
+    --lg-highlight: rgba(255, 255, 255, 0.3);
     --sidebar-background: 240 5.9% 10%;
     --sidebar-foreground: 240 4.8% 95.9%;
     --sidebar-primary: 224.3 76.3% 48%;
@@ -95,14 +148,252 @@
   }
   body {
     @apply bg-background text-foreground;
-    font-family: 'Inter', sans-serif;
+    font-family: 'Nexa', system-ui, sans-serif;
   }
   h1, h2, h3, h4, h5, h6 {
-    font-family: 'Space Grotesk', sans-serif;
+    font-family: 'Nexa', system-ui, sans-serif;
+  }
+}
+
+@layer components {
+  /* Liquid Glass — Light tier */
+  .liquid-glass {
+    background: rgba(255, 255, 255, 0.01);
+    background-blend-mode: luminosity;
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    border: none;
+    box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.1);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .liquid-glass::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    padding: 1.4px;
+    background: linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0.45) 0%,
+      rgba(255, 255, 255, 0.15) 20%,
+      transparent 40%,
+      transparent 60%,
+      rgba(255, 255, 255, 0.15) 80%,
+      rgba(255, 255, 255, 0.45) 100%
+    );
+    -webkit-mask:
+      linear-gradient(#fff 0 0) content-box,
+      linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  /* Liquid Glass — Strong tier */
+  .liquid-glass-strong {
+    background: rgba(255, 255, 255, 0.03);
+    background-blend-mode: luminosity;
+    backdrop-filter: blur(50px);
+    -webkit-backdrop-filter: blur(50px);
+    border: none;
+    box-shadow:
+      4px 4px 4px rgba(0, 0, 0, 0.05),
+      inset 0 1px 1px rgba(255, 255, 255, 0.15);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .liquid-glass-strong::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    padding: 1.4px;
+    background: linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0.5) 0%,
+      rgba(255, 255, 255, 0.2) 20%,
+      transparent 40%,
+      transparent 60%,
+      rgba(255, 255, 255, 0.2) 80%,
+      rgba(255, 255, 255, 0.5) 100%
+    );
+    -webkit-mask:
+      linear-gradient(#fff 0 0) content-box,
+      linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    pointer-events: none;
+    z-index: 0;
   }
 }
 
 @layer utilities {
+  .deck-container {
+    @apply max-w-6xl mx-auto px-4 sm:px-6 md:px-12;
+  }
+
+  .deck-section {
+    @apply py-16 md:py-24;
+  }
+
+  .deck-section-short {
+    @apply py-12 md:py-16;
+  }
+
+  .deck-card {
+    @apply bg-card rounded-lg border;
+    box-shadow: 0 1px 3px 0 hsl(240 10% 12% / 0.04), 0 4px 16px -2px hsl(240 10% 12% / 0.06);
+  }
+
+  .deck-card-elevated {
+    @apply bg-card rounded-lg border;
+    box-shadow: 0 4px 24px -4px hsl(240 10% 12% / 0.08), 0 12px 40px -8px hsl(240 10% 12% / 0.06);
+  }
+
+  /* Liquid Glass utilities */
+  .glass-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    background: transparent;
+    border-radius: 1.5rem;
+    overflow: hidden;
+    box-shadow: 0 6px 6px rgba(0, 0, 0, 0.15), 0 0 20px rgba(0, 0, 0, 0.08);
+    color: var(--lg-text);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 2.2);
+  }
+
+  .glass-filter {
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    z-index: 0;
+    backdrop-filter: blur(12px) saturate(140%);
+    -webkit-backdrop-filter: blur(12px) saturate(140%);
+  }
+
+  .glass-overlay {
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    z-index: 1;
+    background: var(--lg-bg-color);
+  }
+
+  .glass-specular {
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    z-index: 2;
+    box-shadow: inset 1px 1px 0 var(--lg-highlight), inset 0 0 5px var(--lg-highlight);
+  }
+
+  .glass-content {
+    position: relative;
+    z-index: 3;
+    display: flex;
+    flex: 1 1 auto;
+    align-items: center;
+    justify-content: space-around;
+    padding: 12px 28px;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  /* Glass card variant for deck cards */
+  .deck-card-glass {
+    @apply relative overflow-hidden rounded-xl;
+    border: 1px solid hsl(0 0% 100% / 0.1);
+    background: transparent;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08), 0 0 30px rgba(0, 0, 0, 0.04);
+    transition: all 0.3s ease;
+  }
+
+  .deck-card-glass::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    backdrop-filter: blur(16px) saturate(150%);
+    -webkit-backdrop-filter: blur(16px) saturate(150%);
+    z-index: 0;
+  }
+
+  .deck-card-glass::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    background: hsl(var(--primary) / 0.04);
+    box-shadow: inset 1px 1px 0 hsl(0 0% 100% / 0.2), inset 0 0 8px hsl(0 0% 100% / 0.08);
+    z-index: 1;
+  }
+
+  .deck-card-glass > * {
+    position: relative;
+    z-index: 2;
+  }
+
+  .deck-card-glass:hover {
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12), 0 0 40px hsl(var(--primary) / 0.06);
+    border-color: hsl(var(--primary) / 0.15);
+    transform: translateY(-2px);
+  }
+
+  /* Glass stat card */
+  .deck-card-glass-stat {
+    @apply relative overflow-hidden rounded-xl;
+    border: 1px solid hsl(0 0% 100% / 0.1);
+    background: hsl(var(--primary) / 0.03);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+    transition: all 0.3s ease;
+  }
+
+  .deck-card-glass-stat::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    backdrop-filter: blur(12px) saturate(130%);
+    -webkit-backdrop-filter: blur(12px) saturate(130%);
+    z-index: 0;
+  }
+
+  .deck-card-glass-stat::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    background: linear-gradient(135deg, hsl(0 0% 100% / 0.08), transparent);
+    box-shadow: inset 1px 1px 0 hsl(0 0% 100% / 0.15);
+    z-index: 1;
+  }
+
+  .deck-card-glass-stat > * {
+    position: relative;
+    z-index: 2;
+  }
+
+  .deck-card-glass-stat:hover {
+    box-shadow: 0 8px 28px rgba(0, 0, 0, 0.1), 0 0 20px hsl(var(--primary) / 0.08);
+    transform: translateY(-3px);
+  }
+
+  /* Glass section background */
+  .glass-section-bg {
+    @apply relative;
+    background: linear-gradient(
+      135deg,
+      hsl(var(--primary) / 0.03) 0%,
+      hsl(var(--muted)) 40%,
+      hsl(var(--accent) / 0.04) 100%
+    );
+  }
+
   .text-gradient-coral {
     @apply bg-clip-text text-transparent;
     background-image: linear-gradient(135deg, hsl(0 0% 15%), hsl(0 0% 30%));

@@ -8,6 +8,7 @@ import Footer from "@/components/lca/Footer";
 import PasswordGate from "@/components/lca/PasswordGate";
 import ContentProtection from "@/components/lca/ContentProtection";
 import Watermark from "@/components/lca/Watermark";
+import SectionDivider from "@/components/lca/SectionDivider";
 
 const Index = () => {
   return (
@@ -17,9 +18,13 @@ const Index = () => {
           <Watermark />
           <StickyNav />
           <HeroSection />
+          <SectionDivider />
           <CO2Section />
+          <SectionDivider />
           <EnergySection />
+          <SectionDivider />
           <WaterSection />
+          <SectionDivider />
           <WasteSection />
           <Footer />
         </div>

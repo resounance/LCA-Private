@@ -36,16 +36,16 @@ export default function ComparisonChart({
   return (
     <div
       ref={ref}
-      className={`w-full h-[350px] md:h-[400px] transition-all duration-700 ${
+      className={`deck-card-glass p-4 md:p-6 w-full h-[350px] md:h-[400px] transition-all duration-700 ${
         isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
       }`}
     >
       <ResponsiveContainer width="100%" height="100%">
         <BarChart data={data} margin={{ top: 20, right: 10, left: 10, bottom: 60 }} barCategoryGap="20%">
-          <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="hsl(220 13% 91%)" />
+          <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="hsl(0 0% 90%)" />
           <XAxis
             dataKey="name"
-            tick={{ fontSize: 11, fill: "hsl(220 10% 46%)" }}
+            tick={{ fontSize: 11, fill: "hsl(210 8% 35%)" }}
             angle={-35}
             textAnchor="end"
             interval={0}
@@ -54,7 +54,7 @@ export default function ComparisonChart({
             tickLine={false}
           />
           <YAxis
-            tick={{ fontSize: 11, fill: "hsl(220 10% 46%)" }}
+            tick={{ fontSize: 11, fill: "hsl(210 8% 35%)" }}
             axisLine={false}
             tickLine={false}
             tickFormatter={(v) => `${v}`}
@@ -63,12 +63,12 @@ export default function ComparisonChart({
             formatter={(value: number) => [`${formatValue(value)} ${unit}`, ""]}
             contentStyle={{
               borderRadius: "12px",
-              border: "1px solid hsl(220 13% 91%)",
+              border: "1px solid hsl(0 0% 90%)",
               boxShadow: "0 8px 30px -10px rgba(0,0,0,0.1)",
               fontSize: "13px",
-              fontFamily: "Space Grotesk",
+              fontFamily: "Nexa, system-ui",
             }}
-            cursor={{ fill: "hsl(220 14% 96% / 0.5)" }}
+            cursor={{ fill: "hsl(0 0% 96% / 0.5)" }}
           />
           <Bar dataKey="value" radius={[8, 8, 0, 0]} maxBarSize={60}>
             {data.map((entry, index) => (
