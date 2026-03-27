@@ -2,6 +2,7 @@ import { motion, useScroll, useTransform } from "framer-motion";
 import { Cloud, Zap, Droplets, Recycle } from "lucide-react";
 import { useRef } from "react";
 import AnimatedCounter from "./AnimatedCounter";
+import tex2texLogo from "@/assets/tex2tex-earthprotex-logo.svg";
 
 const indicators = [
   { icon: Cloud, value: 0.63, unit: "kg CO₂e", label: "Carbon Emissions", decimals: 2 },
@@ -61,9 +62,7 @@ export default function HeroSection() {
               Life Cycle Assessment
             </span>
           </div>
-          <h1 className="font-heading font-black text-foreground tracking-tight leading-[0.95]" style={{ fontSize: "clamp(2.5rem, 7vw, 6rem)" }}>
-            TEX2TEX<span className="text-muted-foreground">®</span>
-          </h1>
+          <img src={tex2texLogo} alt="Tex2Tex® by Earth Protex™" className="h-20 md:h-28 w-auto mx-auto" />
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
