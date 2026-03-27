@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import earthprotexLogo from "@/assets/earthprotex-logo.svg";
+import earthprotexLogo from "@/assets/tex2tex-earthprotex-logo.svg";
 
 const Watermark = () => {
   const [timestamp, setTimestamp] = useState(new Date().toLocaleString("pt-BR"));
