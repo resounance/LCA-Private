@@ -1,47 +1,77 @@
 
 
-## Plano Revisado — Proteção de Conteúdo Tex2Tex®
+## Plano — Alinhar identidade visual do LCA com o India Pelletization Project
 
-### Problema com Tokens Expiráveis
-Concordo — o QR code é fixo na apresentação e o cliente pode escanear dias depois. Token com expiração é impraticável nesse cenário.
+### Diferenças identificadas
 
-### Alternativa: Senha Simples + Painel de Controle
+| Aspecto | LCA (atual) | India Pelletization |
+|---|---|---|
+| Fonte | Space Grotesk + Inter | Nexa (custom) |
+| Animacoes | Basicas (fade-in, scroll) | Stagger children, blur reveal, parallax glass, spring counters |
+| Nav | Simples com pill ativo | Glass morphism + barra de progresso + indicador animado |
+| Cards | Border + bg simples | Liquid glass (backdrop-blur, specular highlights) |
+| Divisores | Nenhum | Linha gradiente animada |
+| Secoes | Sem wrapper padronizado | DeckSection com reveal direcional |
 
-Em vez de links temporários, o acesso será controlado por uma **senha única** que você pode trocar quando quiser:
+### O que sera feito
 
-- O QR code aponta sempre para a mesma URL (`/`)
-- Ao acessar, o visitante vê uma tela de senha limpa e minimalista
-- Você define/altera a senha a qualquer momento via `/admin` (protegido por senha master)
-- Após digitar a senha correta, ela fica em `sessionStorage` — ao fechar o navegador, precisa digitar novamente
-- Se quiser "revogar" o acesso após um evento, basta trocar a senha
+**1. Importar fonte Nexa**
+- Copiar os arquivos .otf da pasta `public/fonts/` do India project
+- Adicionar os `@font-face` no `index.css`
+- Atualizar `tailwind.config.ts` para usar `font-heading: Nexa` e `font-body: Nexa`
 
-Isso é simples, prático, e resolve o problema: se um competidor pegar o QR code, sem a senha não entra. E você pode trocar a senha entre eventos.
+**2. Adicionar efeitos Liquid Glass ao CSS**
+- Copiar as classes `.liquid-glass`, `.liquid-glass-strong`, `.deck-card-glass`, `.deck-card-glass-stat` e `.glass-*` do India project para o `index.css`
+- Adicionar utilitarios `.deck-container`, `.deck-section`, `.deck-card`
 
-### Resumo do Plano Final
+**3. Criar componentes de animacao reutilizaveis**
+- `StaggerChildren.tsx` — container + item com stagger delay e blur reveal
+- `DeckSection.tsx` — wrapper de secao com reveal direcional (up/left/right)
+- `SectionDivider.tsx` — linha gradiente animada entre secoes
+- Atualizar `AnimatedCounter` / `useCountUp` para usar framer-motion springs (mais fluido)
 
-**Camada 1 — Gate de Senha**
-- `PasswordGate.tsx`: tela de senha antes do conteúdo (rota `/`)
-- `AdminPanel.tsx`: rota `/admin` para definir a senha ativa (protegido por senha master separada)
-- Senha armazenada em `localStorage` (persiste para o admin) e validação via `sessionStorage` (visitante)
+**4. Atualizar StickyNav**
+- Adicionar barra de progresso de scroll (linha colorida no topo)
+- Efeito glass morphism no background (glass-filter + glass-overlay + glass-specular)
+- Indicador ativo com `layoutId` animado (underline que desliza)
+- Animacao de entrada/saida com show-on-scroll-up
 
-**Camada 2 — Proteções Anti-Cópia** (aprovado)
-- `ContentProtection.tsx`: wrapper com `user-select: none`, bloqueio de clique direito, Ctrl+C/P/S, PrintScreen
-- CSS `@media print` escondendo o conteúdo
+**5. Atualizar HeroSection**
+- Animacoes com blur reveal (`filter: blur(10px)` → `blur(0px)`)
+- Parallax no scroll (opacity e translateY baseados em scrollYProgress)
+- Tipografia bold/black com tracking negativo (estilo cinematico)
 
-**Camada 3 — Marca d'Água Dinâmica** (aprovado)
-- `Watermark.tsx`: overlay fixo com "CONFIDENTIAL" + data/hora, rotacionado -45deg, opacidade ~6-8%, atualiza a cada minuto
+**6. Atualizar secoes de conteudo (CO2, Energy, Water, Waste)**
+- Envolver com `DeckSection` para reveal animado
+- Cards com classe `deck-card-glass` em vez de border simples
+- `StaggerContainer` + `StaggerItem` nos grids de cards
+- Adicionar `SectionDivider` entre secoes
 
-### Arquivos
+**7. Atualizar HighlightCard e ComparisonChart**
+- Aplicar estilo glass nos cards de destaque
+- Hover com `translateY(-2px)` e shadow expandido
 
-| Arquivo | Ação |
+### Arquivos a criar/modificar
+
+| Arquivo | Acao |
 |---|---|
-| `src/components/lca/PasswordGate.tsx` | Criar — tela de senha |
-| `src/pages/AdminPanel.tsx` | Criar — painel para trocar senha |
-| `src/components/lca/ContentProtection.tsx` | Criar — wrapper anti-cópia |
-| `src/components/lca/Watermark.tsx` | Criar — marca d'água dinâmica |
-| `src/pages/Index.tsx` | Modificar — envolver conteúdo com PasswordGate + ContentProtection + Watermark |
-| `src/App.tsx` | Modificar — adicionar rota `/admin` |
+| `public/fonts/*.otf` | Copiar fontes Nexa do India project |
+| `src/index.css` | Adicionar @font-face Nexa + classes liquid-glass + utilitarios deck |
+| `tailwind.config.ts` | Atualizar fontFamily para Nexa |
+| `src/components/lca/StaggerChildren.tsx` | Criar — animacao stagger com blur |
+| `src/components/lca/DeckSection.tsx` | Criar — wrapper de secao animado |
+| `src/components/lca/SectionDivider.tsx` | Criar — divisor animado |
+| `src/components/lca/StickyNav.tsx` | Reescrever — glass + progress bar + layoutId |
+| `src/components/lca/HeroSection.tsx` | Atualizar — blur reveal + parallax scroll |
+| `src/components/lca/CO2Section.tsx` | Atualizar — DeckSection + glass cards + stagger |
+| `src/components/lca/EnergySection.tsx` | Atualizar — idem |
+| `src/components/lca/WaterSection.tsx` | Atualizar — idem |
+| `src/components/lca/WasteSection.tsx` | Atualizar — idem |
+| `src/components/lca/HighlightCard.tsx` | Atualizar — glass style + hover |
+| `src/components/lca/SectionHeader.tsx` | Atualizar — usar stagger |
+| `src/hooks/useCountUp.ts` | Atualizar — usar framer-motion spring |
+| `src/pages/Index.tsx` | Adicionar SectionDivider entre secoes |
 
-### Nota sobre segurança
-Como tudo roda client-side, a senha pode ser encontrada por alguém técnico inspecionando o código. Para a maioria dos cenários de apresentação comercial isso é suficiente. Se no futuro precisar de algo mais robusto, podemos migrar para Supabase com autenticação real.
+### Resultado esperado
+A landing page LCA tera a mesma linguagem visual premium do India Pelletization: fontes Nexa, animacoes com blur e stagger, cards com efeito glass, nav com progresso de scroll, e transicoes cinematicas entre secoes.
 
