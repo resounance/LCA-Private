@@ -39,7 +39,7 @@ export default function CO2Section() {
           <HighlightCard
             percentage="84% less"
             comparedTo="than Virgin PET production"
-            equivalence="Equivalent to driving a car 28 km"
+            equivalence="Per kg of fiber, the CO₂ saved equals a car driving 28 km"
             equivalenceIcon={<Car className="w-5 h-5 text-foreground shrink-0" />}
           />
           <div className="deck-card-glass p-5">
