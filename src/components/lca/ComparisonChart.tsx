@@ -45,7 +45,7 @@ export default function ComparisonChart({
           <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="hsl(0 0% 90%)" />
           <XAxis
             dataKey="name"
-            tick={{ fontSize: 11, fill: "hsl(210 8% 35%)" }}
+            tick={{ fontSize: 11, fill: "hsl(210 8% 35%)", dy: 2 }}
             angle={-35}
             textAnchor="end"
             interval={0}
@@ -54,7 +54,7 @@ export default function ComparisonChart({
             tickLine={false}
           />
           <YAxis
-            tick={{ fontSize: 11, fill: "hsl(210 8% 35%)" }}
+            tick={{ fontSize: 11, fill: "hsl(210 8% 35%)", dy: 1 }}
             axisLine={false}
             tickLine={false}
             tickFormatter={(v) => `${v}`}

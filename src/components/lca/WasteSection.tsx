@@ -21,8 +21,8 @@ export default function WasteSection() {
             <div className="w-20 h-20 rounded-2xl bg-muted/50 flex items-center justify-center">
               <Leaf className="w-10 h-10 text-detail" />
             </div>
-            <span className="text-5xl font-heading font-bold text-foreground">0.0 kg</span>
-            <p className="text-sm text-muted-foreground font-medium">Solid waste per kg of fiber</p>
+            <span className="text-5xl font-heading font-bold text-foreground translate-y-[2px]">0.0 kg</span>
+            <p className="text-sm text-muted-foreground font-medium translate-y-[1px]">Solid waste per kg of fiber</p>
           </div>
         </StaggerItem>
 
@@ -33,7 +33,7 @@ export default function WasteSection() {
                 <RotateCcw className="w-5 h-5 text-detail" />
               </div>
               <div>
-                <h3 className="font-heading font-semibold text-foreground mb-1">Circular Production</h3>
+                <h3 className="font-heading font-semibold text-foreground mb-1 translate-y-[1px]">Circular Production</h3>
                 <p className="text-sm text-muted-foreground leading-relaxed">
                   All process residuals are captured and recycled back into the production cycle. No textile
                   waste leaves the facility — creating a truly closed-loop manufacturing system.
@@ -46,7 +46,7 @@ export default function WasteSection() {
                 <Factory className="w-5 h-5 text-detail" />
               </div>
               <div>
-                <h3 className="font-heading font-semibold text-foreground mb-1">Zero Waste Handling</h3>
+                <h3 className="font-heading font-semibold text-foreground mb-1 translate-y-[1px]">Zero Waste Handling</h3>
                 <p className="text-sm text-muted-foreground leading-relaxed">
                   Even off-spec fiber and production dust are reprocessed. The Tex2Tex® system eliminates
                   landfill contribution entirely — something no other RPET process achieves at scale.
