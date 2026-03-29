@@ -1,47 +1,57 @@
 
 
-## Plano — Ajustar alinhamento vertical da fonte Nexa (1px → 2px)
+## Plano — Cor na página principal + remover travessões + animações mais vivas
 
-A fonte Nexa tem uma baseline ligeiramente elevada, causando desalinhamento visual em caixas e elementos inline. Atualmente alguns elementos já usam `translate-y-[1px]`, mas precisa ser `translate-y-[2px]` para corrigir completamente. Além disso, vários textos Nexa ainda não têm nenhum ajuste.
+### 1. Adicionar cor `detail` (#947e9e) na página principal (HeroSection)
 
-### Arquivos e alterações
+| Elemento | Atual | Depois |
+|---|---|---|
+| Badge "Life Cycle Assessment" | `bg-muted border-border`, ícone e texto `text-foreground` | `bg-detail/10 border-detail/20`, ícone e texto `text-detail` |
+| Ícones dos KPI cards (Cloud, Zap, Droplets, Recycle) | `text-foreground` | `text-detail` |
+| SectionDivider gradient | `via-primary/30` | `via-detail/40` |
+| Footer border | `border-border` | `border-detail/20` |
 
-**1. Correção global via CSS (`src/index.css`)**
-- Adicionar `translate-y-[2px]` como regra base para todos os textos que usam `font-family: Nexa` dentro de elementos inline (spans, labels) — ou aplicar individualmente nos componentes abaixo.
+**Arquivos**: `HeroSection.tsx`, `SectionDivider.tsx`, `Footer.tsx`
 
-**2. `SectionHeader.tsx`**
-- Badge span: `translate-y-[1px]` → `translate-y-[2px]`
-- Título h2: adicionar `translate-y-[1px]`
-- Subtítulo p: adicionar `translate-y-[1px]`
+### 2. Remover todos os travessões (—)
 
-**3. `HighlightCard.tsx`**
-- Percentual span: `translate-y-[1px]` → `translate-y-[2px]`
-- ComparedTo span: `translate-y-[1px]` → `translate-y-[2px]`
-- Equivalência texto: adicionar `translate-y-[1px]`
+Substituir `—` por `.` ou reestruturar a frase em 5 arquivos:
 
-**4. `StickyNav.tsx`**
-- Logo span: `translate-y-[1px]` → `translate-y-[2px]`
-- Nav labels: `translate-y-[1px]` → `translate-y-[2px]`
+- **HeroSection.tsx** L80: `"data — the most"` → `"data. The most"`
+- **WasteSection.tsx** L39: `"facility — creating"` → `"facility, creating"`
+- **WasteSection.tsx** L52: `"entirely — something"` → `"entirely. Something"`
+- **WaterSection.tsx** L42: `"per kg — with"` → `"per kg, with"`
+- **Footer.tsx** L10: `"Fiber — Life"` → `"Fiber · Life"` (usar middle dot como separador)
+- **PasswordGate.tsx** L68: `"confidencial — acesso"` → `"confidencial. Acesso"`
 
-**5. `HeroSection.tsx`**
-- Badge "Life Cycle Assessment": adicionar `translate-y-[2px]`
-- "Impact Indicators" (subtitle): adicionar `translate-y-[1px]`
-- AnimatedCounter values: adicionar `translate-y-[1px]`
-- KPI labels e units: adicionar `translate-y-[1px]`
-- Footer disclaimer: adicionar `translate-y-[1px]`
+### 3. Animações mais vivas
 
-**6. `WasteSection.tsx`**
-- "0.0 kg" valor: adicionar `translate-y-[2px]`
-- Card titles (h3): adicionar `translate-y-[1px]`
+**HeroSection.tsx** — KPI cards:
+- Adicionar `whileHover={{ scale: 1.04, y: -4 }}` nos cards
+- Ícones com `whileHover` rotação sutil (rotate: 8deg)
+- Badge de entrada com um bounce sutil (spring transition)
 
-**7. `ComparisonChart.tsx`**
-- Recharts ticks usam Nexa via font-family — ajustar `dy` nos ticks do XAxis/YAxis se necessário
+**DeckSection.tsx**:
+- Aumentar deslocamento inicial de `y: 24` para `y: 40`
+- Adicionar `scale: 0.97` no initial state
 
-**8. `Footer.tsx`**
-- Textos do footer: adicionar `translate-y-[1px]`
+**StaggerChildren.tsx**:
+- Aumentar deslocamento de `y: 28` para `y: 36`
+- Aumentar `delayChildren` de `0.15` para `0.2`
 
-### Abordagem
-- Textos grandes (headings, stats): `translate-y-[2px]`
-- Textos pequenos (labels, body): `translate-y-[1px]`
-- Isso garante alinhamento visual proporcional ao tamanho da fonte
+**SectionDivider.tsx**:
+- Adicionar glow pulsante sutil com a cor detail após a animação de entrada
+
+**HighlightCard.tsx**:
+- Melhorar hover: `scale: 1.03`, sombra glow com detail
+
+**SectionHeader.tsx**:
+- Adicionar animação de entrada escalonada: badge primeiro, depois título, depois subtítulo (stagger de 0.1s entre eles)
+
+**ComparisonChart.tsx**:
+- Aumentar `animationDuration` de 1200 para 1500ms
+- Adicionar hover visual nas barras com `cursor` mais visível
+
+### Arquivos modificados (8)
+`HeroSection.tsx`, `SectionDivider.tsx`, `Footer.tsx`, `WasteSection.tsx`, `WaterSection.tsx`, `PasswordGate.tsx`, `DeckSection.tsx`, `StaggerChildren.tsx`, `SectionHeader.tsx`, `HighlightCard.tsx`, `ComparisonChart.tsx`
 
