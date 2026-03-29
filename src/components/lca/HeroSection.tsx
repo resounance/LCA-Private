@@ -26,11 +26,11 @@ function KpiCard({ icon: Icon, value, unit, label, decimals, index }: typeof ind
         <AnimatedCounter
           value={value}
           decimals={decimals}
-          className="text-4xl font-heading font-bold text-foreground tabular-nums"
+          className="text-4xl font-heading font-bold text-foreground tabular-nums translate-y-[1px]"
         />
-        <span className="text-lg font-heading font-medium text-muted-foreground ml-1">{unit}</span>
+        <span className="text-lg font-heading font-medium text-muted-foreground ml-1 translate-y-[1px]">{unit}</span>
       </div>
-      <p className="text-sm text-muted-foreground font-medium">{label}</p>
+      <p className="text-sm text-muted-foreground font-medium translate-y-[1px]">{label}</p>
     </motion.div>
   );
 }
@@ -58,7 +58,7 @@ export default function HeroSection() {
         >
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-muted border border-border mb-6">
             <Recycle className="w-4 h-4 text-foreground" />
-            <span className="text-xs font-semibold text-foreground tracking-wider uppercase">
+            <span className="text-xs font-semibold text-foreground tracking-wider uppercase translate-y-[2px]">
               Life Cycle Assessment
             </span>
           </div>
@@ -67,7 +67,7 @@ export default function HeroSection() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.3 }}
-            className="text-muted-foreground mt-4 text-2xl md:text-3xl font-heading font-medium"
+            className="text-muted-foreground mt-4 text-2xl md:text-3xl font-heading font-medium translate-y-[1px]"
           >
             Impact Indicators
           </motion.p>
@@ -91,7 +91,7 @@ export default function HeroSection() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 1.6 }}
-          className="text-center text-xs text-muted-foreground mt-8 italic font-light"
+          className="text-center text-xs text-muted-foreground mt-8 italic font-light translate-y-[1px]"
         >
           Based on 1 kg of Tex2Tex® RPET Fiber (Cradle-to-Gate) · LCA by EarthProtex
         </motion.p>
