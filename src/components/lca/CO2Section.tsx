@@ -1,9 +1,8 @@
-import { Car } from "lucide-react";
 import ComparisonChart from "./ComparisonChart";
-import HighlightCard from "./HighlightCard";
 import SectionHeader from "./SectionHeader";
 import DeckSection from "./DeckSection";
 import { StaggerContainer, StaggerItem } from "./StaggerChildren";
+import CO2EquivalenceCard from "./CO2EquivalenceCard";
 
 const data = [
   { name: "Tex2Tex®", value: 0.63, isHighlight: true },
@@ -36,12 +35,7 @@ export default function CO2Section() {
           />
         </StaggerItem>
         <StaggerItem className="flex flex-col gap-4">
-          <HighlightCard
-            percentage="84% less"
-            comparedTo="than Virgin PET production"
-            equivalence="Per kg of fiber, the CO₂ saved equals a car driving 28 km"
-            equivalenceIcon={<Car className="w-5 h-5 text-foreground shrink-0" />}
-          />
+          <CO2EquivalenceCard />
           <div className="deck-card-glass p-5">
             <p className="text-sm text-muted-foreground leading-relaxed">
               Tex2Tex® achieves the lowest carbon footprint of any RPET fiber process by using a{" "}
