@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Factory, Truck, Flame, Weight } from "lucide-react";
+import { Shirt, Scissors, Pipette, Waves } from "lucide-react";
 import { useScrollFadeIn } from "@/hooks/useScrollFadeIn";
 import AnimatedCounter from "./AnimatedCounter";
 
@@ -16,38 +16,43 @@ const MJ_SAVED_PER_KG = 91.75;
 
 function getAnalogies(kg: number) {
   const totalMJ = MJ_SAVED_PER_KG * kg;
-  const truckKm = Math.round(totalMJ / 36); // diesel ~36 MJ/L, ~1L/km for heavy truck
-  const textileDays = parseFloat((totalMJ / (15000)).toFixed(1)); // ~15,000 MJ/day for a textile line
-  const aluminumKg = Math.round(totalMJ / 50); // ~50 MJ/kg to melt aluminum
-  const furnaceHours = parseFloat((totalMJ / (3750)).toFixed(1)); // ~3,750 MJ/h industrial furnace
+
+  // ~25 MJ to produce one cotton t-shirt (spinning, weaving, cutting, sewing, finishing)
+  const tshirts = Math.round(totalMJ / 25);
+  // ~60 MJ to produce one pair of jeans (full manufacturing process)
+  const jeans = Math.round(totalMJ / 60);
+  // Industrial dyeing batch: ~500 MJ per batch (~200 kg of fabric)
+  const dyeBatches = parseFloat((totalMJ / 500).toFixed(1));
+  // Industrial spinning frame: ~15 kW ≈ 54 MJ/h
+  const spinningHours = parseFloat((totalMJ / 54).toFixed(1));
 
   return [
     {
-      icon: <Factory className="w-5 h-5 text-foreground shrink-0" />,
-      value: textileDays,
-      unit: textileDays === 1 ? "day" : "days",
-      label: "operating a textile production line",
+      icon: <Shirt className="w-5 h-5 text-foreground shrink-0" />,
+      value: tshirts,
+      unit: tshirts === 1 ? "t-shirt" : "t-shirts",
+      label: "worth of production energy",
+      decimals: 0,
+    },
+    {
+      icon: <Scissors className="w-5 h-5 text-foreground shrink-0" />,
+      value: jeans,
+      unit: jeans === 1 ? "pair of jeans" : "jeans",
+      label: "worth of full manufacturing energy",
+      decimals: 0,
+    },
+    {
+      icon: <Pipette className="w-5 h-5 text-foreground shrink-0" />,
+      value: dyeBatches,
+      unit: dyeBatches === 1 ? "batch" : "batches",
+      label: "of industrial fabric dyeing",
       decimals: 1,
     },
     {
-      icon: <Truck className="w-5 h-5 text-foreground shrink-0" />,
-      value: truckKm,
-      unit: "km",
-      label: "of heavy truck fuel",
-      decimals: 0,
-    },
-    {
-      icon: <Weight className="w-5 h-5 text-foreground shrink-0" />,
-      value: aluminumKg,
-      unit: "kg",
-      label: "of aluminum melted",
-      decimals: 0,
-    },
-    {
-      icon: <Flame className="w-5 h-5 text-foreground shrink-0" />,
-      value: furnaceHours,
-      unit: furnaceHours === 1 ? "hour" : "hours",
-      label: "of industrial furnace operation",
+      icon: <Waves className="w-5 h-5 text-foreground shrink-0" />,
+      value: spinningHours,
+      unit: spinningHours === 1 ? "hour" : "hours",
+      label: "of spinning frame operation",
       decimals: 1,
     },
   ];
