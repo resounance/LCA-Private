@@ -32,9 +32,9 @@ export default function HighlightCard({
           {percentage}
         </span>
         <span className="text-sm text-muted-foreground font-medium">{comparedTo}</span>
-        <div className="flex items-center gap-2 mt-2 pt-3 border-t border-border/50">
+        <div className="flex items-center gap-2 mt-2 pt-3 border-t border-detail/20">
           {equivalenceIcon}
-          <span className="text-sm text-muted-foreground">{equivalence}</span>
+          <span className="text-sm text-detail">{equivalence}</span>
         </div>
       </div>
     </motion.div>

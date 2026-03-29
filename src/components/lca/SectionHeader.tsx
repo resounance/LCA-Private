@@ -21,8 +21,8 @@ export default function SectionHeader({ badge, title, subtitle, colorClass, bgCl
       transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
       className="mb-12"
     >
-      <div className={`inline-flex items-center gap-2 px-3 py-1.5 rounded-full ${bgClass} border ${borderClass} mb-4`}>
-        <span className={`text-xs font-semibold ${colorClass} tracking-wider uppercase`}>{badge}</span>
+      <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-detail/10 border border-detail/20 mb-4">
+        <span className="text-xs font-semibold text-detail tracking-wider uppercase">{badge}</span>
       </div>
       <h2 className="text-3xl md:text-4xl font-heading font-bold text-foreground">{title}</h2>
       <p className="text-muted-foreground mt-3 max-w-2xl text-base font-light">{subtitle}</p>

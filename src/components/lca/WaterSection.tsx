@@ -37,7 +37,7 @@ export default function WaterSection() {
             percentage="99.7% less"
             comparedTo="than Virgin PET production"
             equivalence="Saving 312 glasses of water (200 ml)"
-            equivalenceIcon={<GlassWater className="w-5 h-5 text-foreground shrink-0" />}
+            equivalenceIcon={<GlassWater className="w-5 h-5 text-detail shrink-0" />}
           />
           <div className="deck-card-glass p-5">
             <p className="text-sm text-muted-foreground leading-relaxed">
