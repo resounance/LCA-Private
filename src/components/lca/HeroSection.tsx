@@ -41,11 +41,11 @@ export default function HeroSection() {
     target: sectionRef,
     offset: ["start start", "end start"],
   });
-  const contentOpacity = useTransform(scrollYProgress, [0, 0.4], [1, 0]);
-  const contentY = useTransform(scrollYProgress, [0, 0.4], ["0%", "-8%"]);
+  const contentOpacity = useTransform(scrollYProgress, [0, 0.8], [1, 0]);
+  const contentY = useTransform(scrollYProgress, [0, 0.8], ["0%", "-4%"]);
 
   return (
-    <section ref={sectionRef} id="hero" className="min-h-screen flex flex-col justify-center pt-20 pb-16 px-4 relative">
+    <section ref={sectionRef} id="hero" className="flex flex-col justify-center pt-24 pb-16 px-4 relative">
       <motion.div
         className="max-w-6xl mx-auto w-full"
         style={{ opacity: contentOpacity, y: contentY }}
