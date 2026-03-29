@@ -14,10 +14,10 @@ const indicators = [
 function KpiCard({ icon: Icon, value, unit, label, decimals, index }: typeof indicators[0] & { index: number }) {
   return (
     <motion.div
-      initial={{ opacity: 0, y: 30, filter: "blur(6px)" }}
-      animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-      transition={{ duration: 0.6, delay: 0.8 + index * 0.12, ease: [0.16, 1, 0.3, 1] }}
-      className="deck-card-glass-stat p-6 flex flex-col items-center text-center gap-3"
+      initial={{ opacity: 0, y: 30, scale: 0.97, filter: "blur(6px)" }}
+      animate={{ opacity: 1, y: 0, scale: 1, filter: "blur(0px)" }}
+      transition={{ duration: 0.7, delay: 0.8 + index * 0.14, ease: [0.16, 1, 0.3, 1] }}
+      className="deck-card-glass-stat p-6 flex flex-col items-center text-center gap-3 group"
     >
       <div className="w-12 h-12 rounded-xl flex items-center justify-center bg-muted/50">
         <Icon className="w-6 h-6 text-foreground" />
