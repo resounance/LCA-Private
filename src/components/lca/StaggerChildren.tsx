@@ -9,34 +9,35 @@ interface StaggerChildrenProps {
 }
 
 const directionMap = {
-  up: { y: 20, x: 0 },
-  left: { x: -30, y: 0 },
-  right: { x: 30, y: 0 },
+  up: { y: 28, x: 0 },
+  left: { x: -36, y: 0 },
+  right: { x: 36, y: 0 },
 };
 
 const container = (delay: number) => ({
   hidden: {},
-  show: { transition: { staggerChildren: delay, delayChildren: 0.1 } },
+  show: { transition: { staggerChildren: delay, delayChildren: 0.15 } },
 });
 
 const item = (dir: "up" | "left" | "right") => ({
-  hidden: { opacity: 0, ...directionMap[dir], filter: "blur(4px)" },
+  hidden: { opacity: 0, scale: 0.97, ...directionMap[dir], filter: "blur(6px)" },
   show: {
     opacity: 1,
+    scale: 1,
     x: 0,
     y: 0,
     filter: "blur(0px)",
-    transition: { duration: 0.5, ease: [0.16, 1, 0.3, 1] as const },
+    transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] as const },
   },
 });
 
-export function StaggerContainer({ children, className = "", staggerDelay = 0.08 }: StaggerChildrenProps) {
+export function StaggerContainer({ children, className = "", staggerDelay = 0.1 }: StaggerChildrenProps) {
   return (
     <motion.div
       variants={container(staggerDelay)}
       initial="hidden"
       whileInView="show"
-      viewport={{ once: true, amount: 0.15 }}
+      viewport={{ once: true, amount: 0.12 }}
       className={className}
     >
       {children}

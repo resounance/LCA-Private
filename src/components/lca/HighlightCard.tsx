@@ -22,9 +22,10 @@ export default function HighlightCard({
   return (
     <motion.div
       ref={ref}
-      initial={{ opacity: 0, scale: 0.95, filter: "blur(4px)" }}
-      animate={isVisible ? { opacity: 1, scale: 1, filter: "blur(0px)" } : {}}
-      transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+      initial={{ opacity: 0, scale: 0.93, y: 12, filter: "blur(6px)" }}
+      animate={isVisible ? { opacity: 1, scale: 1, y: 0, filter: "blur(0px)" } : {}}
+      transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+      whileHover={{ scale: 1.02, transition: { duration: 0.25 } }}
       className="deck-card-glass-stat p-6 md:p-8"
     >
       <div className="flex flex-col gap-3">

@@ -16,9 +16,9 @@ export default function SectionHeader({ badge, title, subtitle, colorClass, bgCl
   return (
     <motion.div
       ref={ref}
-      initial={{ opacity: 0, y: 20, filter: "blur(4px)" }}
+      initial={{ opacity: 0, y: 24, filter: "blur(6px)" }}
       animate={isVisible ? { opacity: 1, y: 0, filter: "blur(0px)" } : {}}
-      transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+      transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
       className="mb-12"
     >
       <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-detail/10 border border-detail/20 mb-4">

@@ -30,8 +30,6 @@ export default function CO2Section() {
         <StaggerItem className="lg:col-span-2">
           <ComparisonChart
             data={data}
-            highlightColor="hsl(0 0% 15%)"
-            baseColor="hsl(0 0% 75%)"
             unit="kg CO₂e"
           />
         </StaggerItem>

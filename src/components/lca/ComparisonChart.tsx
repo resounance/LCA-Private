@@ -8,6 +8,7 @@ import {
   ResponsiveContainer,
   Cell,
 } from "recharts";
+import { motion } from "framer-motion";
 import { useScrollFadeIn } from "@/hooks/useScrollFadeIn";
 
 interface ChartDataItem {
@@ -18,27 +19,24 @@ interface ChartDataItem {
 
 interface ComparisonChartProps {
   data: ChartDataItem[];
-  highlightColor: string;
-  baseColor: string;
   unit: string;
   formatValue?: (v: number) => string;
 }
 
 export default function ComparisonChart({
   data,
-  highlightColor,
-  baseColor,
   unit,
   formatValue = (v) => v.toFixed(2),
 }: ComparisonChartProps) {
   const { ref, isVisible } = useScrollFadeIn();
 
   return (
-    <div
+    <motion.div
       ref={ref}
-      className={`deck-card-glass p-4 md:p-6 w-full h-[350px] md:h-[400px] transition-all duration-700 ${
-        isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-      }`}
+      initial={{ opacity: 0, y: 30, filter: "blur(6px)" }}
+      animate={isVisible ? { opacity: 1, y: 0, filter: "blur(0px)" } : {}}
+      transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+      className="deck-card-glass p-4 md:p-6 w-full h-[350px] md:h-[400px]"
     >
       <ResponsiveContainer width="100%" height="100%">
         <BarChart data={data} margin={{ top: 20, right: 10, left: 10, bottom: 60 }} barCategoryGap="20%">
@@ -63,23 +61,27 @@ export default function ComparisonChart({
             formatter={(value: number) => [`${formatValue(value)} ${unit}`, ""]}
             contentStyle={{
               borderRadius: "12px",
-              border: "1px solid hsl(0 0% 90%)",
-              boxShadow: "0 8px 30px -10px rgba(0,0,0,0.1)",
+              border: "1px solid hsl(270 14% 56% / 0.3)",
+              boxShadow: "0 8px 30px -10px rgba(148, 126, 158, 0.2)",
               fontSize: "13px",
               fontFamily: "Nexa, system-ui",
+              background: "hsl(0 0% 100% / 0.95)",
+              backdropFilter: "blur(8px)",
             }}
-            cursor={{ fill: "hsl(0 0% 96% / 0.5)" }}
+            cursor={{ fill: "hsl(270 14% 56% / 0.06)" }}
           />
-          <Bar dataKey="value" radius={[8, 8, 0, 0]} maxBarSize={60}>
+          <Bar dataKey="value" radius={[8, 8, 0, 0]} maxBarSize={60} animationDuration={1200} animationEasing="ease-out">
             {data.map((entry, index) => (
               <Cell
                 key={`cell-${index}`}
-                fill={entry.isHighlight ? highlightColor : baseColor}
+                fill={entry.isHighlight ? "hsl(270 14% 56%)" : "hsl(270 14% 56% / 0.2)"}
+                stroke={entry.isHighlight ? "hsl(270 14% 46%)" : "transparent"}
+                strokeWidth={entry.isHighlight ? 1 : 0}
               />
             ))}
           </Bar>
         </BarChart>
       </ResponsiveContainer>
-    </div>
+    </motion.div>
   );
 }
