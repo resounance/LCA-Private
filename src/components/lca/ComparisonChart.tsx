@@ -60,6 +60,7 @@ export default function ComparisonChart({
           <Tooltip
             formatter={(value: number) => [formatValue(value) + " " + unit]}
             labelStyle={{ fontWeight: 600, marginBottom: 4 }}
+            contentStyle={{
               borderRadius: "12px",
               border: "1px solid hsl(270 14% 56% / 0.3)",
               boxShadow: "0 8px 30px -10px rgba(148, 126, 158, 0.2)",
