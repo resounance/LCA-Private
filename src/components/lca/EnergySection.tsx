@@ -40,7 +40,7 @@ export default function EnergySection() {
           <HighlightCard
             percentage="97% less"
             comparedTo="than Virgin PET production"
-            equivalence="Powering a 60W light for 424 hours"
+            equivalence="Per kg of fiber, the energy saved could power a 60W light for 424 hours (~18 days)"
             equivalenceIcon={<Lightbulb className="w-5 h-5 text-foreground shrink-0" />}
           />
           <div className="deck-card-glass p-5">
