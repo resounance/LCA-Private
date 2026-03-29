@@ -58,7 +58,8 @@ export default function ComparisonChart({
             tickFormatter={(v) => `${v}`}
           />
           <Tooltip
-            formatter={(value: number) => [`${formatValue(value)} ${unit}`, ""]}
+            formatter={(value: number) => [formatValue(value) + " " + unit]}
+            labelStyle={{ fontWeight: 600, marginBottom: 4 }}
             contentStyle={{
               borderRadius: "12px",
               border: "1px solid hsl(270 14% 56% / 0.3)",
