@@ -1,8 +1,9 @@
+import { Lightbulb } from "lucide-react";
 import ComparisonChart from "./ComparisonChart";
+import HighlightCard from "./HighlightCard";
 import SectionHeader from "./SectionHeader";
 import DeckSection from "./DeckSection";
 import { StaggerContainer, StaggerItem } from "./StaggerChildren";
-import EnergyEquivalenceCard from "./EnergyEquivalenceCard";
 
 const data = [
   { name: "Tex2Tex®", value: 3.25, isHighlight: true },
@@ -36,7 +37,12 @@ export default function EnergySection() {
           />
         </StaggerItem>
         <StaggerItem className="flex flex-col gap-4">
-          <EnergyEquivalenceCard />
+          <HighlightCard
+            percentage="97% less"
+            comparedTo="than Virgin PET production"
+            equivalence="Per kg of fiber, the energy saved could power a 60W light for 18 days"
+            equivalenceIcon={<Lightbulb className="w-5 h-5 text-foreground shrink-0" />}
+          />
           <div className="deck-card-glass p-5">
             <p className="text-sm text-muted-foreground leading-relaxed">
               Virgin PET consumes <strong className="text-foreground">29× more energy</strong> than

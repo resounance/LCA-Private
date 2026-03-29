@@ -1,8 +1,9 @@
+import { GlassWater } from "lucide-react";
 import ComparisonChart from "./ComparisonChart";
+import HighlightCard from "./HighlightCard";
 import SectionHeader from "./SectionHeader";
 import DeckSection from "./DeckSection";
 import { StaggerContainer, StaggerItem } from "./StaggerChildren";
-import WaterEquivalenceCard from "./WaterEquivalenceCard";
 
 const data = [
   { name: "Tex2Tex®", value: 0.19, isHighlight: true },
@@ -32,7 +33,12 @@ export default function WaterSection() {
           />
         </StaggerItem>
         <StaggerItem className="flex flex-col gap-4">
-          <WaterEquivalenceCard />
+          <HighlightCard
+            percentage="99.7% less"
+            comparedTo="than Virgin PET production"
+            equivalence="Saving 312 glasses of water (200 ml)"
+            equivalenceIcon={<GlassWater className="w-5 h-5 text-foreground shrink-0" />}
+          />
           <div className="deck-card-glass p-5">
             <p className="text-sm text-muted-foreground leading-relaxed">
               Only <strong className="text-foreground">0.19 liters</strong> of fresh water per kg — with{" "}
