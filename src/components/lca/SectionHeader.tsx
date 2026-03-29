@@ -22,7 +22,7 @@ export default function SectionHeader({ badge, title, subtitle, colorClass, bgCl
       className="mb-12"
     >
       <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-detail/10 border border-detail/20 mb-4">
-        <span className="text-xs font-semibold text-detail tracking-wider uppercase">{badge}</span>
+        <span className="text-xs font-semibold text-detail tracking-wider uppercase translate-y-[1px]">{badge}</span>
       </div>
       <h2 className="text-3xl md:text-4xl font-heading font-bold text-foreground">{title}</h2>
       <p className="text-muted-foreground mt-3 max-w-2xl text-base font-light">{subtitle}</p>

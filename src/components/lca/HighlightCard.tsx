@@ -28,10 +28,10 @@ export default function HighlightCard({
       className="deck-card-glass-stat p-6 md:p-8"
     >
       <div className="flex flex-col gap-3">
-        <span className="text-4xl md:text-5xl font-heading font-bold text-foreground">
+        <span className="text-4xl md:text-5xl font-heading font-bold text-foreground translate-y-[1px]">
           {percentage}
         </span>
-        <span className="text-sm text-muted-foreground font-medium">{comparedTo}</span>
+        <span className="text-sm text-muted-foreground font-medium translate-y-[1px]">{comparedTo}</span>
         <div className="flex items-center gap-2 mt-2 pt-3 border-t border-detail/20">
           {equivalenceIcon}
           <span className="text-sm text-detail">{equivalence}</span>
