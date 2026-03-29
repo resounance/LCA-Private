@@ -341,8 +341,8 @@
   }
 
   .deck-card-glass:hover {
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12), 0 0 40px hsl(var(--primary) / 0.06);
-    border-color: hsl(var(--primary) / 0.15);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12), 0 0 40px hsl(var(--detail) / 0.15);
+    border-color: hsl(var(--detail) / 0.25);
     transform: translateY(-2px);
   }
 
@@ -381,7 +381,8 @@
   }
 
   .deck-card-glass-stat:hover {
-    box-shadow: 0 8px 28px rgba(0, 0, 0, 0.1), 0 0 20px hsl(var(--primary) / 0.08);
+    box-shadow: 0 8px 28px rgba(0, 0, 0, 0.1), 0 0 20px hsl(var(--detail) / 0.18);
+    border-color: hsl(var(--detail) / 0.3);
     transform: translateY(-3px);
   }
 

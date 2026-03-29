@@ -59,7 +59,7 @@ export default function StickyNav() {
           />
 
           <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 flex items-center justify-between h-12">
-            <span className="font-heading font-bold text-sm text-foreground">
+            <span className="font-heading font-bold text-sm text-foreground translate-y-[1px]">
               TEX2TEX<span className="text-muted-foreground text-[8px] align-super">®</span>
             </span>
             <div className="hidden md:flex items-center gap-6">
@@ -77,11 +77,11 @@ export default function StickyNav() {
                       : "text-muted-foreground hover:text-foreground"
                   }`}
                 >
-                  {item.label}
+                  <span className="translate-y-[1px] inline-block">{item.label}</span>
                   {active === item.id && (
                     <motion.span
                       layoutId="nav-indicator"
-                      className="absolute -bottom-0.5 left-0 right-0 h-0.5 bg-foreground rounded-full"
+                      className="absolute -bottom-0.5 left-0 right-0 h-0.5 bg-detail rounded-full"
                       transition={{ type: "spring", stiffness: 400, damping: 30 }}
                     />
                   )}
