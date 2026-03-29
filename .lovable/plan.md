@@ -1,32 +1,47 @@
 
 
-## Plano — Aplicar cor de destaque #947e9e nos detalhes do LCA
+## Plano — Ajustar alinhamento vertical da fonte Nexa (1px → 2px)
 
-### Onde a cor será aplicada
+A fonte Nexa tem uma baseline ligeiramente elevada, causando desalinhamento visual em caixas e elementos inline. Atualmente alguns elementos já usam `translate-y-[1px]`, mas precisa ser `translate-y-[2px]` para corrigir completamente. Além disso, vários textos Nexa ainda não têm nenhum ajuste.
 
-A cor `#947e9e` (roxo acinzentado) será usada como cor de destaque em 4 áreas:
+### Arquivos e alterações
 
-| Elemento | Atual | Depois |
-|---|---|---|
-| Badges das seções ("Carbon Footprint", "Energy Demand", etc.) | `text-foreground` + `bg-muted` | Texto `#947e9e`, borda `#947e9e/20`, fundo `#947e9e/10` |
-| Textos de equivalência nos HighlightCards | `text-muted-foreground` | `text-[#947e9e]` |
-| Ícones de equivalência (Car, Lightbulb, etc.) | `text-foreground` | `text-[#947e9e]` |
-| Barra de progresso da sticky nav | `bg-foreground` (preto) | `bg-[#947e9e]` |
+**1. Correção global via CSS (`src/index.css`)**
+- Adicionar `translate-y-[2px]` como regra base para todos os textos que usam `font-family: Nexa` dentro de elementos inline (spans, labels) — ou aplicar individualmente nos componentes abaixo.
 
-### Arquivos a modificar
+**2. `SectionHeader.tsx`**
+- Badge span: `translate-y-[1px]` → `translate-y-[2px]`
+- Título h2: adicionar `translate-y-[1px]`
+- Subtítulo p: adicionar `translate-y-[1px]`
 
-1. **`src/components/lca/SectionHeader.tsx`** — Alterar as classes do badge para usar `text-[#947e9e]`, `bg-[#947e9e]/10`, `border-[#947e9e]/20` (removendo as props `colorClass`/`bgClass`/`borderClass` ou mantendo como fallback)
+**3. `HighlightCard.tsx`**
+- Percentual span: `translate-y-[1px]` → `translate-y-[2px]`
+- ComparedTo span: `translate-y-[1px]` → `translate-y-[2px]`
+- Equivalência texto: adicionar `translate-y-[1px]`
 
-2. **`src/components/lca/CO2Section.tsx`** — Alterar o ícone `<Car>` para `text-[#947e9e]`; atualizar props do SectionHeader
+**4. `StickyNav.tsx`**
+- Logo span: `translate-y-[1px]` → `translate-y-[2px]`
+- Nav labels: `translate-y-[1px]` → `translate-y-[2px]`
 
-3. **`src/components/lca/EnergySection.tsx`** — Idem para `<Lightbulb>`
+**5. `HeroSection.tsx`**
+- Badge "Life Cycle Assessment": adicionar `translate-y-[2px]`
+- "Impact Indicators" (subtitle): adicionar `translate-y-[1px]`
+- AnimatedCounter values: adicionar `translate-y-[1px]`
+- KPI labels e units: adicionar `translate-y-[1px]`
+- Footer disclaimer: adicionar `translate-y-[1px]`
 
-4. **`src/components/lca/WaterSection.tsx`** — Idem para `<GlassWater>`
+**6. `WasteSection.tsx`**
+- "0.0 kg" valor: adicionar `translate-y-[2px]`
+- Card titles (h3): adicionar `translate-y-[1px]`
 
-5. **`src/components/lca/HighlightCard.tsx`** — Alterar a linha de equivalência: ícone e texto com `text-[#947e9e]`, borda separadora com `border-[#947e9e]/20`
+**7. `ComparisonChart.tsx`**
+- Recharts ticks usam Nexa via font-family — ajustar `dy` nos ticks do XAxis/YAxis se necessário
 
-6. **`src/components/lca/StickyNav.tsx`** — Alterar a barra de progresso de `bg-foreground` para `bg-[#947e9e]`
+**8. `Footer.tsx`**
+- Textos do footer: adicionar `translate-y-[1px]`
 
-### Resultado
-Os elementos de detalhe terão um toque de cor roxa que quebra a monotonia do monocromático sem competir com o conteúdo principal, igual ao estilo do India Pelletization Hub.
+### Abordagem
+- Textos grandes (headings, stats): `translate-y-[2px]`
+- Textos pequenos (labels, body): `translate-y-[1px]`
+- Isso garante alinhamento visual proporcional ao tamanho da fonte
 
