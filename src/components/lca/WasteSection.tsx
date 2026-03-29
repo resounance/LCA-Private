@@ -19,7 +19,7 @@ export default function WasteSection() {
         <StaggerItem className="md:col-span-1">
           <div className="deck-card-glass-stat p-8 flex flex-col items-center text-center gap-4 h-full">
             <div className="w-20 h-20 rounded-2xl bg-muted/50 flex items-center justify-center">
-              <Leaf className="w-10 h-10 text-foreground" />
+              <Leaf className="w-10 h-10 text-detail" />
             </div>
             <span className="text-5xl font-heading font-bold text-foreground">0.0 kg</span>
             <p className="text-sm text-muted-foreground font-medium">Solid waste per kg of fiber</p>
@@ -30,7 +30,7 @@ export default function WasteSection() {
           <div className="flex flex-col gap-4">
             <div className="deck-card-glass p-6 flex items-start gap-4">
               <div className="w-10 h-10 rounded-xl bg-muted/50 flex items-center justify-center shrink-0">
-                <RotateCcw className="w-5 h-5 text-foreground" />
+                <RotateCcw className="w-5 h-5 text-detail" />
               </div>
               <div>
                 <h3 className="font-heading font-semibold text-foreground mb-1">Circular Production</h3>
@@ -43,7 +43,7 @@ export default function WasteSection() {
 
             <div className="deck-card-glass p-6 flex items-start gap-4">
               <div className="w-10 h-10 rounded-xl bg-muted/50 flex items-center justify-center shrink-0">
-                <Factory className="w-5 h-5 text-foreground" />
+                <Factory className="w-5 h-5 text-detail" />
               </div>
               <div>
                 <h3 className="font-heading font-semibold text-foreground mb-1">Zero Waste Handling</h3>
