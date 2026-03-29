@@ -14,18 +14,31 @@ export default function SectionHeader({ badge, title, subtitle, colorClass, bgCl
   const { ref, isVisible } = useScrollFadeIn();
 
   return (
-    <motion.div
-      ref={ref}
-      initial={{ opacity: 0, y: 24, filter: "blur(6px)" }}
-      animate={isVisible ? { opacity: 1, y: 0, filter: "blur(0px)" } : {}}
-      transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-      className="mb-12"
-    >
-      <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-detail/10 border border-detail/20 mb-4">
+    <div ref={ref} className="mb-12">
+      <motion.div
+        initial={{ opacity: 0, y: 20, filter: "blur(6px)" }}
+        animate={isVisible ? { opacity: 1, y: 0, filter: "blur(0px)" } : {}}
+        transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+        className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-detail/10 border border-detail/20 mb-4"
+      >
         <span className="text-xs font-semibold text-detail tracking-wider uppercase translate-y-[2px]">{badge}</span>
-      </div>
-      <h2 className="text-3xl md:text-4xl font-heading font-bold text-foreground translate-y-[1px]">{title}</h2>
-      <p className="text-muted-foreground mt-3 max-w-2xl text-base font-light translate-y-[1px]">{subtitle}</p>
-    </motion.div>
+      </motion.div>
+      <motion.h2
+        initial={{ opacity: 0, y: 20, filter: "blur(6px)" }}
+        animate={isVisible ? { opacity: 1, y: 0, filter: "blur(0px)" } : {}}
+        transition={{ duration: 0.6, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
+        className="text-3xl md:text-4xl font-heading font-bold text-foreground translate-y-[1px]"
+      >
+        {title}
+      </motion.h2>
+      <motion.p
+        initial={{ opacity: 0, y: 20, filter: "blur(6px)" }}
+        animate={isVisible ? { opacity: 1, y: 0, filter: "blur(0px)" } : {}}
+        transition={{ duration: 0.6, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
+        className="text-muted-foreground mt-3 max-w-2xl text-base font-light translate-y-[1px]"
+      >
+        {subtitle}
+      </motion.p>
+    </div>
   );
 }

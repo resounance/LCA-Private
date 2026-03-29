@@ -65,7 +65,7 @@ const PasswordGate = ({ children }: PasswordGateProps) => {
         </form>
 
         <p className="text-xs text-muted-foreground">
-          Conteúdo confidencial — acesso autorizado apenas
+          Conteúdo confidencial. Acesso autorizado apenas
         </p>
       </div>
     </div>

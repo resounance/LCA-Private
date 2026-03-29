@@ -39,7 +39,7 @@ export default function WaterSection() {
           />
           <div className="deck-card-glass p-5">
             <p className="text-sm text-muted-foreground leading-relaxed">
-              Only <strong className="text-foreground">0.19 liters</strong> of fresh water per kg — with{" "}
+              Only <strong className="text-foreground">0.19 liters</strong> of fresh water per kg, with{" "}
               <strong className="text-foreground">80%+ recycled</strong> in a closed-loop system. Virgin PET
               uses nearly 66 liters for the same output.
             </p>

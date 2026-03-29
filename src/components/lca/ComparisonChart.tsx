@@ -69,9 +69,9 @@ export default function ComparisonChart({
               background: "hsl(0 0% 100% / 0.95)",
               backdropFilter: "blur(8px)",
             }}
-            cursor={{ fill: "hsl(270 14% 56% / 0.06)" }}
+            cursor={{ fill: "hsl(270 14% 56% / 0.1)" }}
           />
-          <Bar dataKey="value" radius={[8, 8, 0, 0]} maxBarSize={60} animationDuration={1200} animationEasing="ease-out">
+          <Bar dataKey="value" radius={[8, 8, 0, 0]} maxBarSize={60} animationDuration={1500} animationEasing="ease-out">
             {data.map((entry, index) => (
               <Cell
                 key={`cell-${index}`}

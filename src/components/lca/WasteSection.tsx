@@ -36,7 +36,7 @@ export default function WasteSection() {
                 <h3 className="font-heading font-semibold text-foreground mb-1 translate-y-[1px]">Circular Production</h3>
                 <p className="text-sm text-muted-foreground leading-relaxed">
                   All process residuals are captured and recycled back into the production cycle. No textile
-                  waste leaves the facility — creating a truly closed-loop manufacturing system.
+                  waste leaves the facility, creating a truly closed-loop manufacturing system.
                 </p>
               </div>
             </div>
@@ -49,7 +49,7 @@ export default function WasteSection() {
                 <h3 className="font-heading font-semibold text-foreground mb-1 translate-y-[1px]">Zero Waste Handling</h3>
                 <p className="text-sm text-muted-foreground leading-relaxed">
                   Even off-spec fiber and production dust are reprocessed. The Tex2Tex® system eliminates
-                  landfill contribution entirely — something no other RPET process achieves at scale.
+                  landfill contribution entirely. Something no other RPET process achieves at scale.
                 </p>
               </div>
             </div>

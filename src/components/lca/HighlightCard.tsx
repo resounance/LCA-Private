@@ -25,7 +25,7 @@ export default function HighlightCard({
       initial={{ opacity: 0, scale: 0.93, y: 12, filter: "blur(6px)" }}
       animate={isVisible ? { opacity: 1, scale: 1, y: 0, filter: "blur(0px)" } : {}}
       transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-      whileHover={{ scale: 1.02, transition: { duration: 0.25 } }}
+      whileHover={{ scale: 1.03, boxShadow: "0 8px 30px -10px hsl(270 14% 56% / 0.3)", transition: { duration: 0.25 } }}
       className="deck-card-glass-stat p-6 md:p-8"
     >
       <div className="flex flex-col gap-3">

@@ -17,14 +17,14 @@ const bgMap = {
 };
 
 const getInitial = (dir: "up" | "left" | "right") => {
-  if (dir === "left") return { opacity: 0, x: -30, filter: "blur(4px)" };
-  if (dir === "right") return { opacity: 0, x: 30, filter: "blur(4px)" };
-  return { opacity: 0, y: 24, filter: "blur(4px)" };
+  if (dir === "left") return { opacity: 0, x: -30, scale: 0.97, filter: "blur(4px)" };
+  if (dir === "right") return { opacity: 0, x: 30, scale: 0.97, filter: "blur(4px)" };
+  return { opacity: 0, y: 40, scale: 0.97, filter: "blur(4px)" };
 };
 
 const getAnimate = (dir: "up" | "left" | "right") => {
-  if (dir === "left" || dir === "right") return { opacity: 1, x: 0, filter: "blur(0px)" };
-  return { opacity: 1, y: 0, filter: "blur(0px)" };
+  if (dir === "left" || dir === "right") return { opacity: 1, x: 0, scale: 1, filter: "blur(0px)" };
+  return { opacity: 1, y: 0, scale: 1, filter: "blur(0px)" };
 };
 
 export default function DeckSection({ children, className = "", id, fullHeight = false, bg = "default", revealDirection = "up" }: DeckSectionProps) {

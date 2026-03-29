@@ -9,14 +9,14 @@ interface StaggerChildrenProps {
 }
 
 const directionMap = {
-  up: { y: 28, x: 0 },
+  up: { y: 36, x: 0 },
   left: { x: -36, y: 0 },
   right: { x: 36, y: 0 },
 };
 
 const container = (delay: number) => ({
   hidden: {},
-  show: { transition: { staggerChildren: delay, delayChildren: 0.15 } },
+  show: { transition: { staggerChildren: delay, delayChildren: 0.2 } },
 });
 
 const item = (dir: "up" | "left" | "right") => ({
