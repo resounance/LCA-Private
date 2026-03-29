@@ -41,7 +41,7 @@ export default function EnergySection() {
             percentage="97% less"
             comparedTo="than Virgin PET production"
             equivalence="Per kg of fiber, the energy saved could power a 60W light for 18 days"
-            equivalenceIcon={<Lightbulb className="w-5 h-5 text-foreground shrink-0" />}
+            equivalenceIcon={<Lightbulb className="w-5 h-5 text-detail shrink-0" />}
           />
           <div className="deck-card-glass p-5">
             <p className="text-sm text-muted-foreground leading-relaxed">

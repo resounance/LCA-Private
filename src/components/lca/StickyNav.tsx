@@ -54,7 +54,7 @@ export default function StickyNav() {
 
           {/* Progress bar */}
           <motion.div
-            className="absolute top-0 left-0 right-0 h-[2px] bg-foreground origin-left z-10"
+            className="absolute top-0 left-0 right-0 h-[2px] bg-detail origin-left z-10"
             style={{ scaleX }}
           />
 
