@@ -17,11 +17,15 @@ function KpiCard({ icon: Icon, value, unit, label, decimals, index }: typeof ind
       initial={{ opacity: 0, y: 30, scale: 0.97, filter: "blur(6px)" }}
       animate={{ opacity: 1, y: 0, scale: 1, filter: "blur(0px)" }}
       transition={{ duration: 0.7, delay: 0.8 + index * 0.14, ease: [0.16, 1, 0.3, 1] }}
+      whileHover={{ scale: 1.04, y: -4, transition: { duration: 0.25 } }}
       className="deck-card-glass-stat p-6 flex flex-col items-center text-center gap-3 group"
     >
-      <div className="w-12 h-12 rounded-xl flex items-center justify-center bg-muted/50">
-        <Icon className="w-6 h-6 text-foreground" />
-      </div>
+      <motion.div
+        className="w-12 h-12 rounded-xl flex items-center justify-center bg-detail/10"
+        whileHover={{ rotate: 8, transition: { duration: 0.3 } }}
+      >
+        <Icon className="w-6 h-6 text-detail" />
+      </motion.div>
       <div>
         <AnimatedCounter
           value={value}
@@ -56,12 +60,17 @@ export default function HeroSection() {
           transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
           className="text-center mb-16"
         >
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-muted border border-border mb-6">
-            <Recycle className="w-4 h-4 text-foreground" />
-            <span className="text-xs font-semibold text-foreground tracking-wider uppercase translate-y-[2px]">
+          <motion.div
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ type: "spring", stiffness: 300, damping: 20, delay: 0.1 }}
+            className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-detail/10 border border-detail/20 mb-6"
+          >
+            <Recycle className="w-4 h-4 text-detail" />
+            <span className="text-xs font-semibold text-detail tracking-wider uppercase translate-y-[2px]">
               Life Cycle Assessment
             </span>
-          </div>
+          </motion.div>
           <img src={tex2texLogo} alt="Tex2Tex® by Earth Protex™" className="h-20 md:h-28 w-auto mx-auto" />
           <motion.p
             initial={{ opacity: 0, y: 20 }}
@@ -77,7 +86,7 @@ export default function HeroSection() {
             transition={{ duration: 0.8, delay: 0.5 }}
             className="text-muted-foreground mt-6 max-w-xl mx-auto text-base font-light tracking-wide"
           >
-            Staple fiber measured impact data — the most sustainable RPET fiber production process available.
+            Staple fiber measured impact data. The most sustainable RPET fiber production process available.
           </motion.p>
         </motion.div>
 
