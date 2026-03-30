@@ -85,9 +85,9 @@ export default function HeroSection({ productType = "staple" }: { productType?: 
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.5 }}
-            className="text-muted-foreground mt-6 max-w-xl mx-auto text-base font-light tracking-wide"
+            className="text-muted-foreground mt-6 max-w-2xl mx-auto text-sm font-light tracking-wide leading-relaxed"
           >
-            Staple fiber measured impact data. The most sustainable RPET fiber production process available.
+            Tex2Tex® RPET Life Cycle Assessment data overview. Powered by Tex2Tex® RPET Thermo-Mechanical Reactor™. Compiled data is a combination of 3rd party assessments and internal reporting of Tex2Tex® manufacturing processes with publicly reported industry data benchmarks for illustrated comparisons.
           </motion.p>
         </motion.div>
 
