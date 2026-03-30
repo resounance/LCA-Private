@@ -1,4 +1,4 @@
-import { Leaf, RotateCcw, Factory } from "lucide-react";
+import { Leaf, RotateCcw, Factory, BarChart3 } from "lucide-react";
 import SectionHeader from "./SectionHeader";
 import DeckSection from "./DeckSection";
 import { StaggerContainer, StaggerItem } from "./StaggerChildren";
@@ -9,13 +9,13 @@ export default function WasteSection() {
       <SectionHeader
         badge="Circular Production"
         title="Zero Solid Waste"
-        subtitle="Tex2Tex® achieves complete waste elimination through circular production design."
+        subtitle="Staple Fiber Benchmarking data TBD"
         colorClass="text-foreground"
         bgClass="bg-muted"
         borderClass="border-border"
       />
 
-      <StaggerContainer className="grid md:grid-cols-3 gap-6" staggerDelay={0.1}>
+      <StaggerContainer className="grid md:grid-cols-2 lg:grid-cols-4 gap-6" staggerDelay={0.1}>
         <StaggerItem className="md:col-span-1">
           <div className="deck-card-glass-stat p-8 flex flex-col items-center text-center gap-4 h-full">
             <div className="w-20 h-20 rounded-2xl bg-muted/50 flex items-center justify-center">
@@ -26,33 +26,44 @@ export default function WasteSection() {
           </div>
         </StaggerItem>
 
-        <StaggerItem className="md:col-span-2">
-          <div className="flex flex-col gap-4">
-            <div className="deck-card-glass p-6 flex items-start gap-4">
-              <div className="w-10 h-10 rounded-xl bg-muted/50 flex items-center justify-center shrink-0">
-                <RotateCcw className="w-5 h-5 text-detail" />
-              </div>
-              <div>
-                <h3 className="font-heading font-semibold text-foreground mb-1 translate-y-[1px]">Circular Production</h3>
-                <p className="text-sm text-muted-foreground leading-relaxed">
-                  All polyester process residuals are captured and recycled back into the production cycle. No polyester
-                  textile waste leaves the facility, creating a truly closed-loop manufacturing system.
-                </p>
-              </div>
+        <StaggerItem>
+          <div className="deck-card-glass p-6 flex items-start gap-4 h-full">
+            <div className="w-10 h-10 rounded-xl bg-muted/50 flex items-center justify-center shrink-0">
+              <RotateCcw className="w-5 h-5 text-detail" />
             </div>
+            <div>
+              <h3 className="font-heading font-semibold text-foreground mb-1 translate-y-[1px]">Circular Production</h3>
+              <p className="text-sm text-muted-foreground leading-relaxed">
+                100% of Tex2Tex® solid production wastage polymers from fiber, yarn and fabric production are recycled back into Tex2Tex® Fibers.
+              </p>
+            </div>
+          </div>
+        </StaggerItem>
 
-            <div className="deck-card-glass p-6 flex items-start gap-4">
-              <div className="w-10 h-10 rounded-xl bg-muted/50 flex items-center justify-center shrink-0">
-                <Factory className="w-5 h-5 text-detail" />
-              </div>
-              <div>
-                <h3 className="font-heading font-semibold text-foreground mb-1 translate-y-[1px]">Minimized Waste System</h3>
-                <p className="text-sm text-muted-foreground leading-relaxed">
-                  Even off-spec fiber and polyester production waste are reprocessed, while other non-PET waste is recycled with other
-                  recyclers. Minimal off-gassed oil waste is incinerated for energy recovery. The Tex2Tex® system eliminates
-                  landfill contribution entirely. Something no other RPET process achieves at scale.
-                </p>
-              </div>
+        <StaggerItem>
+          <div className="deck-card-glass p-6 flex items-start gap-4 h-full">
+            <div className="w-10 h-10 rounded-xl bg-muted/50 flex items-center justify-center shrink-0">
+              <Factory className="w-5 h-5 text-detail" />
+            </div>
+            <div>
+              <h3 className="font-heading font-semibold text-foreground mb-1 translate-y-[1px]">Zero Solid Waste Handling</h3>
+              <p className="text-sm text-muted-foreground leading-relaxed">
+                Regulatory Alignment — Due to regulatory changes, 0.0163 kg (0.0 kg) of non-polymer production waste is now managed through government-incineration, replacing previous factory down-cycling practices.
+              </p>
+            </div>
+          </div>
+        </StaggerItem>
+
+        <StaggerItem>
+          <div className="deck-card-glass p-6 flex items-start gap-4 h-full">
+            <div className="w-10 h-10 rounded-xl bg-muted/50 flex items-center justify-center shrink-0">
+              <BarChart3 className="w-5 h-5 text-detail" />
+            </div>
+            <div>
+              <h3 className="font-heading font-semibold text-foreground mb-1 translate-y-[1px]">Benchmarking</h3>
+              <p className="text-sm text-muted-foreground leading-relaxed">
+                Most other recycling systems have high wastage. Further benchmarking data still needs to be collected.
+              </p>
             </div>
           </div>
         </StaggerItem>

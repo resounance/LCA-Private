@@ -6,8 +6,8 @@ import DeckSection from "./DeckSection";
 import { StaggerContainer, StaggerItem } from "./StaggerChildren";
 
 const data = [
-  { name: "Tex2Tex®", value: 0.19, isHighlight: true },
-  { name: "Bottle Thermo-Mech.", value: 2.31 },
+  { name: "Tex2Tex® RPET", value: 0.19, isHighlight: true },
+  { name: "Bottle Thermo-Mechanical", value: 2.31 },
   { name: "Virgin PET", value: 65.98 },
 ];
 
@@ -17,7 +17,7 @@ export default function WaterSection() {
       <SectionHeader
         badge="Water Usage"
         title="Water Consumption"
-        subtitle="Freshwater consumption in liters per 1 kg of fiber. Tex2Tex® recycles over 80% of process water."
+        subtitle="Freshwater consumption in liters per 1 kg of fiber — Tex2Tex® recycles over 80% of process water."
         colorClass="text-foreground"
         bgClass="bg-muted"
         borderClass="border-border"
@@ -41,9 +41,7 @@ export default function WaterSection() {
           />
           <div className="deck-card-glass p-5">
             <p className="text-sm text-muted-foreground leading-relaxed">
-              Only <strong className="text-foreground">0.19 liters</strong> of fresh water per kg, with{" "}
-              <strong className="text-foreground">80%+ recycled</strong> in a closed-loop system. Virgin PET
-              uses nearly 66 liters for the same output.
+              Tex2Tex® discharges extremely low volumes of water (<strong className="text-foreground">0.19 l/kg</strong>). Over <strong className="text-foreground">80% rate of water recycling</strong>. Very low COD and is treated on-site. Water is only used in the Tex2Tex® process for heat setting, drafting and the application of spinning oils. In comparison, bottle flake RPET requires significant washing water.
             </p>
           </div>
         </StaggerItem>

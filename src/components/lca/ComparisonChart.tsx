@@ -25,6 +25,41 @@ interface ComparisonChartProps {
   yDomain?: [number, number];
 }
 
+/* Custom tick that renders ® smaller */
+function CustomXTick(props: any) {
+  const { x, y, payload } = props;
+  const text = payload.value as string;
+  if (!text.includes("®")) {
+    return (
+      <g transform={`translate(${x},${y})`}>
+        <text
+          x={0} y={0} dy={12}
+          textAnchor="end"
+          fill="hsl(210 8% 35%)"
+          fontSize={11}
+          transform="rotate(-35)"
+        >
+          {text}
+        </text>
+      </g>
+    );
+  }
+  const parts = text.split("®");
+  return (
+    <g transform={`translate(${x},${y})`}>
+      <text
+        x={0} y={0} dy={12}
+        textAnchor="end"
+        fill="hsl(210 8% 35%)"
+        fontSize={11}
+        transform="rotate(-35)"
+      >
+        {parts[0]}<tspan fontSize={7} dy={-4}>®</tspan><tspan dy={4}>{parts[1]}</tspan>
+      </text>
+    </g>
+  );
+}
+
 export default function ComparisonChart({
   data,
   unit,
@@ -43,15 +78,13 @@ export default function ComparisonChart({
       className="deck-card-glass p-4 md:p-6 w-full h-[350px] md:h-[400px]"
     >
       <ResponsiveContainer width="100%" height="100%">
-        <BarChart data={data} margin={{ top: 20, right: 10, left: 10, bottom: 60 }} barCategoryGap="20%">
+        <BarChart data={data} margin={{ top: 20, right: 10, left: 10, bottom: 80 }} barCategoryGap="20%">
           <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="hsl(0 0% 90%)" />
           <XAxis
             dataKey="name"
-            tick={{ fontSize: 11, fill: "hsl(210 8% 35%)", dy: 2 }}
-            angle={-35}
-            textAnchor="end"
+            tick={<CustomXTick />}
             interval={0}
-            height={80}
+            height={100}
             axisLine={false}
             tickLine={false}
           />

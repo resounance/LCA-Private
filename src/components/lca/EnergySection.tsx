@@ -6,11 +6,11 @@ import DeckSection from "./DeckSection";
 import { StaggerContainer, StaggerItem } from "./StaggerChildren";
 
 const data = [
-  { name: "Tex2Tex®", value: 3.25, isHighlight: true },
-  { name: "Bottle Thermo-Mech.", value: 13 },
-  { name: "via Pellets", value: 23 },
-  { name: "Chemical BHE", value: 39 },
-  { name: "Chemical DMT", value: 51 },
+  { name: "Tex2Tex® RPET", value: 3.25, isHighlight: true },
+  { name: "Bottle Thermo-Mechanical", value: 13 },
+  { name: "Bottle Thermo-Mech. via Pellets", value: 23 },
+  { name: "Bottle Chemical (BHET Method)", value: 39 },
+  { name: "Bottle Chemical (DMT Method)", value: 51 },
   { name: "Virgin PET", value: 95 },
 ];
 
@@ -40,7 +40,7 @@ export default function EnergySection() {
           <HighlightCard
             percentage="97% less"
             comparedTo="than Virgin PET production"
-            equivalence="Per kg of fiber, the energy saved could power a 60W light for 18 days"
+            equivalence="Per kg of fiber, the energy saved could power a 60W light for 424 hours"
             equivalenceIcon={<Lightbulb className="w-5 h-5 text-detail shrink-0" />}
           />
           <div className="deck-card-glass p-5">
