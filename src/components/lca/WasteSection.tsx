@@ -35,8 +35,8 @@ export default function WasteSection() {
               <div>
                 <h3 className="font-heading font-semibold text-foreground mb-1 translate-y-[1px]">Circular Production</h3>
                 <p className="text-sm text-muted-foreground leading-relaxed">
-                  All process residuals are captured and recycled back into the production cycle. No textile
-                  waste leaves the facility, creating a truly closed-loop manufacturing system.
+                  All polyester process residuals are captured and recycled back into the production cycle. No polyester
+                  textile waste leaves the facility, creating a truly closed-loop manufacturing system.
                 </p>
               </div>
             </div>
@@ -46,9 +46,10 @@ export default function WasteSection() {
                 <Factory className="w-5 h-5 text-detail" />
               </div>
               <div>
-                <h3 className="font-heading font-semibold text-foreground mb-1 translate-y-[1px]">Zero Waste Handling</h3>
+                <h3 className="font-heading font-semibold text-foreground mb-1 translate-y-[1px]">Minimized Waste System</h3>
                 <p className="text-sm text-muted-foreground leading-relaxed">
-                  Even off-spec fiber and production dust are reprocessed. The Tex2Tex® system eliminates
+                  Even off-spec fiber and polyester production waste are reprocessed, while other non-PET waste is recycled with other
+                  recyclers. Minimal off-gassed oil waste is incinerated for energy recovery. The Tex2Tex® system eliminates
                   landfill contribution entirely. Something no other RPET process achieves at scale.
                 </p>
               </div>
