@@ -1,64 +1,64 @@
 
 
-## Plano de Ajustes Baseado no PPT Original
+## Otimização Mobile-First
 
-Analisei as 5 imagens do PPT e comparei com o estado atual do código. Segue o que precisa mudar:
+Analisei todos os componentes no viewport mobile (390px). Seguem os problemas identificados e as soluções:
 
 ---
 
-### 1. Header fixo preto com logo (StickyNav.tsx)
-- Remover lógica de show/hide (`visible`, `lastScrollY`, `AnimatePresence`)
-- Header sempre visível, `fixed top-0`, fundo `bg-black`
-- Substituir texto "TEX2TEX®" pelo logo SVG (`earthprotex-logo.svg`) com filtro brightness/invert para ficar branco
-- Barra de progresso mantida
+### 1. Header mobile com menu hamburger (StickyNav.tsx)
+Os nav links estão `hidden md:flex` — no mobile não há navegação. Adicionar um botão hamburger que abre um menu drawer/overlay com os links de navegação. O menu fecha ao clicar em um link ou fora dele.
 
-### 2. Logo maior no Hero (HeroSection.tsx)
-- Aumentar de `h-20 md:h-28` para `h-28 md:h-40`
-- Adicionar `pt-16` ao hero para compensar o header fixo
+### 2. Hero Section — tipografia e spacing mobile (HeroSection.tsx)
+- Reduzir o padding top/bottom no mobile (`pt-20 pb-10` em vez de `pt-28 pb-16`)
+- Logo: `h-20` no mobile, `md:h-40` no desktop (atualmente `h-28 md:h-40`, muito grande no mobile)
+- "Impact Indicators" — reduzir de `text-2xl md:text-3xl` para `text-xl md:text-3xl`
+- Texto descritivo — reduzir de `text-sm` para `text-xs` no mobile
+- KPI cards grid: manter `grid-cols-2` mas reduzir gap para `gap-3` no mobile
+- KPI cards: reduzir padding (`p-4` mobile vs `p-6` desktop), valor de `text-4xl` para `text-3xl`, descrições de `text-[10px]` para ainda menores ou esconder no mobile
 
-### 3. CO2 Section — dados do PPT (CO2Section.tsx)
-O PPT mostra **Tex2Tex® Ecru Fiber** (0.63) e **Tex2Tex® Pellet** (0.33) como barras separadas. Além disso mostra labels como "1.5x more than Tex2Tex®", "3.0x", "4.1x", "4.9x", "6.4x".
-- Adicionar entrada `Tex2Tex® Pellet` com valor 0.33 aos dados
-- Renomear `Tex2Tex®` para `Tex2Tex® Ecru Fiber`
-- Renomear `Bottle Thermo-Mech.` para `Bottle Thermo-Mechanical`
-- Renomear `via Pellets` para `Bottle Thermo-Mech. via Pellets`
-- Renomear `Chemical BHE` para `Bottle Chemical (BHET Method)`
-- Renomear `Chemical DMT` para `Bottle Chemical (DMT Method)`
-- Adicionar nota no card de texto: "Assessment data based on 2022 calendar year; in July we transitioned to biomass boiler from natural gas boiler."
-- Equivalência: "driving a car 28 km" (já está correto)
+### 3. Product Switcher — mobile touch-friendly (ProductSwitcher.tsx)
+- Reduzir padding dos botões: `px-3 py-1.5` no mobile vs `px-5 py-2` no desktop
+- Texto `text-xs` no mobile para caber os 3 botões
 
-### 4. Energy Section — dados do PPT (EnergySection.tsx)
-- Renomear labels igual ao CO2 (nomes completos)
-- Renomear `Tex2Tex®` para `Tex2Tex® RPET`
-- Valores confirmados: 3.25, 13, 23, 39, 51, 95
-- Equivalência no PPT: "60 watt light for 424hrs" — atualizar de "18 days" para "424 hours"
+### 4. Charts — otimização crítica para mobile (ComparisonChart.tsx)
+Este é o componente mais problemático no mobile:
+- Labels do eixo X muito longos ("Bottle Thermo-Mechanical", "Bottle Chemical (BHET Method)") ficam cortados ou sobrepostos
+- Reduzir `fontSize` do CustomXTick de 11 para 9 no mobile
+- Aumentar o `bottom margin` do chart para dar mais espaço aos labels
+- Reduzir `maxBarSize` de 60 para 40 no mobile
+- Usar `useIsMobile()` hook para aplicar configs responsivas
 
-### 5. Water Section — dados do PPT (WaterSection.tsx)
-- Renomear `Bottle Thermo-Mech.` para `Bottle Thermo-Mechanical`
-- Renomear `Tex2Tex®` para `Tex2Tex® RPET`
-- Adicionar card de texto com info do PPT: "Tex2Tex® discharges extremely low volumes of water (0.19 l/kg). Over 80% rate of water recycling. Very low COD and is treated on-site. Water is only used in the Tex2Tex® process for heat setting, drafting and the application of spinning oils. In comparison, bottle flake RPET requires significant washing water."
-- Subtitle em 1 linha: unir com " — " em vez de ponto
+### 5. Seções CO2/Energy/Water — layout empilhado (CO2Section, EnergySection, WaterSection)
+Atualmente `grid lg:grid-cols-3` — no mobile tudo empilha mas o chart fica espremido:
+- Chart: mudar altura de `h-[350px]` para `h-[300px]` no mobile (menos padding desperdiçado)
+- HighlightCard: reduzir `text-4xl md:text-5xl` para `text-3xl md:text-5xl` no percentage
+- Cards de texto: padding `p-4` no mobile vs `p-5` desktop
 
-### 6. Waste Section — conteúdo completo do PPT (WasteSection.tsx)
-O PPT mostra 3 blocos de conteúdo:
-- **Circular Production**: "100% of Tex2Tex® solid production wastage polymers from fiber, yarn and fabric production are recycled back into Tex2Tex® Fibers."
-- **Zero Solid Waste Handling**: "Regulatory Alignment — Due to regulatory changes, 0.0163kg (0.0kg) of non-polymer production waste is now managed through government-incineration, replacing previous factory down-cycling practices."
-- **Benchmarking**: "Most other recycling systems have high wastage. Further benchmarking data still needs to be collected."
-- Atualizar os textos dos cards com esse conteúdo exato
-- Adicionar card de Benchmarking (3 cards ao invés de 2)
-- Subtitle: "Staple Fiber Benchmarking data TBD" conforme PPT
+### 6. Waste Section — cards empilhados no mobile (WasteSection.tsx)
+Grid `md:grid-cols-2 lg:grid-cols-4` já empilha no mobile, mas:
+- O card central com "0.0 kg" e ícone grande é muito alto no mobile — reduzir ícone para `w-14 h-14` e valor para `text-4xl`
+- Reduzir padding dos cards de `p-8` para `p-6` no mobile
 
-### 7. Chart labels — ® menor (ComparisonChart.tsx)
-- Criar custom tick component para XAxis que renderize o "®" com `fontSize` menor (~7px) via `<tspan>`
-- Isso afeta todos os gráficos automaticamente
+### 7. Sources Section — mais compacta (SourcesSection.tsx)
+- Reduzir padding do card de `p-6` para `p-4` no mobile
+- Font size dos references de `text-xs` para `text-[11px]` com line-height mais tight
 
-### 8. Impact Indicators no Hero — descrições do PPT (HeroSection.tsx)
-A imagem 11 mostra descrições sob cada KPI:
-- CO2 Reduction: "Total CO2 emissions for transportation and industrial processes (scope 1 & 2). Measured in kilograms (Kg) per Kg output produced."
-- Non-Renewable Energy: "All measured non-renewable energy from transportation and manufacturing processes. Measured in Joules (J) per Kg output produced."
-- Water Consumption: "Water consumption from industrial processes, based on total water discharged in liters (L) per Kg output produced."
-- Solid Waste Disposal: "Solid waste disposal from industrial manufacturing processes. Based on total solid waste disposed in kilograms (Kg) per Kg output produced."
-- Adicionar essas descrições como texto pequeno abaixo de cada KPI card
+### 8. SectionHeader — mobile sizing (SectionHeader.tsx)
+- Título: `text-2xl md:text-4xl` (atualmente `text-3xl md:text-4xl`)
+- Subtitle: `text-sm md:text-base` (atualmente `text-base`)
+- Margin bottom: `mb-8 md:mb-12` (atualmente `mb-12`)
+
+### 9. Deck utilities — mobile padding (index.css)
+- `.deck-section`: reduzir de `py-16` para `py-10` no mobile
+- `.deck-container`: padding já é `px-4` no mobile, ok
+
+### 10. Footer — mobile compact (Footer.tsx)
+- Já centralizado no mobile, ok. Apenas reduzir padding de `py-12` para `py-8` no mobile
+
+### 11. RequestLCAButton — full width no mobile (RequestLCAButton.tsx)
+- Botão: `w-full sm:w-auto` para ocupar toda a largura no mobile
+- Reduzir padding de `px-8 py-4` para `px-6 py-3` no mobile
 
 ---
 
@@ -66,11 +66,18 @@ A imagem 11 mostra descrições sob cada KPI:
 
 | Arquivo | Mudanças |
 |---------|----------|
-| `StickyNav.tsx` | Header fixo, fundo preto, logo SVG |
-| `HeroSection.tsx` | Logo maior, padding top, descrições nos KPIs |
-| `CO2Section.tsx` | Dados atualizados com Pellet, nomes completos, nota |
-| `EnergySection.tsx` | Nomes completos, equivalência 424hrs |
-| `WaterSection.tsx` | Nomes completos, texto expandido do PPT |
-| `WasteSection.tsx` | 3 cards com conteúdo exato do PPT |
-| `ComparisonChart.tsx` | Custom XAxis tick com ® menor |
+| `StickyNav.tsx` | Menu hamburger mobile |
+| `HeroSection.tsx` | Tipografia e spacing responsivos |
+| `ProductSwitcher.tsx` | Touch targets e sizing mobile |
+| `ComparisonChart.tsx` | Font sizes, margins, bar sizes responsivos via `useIsMobile` |
+| `CO2Section.tsx` | Gap/padding mobile |
+| `EnergySection.tsx` | Gap/padding mobile |
+| `WaterSection.tsx` | Gap/padding mobile |
+| `WasteSection.tsx` | Card sizing mobile |
+| `HighlightCard.tsx` | Typography mobile |
+| `SectionHeader.tsx` | Typography mobile |
+| `SourcesSection.tsx` | Padding mobile |
+| `RequestLCAButton.tsx` | Full width mobile |
+| `Footer.tsx` | Padding mobile |
+| `index.css` | Deck section utilities mobile |
 
