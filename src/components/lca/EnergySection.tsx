@@ -32,6 +32,8 @@ export default function EnergySection() {
             data={data}
             unit="MJ"
             formatValue={(v) => v.toFixed(1)}
+            yTicks={[0, 20, 40, 60, 80, 100]}
+            yDomain={[0, 100]}
           />
         </StaggerItem>
         <StaggerItem className="flex flex-col gap-4">
