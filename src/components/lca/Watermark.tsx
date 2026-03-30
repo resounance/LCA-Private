@@ -1,15 +1,7 @@
-import { useEffect, useState } from "react";
+
 import earthprotexLogo from "@/assets/tex2tex-earthprotex-logo.svg";
 
 const Watermark = () => {
-  const [timestamp, setTimestamp] = useState(new Date().toLocaleString("pt-BR"));
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setTimestamp(new Date().toLocaleString("pt-BR"));
-    }, 60000);
-    return () => clearInterval(interval);
-  }, []);
 
   const items = Array.from({ length: 30 }, (_, i) => i);
 
@@ -35,9 +27,6 @@ const Watermark = () => {
               className="w-32 h-auto"
               draggable={false}
             />
-            <span className="text-foreground text-[10px] font-medium whitespace-nowrap font-['Space_Grotesk'] tracking-wider">
-              {timestamp}
-            </span>
           </div>
         ))}
       </div>
