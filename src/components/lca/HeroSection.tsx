@@ -1,18 +1,29 @@
-import { motion, useScroll, useTransform } from "framer-motion";
+import { motion } from "framer-motion";
 import { Cloud, Zap, Droplets, Recycle } from "lucide-react";
 import type { ProductType } from "./ProductSwitcher";
-import { useRef } from "react";
 import AnimatedCounter from "./AnimatedCounter";
 import tex2texLogo from "@/assets/tex2tex-earthprotex-logo.svg";
 
 const indicators = [
-  { icon: Cloud, value: 0.63, unit: "kg CO₂e", label: "Carbon Emissions", decimals: 2 },
-  { icon: Zap, value: 3.25, unit: "MJ", label: "Non-Renewable Energy", decimals: 2 },
-  { icon: Droplets, value: 0.19, unit: "L", label: "Water Consumption", decimals: 2 },
-  { icon: Recycle, value: 0.0, unit: "kg", label: "Solid Waste", decimals: 1 },
+  {
+    icon: Cloud, value: 0.63, unit: "kg CO₂e", label: "Carbon Emissions", decimals: 2,
+    description: "Total CO₂ emissions for transportation and industrial processes (scope 1 & 2). Measured in kilograms (Kg) per Kg output produced."
+  },
+  {
+    icon: Zap, value: 3.25, unit: "MJ", label: "Non-Renewable Energy", decimals: 2,
+    description: "All measured non-renewable energy from transportation and manufacturing processes. Measured in Joules (J) per Kg output produced."
+  },
+  {
+    icon: Droplets, value: 0.19, unit: "L", label: "Water Consumption", decimals: 2,
+    description: "Water consumption from industrial processes, based on total water discharged in liters (L) per Kg output produced."
+  },
+  {
+    icon: Recycle, value: 0.0, unit: "kg", label: "Solid Waste Disposal", decimals: 1,
+    description: "Solid waste disposal from industrial manufacturing processes. Based on total solid waste disposed in kilograms (Kg) per Kg output produced."
+  },
 ];
 
-function KpiCard({ icon: Icon, value, unit, label, decimals, index }: typeof indicators[0] & { index: number }) {
+function KpiCard({ icon: Icon, value, unit, label, decimals, description, index }: typeof indicators[0] & { index: number }) {
   return (
     <motion.div
       initial={{ opacity: 0, y: 30, scale: 0.97, filter: "blur(6px)" }}
@@ -36,25 +47,15 @@ function KpiCard({ icon: Icon, value, unit, label, decimals, index }: typeof ind
         <span className="text-lg font-heading font-medium text-muted-foreground ml-1 translate-y-[1px]">{unit}</span>
       </div>
       <p className="text-sm text-muted-foreground font-medium translate-y-[1px]">{label}</p>
+      <p className="text-[10px] text-muted-foreground/70 leading-snug mt-1">{description}</p>
     </motion.div>
   );
 }
 
 export default function HeroSection({ productType = "staple" }: { productType?: ProductType }) {
-  const sectionRef = useRef<HTMLElement>(null);
-  const { scrollYProgress } = useScroll({
-    target: sectionRef,
-    offset: ["start start", "end start"],
-  });
-  const contentOpacity = useTransform(scrollYProgress, [0, 1], [1, 1]);
-  const contentY = useTransform(scrollYProgress, [0, 1], ["0%", "0%"]);
-
   return (
-    <section ref={sectionRef} id="hero" className="flex flex-col justify-center pt-24 pb-16 px-4 relative">
-      <motion.div
-        className="max-w-6xl mx-auto w-full"
-        style={{ opacity: contentOpacity, y: contentY }}
-      >
+    <section id="hero" className="flex flex-col justify-center pt-28 pb-16 px-4 relative">
+      <motion.div className="max-w-6xl mx-auto w-full">
         <motion.div
           initial={{ opacity: 0, y: -20, filter: "blur(10px)" }}
           animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
@@ -72,7 +73,7 @@ export default function HeroSection({ productType = "staple" }: { productType?: 
               Life Cycle Assessment
             </span>
           </motion.div>
-          <img src={tex2texLogo} alt="Tex2Tex® by Earth Protex™" className="h-20 md:h-28 w-auto mx-auto" />
+          <img src={tex2texLogo} alt="Tex2Tex® by Earth Protex™" className="h-28 md:h-40 w-auto mx-auto" />
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}

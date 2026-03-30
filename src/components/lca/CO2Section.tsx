@@ -6,11 +6,12 @@ import DeckSection from "./DeckSection";
 import { StaggerContainer, StaggerItem } from "./StaggerChildren";
 
 const data = [
-  { name: "Tex2Tex®", value: 0.63, isHighlight: true },
-  { name: "Bottle Thermo-Mech.", value: 0.96 },
-  { name: "via Pellets", value: 1.88 },
-  { name: "Chemical BHE", value: 2.59 },
-  { name: "Chemical DMT", value: 3.08 },
+  { name: "Tex2Tex® Pellet", value: 0.33, isHighlight: true },
+  { name: "Tex2Tex® Ecru Fiber", value: 0.63, isHighlight: true },
+  { name: "Bottle Thermo-Mechanical", value: 0.96 },
+  { name: "Bottle Thermo-Mech. via Pellets", value: 1.88 },
+  { name: "Bottle Chemical (BHET Method)", value: 2.59 },
+  { name: "Bottle Chemical (DMT Method)", value: 3.08 },
   { name: "Virgin PET", value: 4.06 },
 ];
 
@@ -44,9 +45,12 @@ export default function CO2Section() {
           />
           <div className="deck-card-glass p-5">
             <p className="text-sm text-muted-foreground leading-relaxed">
-              Tex2Tex® achieves the lowest carbon footprint of any RPET fiber process as all publicly available LCA data. This is achieved
+              Tex2Tex® achieves the lowest carbon footprint of any RPET fiber process in all publicly available LCA data. This is achieved
               through our efficient <strong className="text-foreground">Thermo-Mechanical Reactor™</strong> and direct fiber-to-fiber
               conversion that eliminates energy-intensive intermediate steps.
+            </p>
+            <p className="text-xs text-muted-foreground/70 mt-3 italic">
+              Assessment data based on 2022 calendar year; in July we transitioned to biomass boiler from natural gas boiler.
             </p>
           </div>
         </StaggerItem>
