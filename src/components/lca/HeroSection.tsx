@@ -1,5 +1,6 @@
 import { motion, useScroll, useTransform } from "framer-motion";
 import { Cloud, Zap, Droplets, Recycle } from "lucide-react";
+import type { ProductType } from "./ProductSwitcher";
 import { useRef } from "react";
 import AnimatedCounter from "./AnimatedCounter";
 import tex2texLogo from "@/assets/tex2tex-earthprotex-logo.svg";
