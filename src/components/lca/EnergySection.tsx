@@ -26,7 +26,7 @@ export default function EnergySection() {
         borderClass="border-border"
       />
 
-      <StaggerContainer className="grid lg:grid-cols-3 gap-8 items-start" staggerDelay={0.12}>
+      <StaggerContainer className="grid lg:grid-cols-3 gap-4 md:gap-8 items-start" staggerDelay={0.12}>
         <StaggerItem className="lg:col-span-2">
           <ComparisonChart
             data={data}
@@ -43,8 +43,8 @@ export default function EnergySection() {
             equivalence="Per kg of fiber, the energy saved could power a 60W light for 424 hours"
             equivalenceIcon={<Lightbulb className="w-5 h-5 text-detail shrink-0" />}
           />
-          <div className="deck-card-glass p-5">
-            <p className="text-sm text-muted-foreground leading-relaxed">
+          <div className="deck-card-glass p-4 md:p-5">
+            <p className="text-xs md:text-sm text-muted-foreground leading-relaxed">
               Virgin PET consumes <strong className="text-foreground">29× more energy</strong> than
               Tex2Tex®. Even the best alternative recycling process uses 4× as much non-renewable energy.
             </p>

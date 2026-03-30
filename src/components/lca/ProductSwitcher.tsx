@@ -15,13 +15,13 @@ interface ProductSwitcherProps {
 
 export default function ProductSwitcher({ active, onChange }: ProductSwitcherProps) {
   return (
-    <div className="flex justify-center mb-8">
+    <div className="flex justify-center mb-6 md:mb-8">
       <div className="inline-flex items-center gap-1 p-1 rounded-full bg-muted/60 border border-border/50 backdrop-blur-sm">
         {productTypes.map((type) => (
           <button
             key={type.id}
             onClick={() => onChange(type.id)}
-            className={`relative px-5 py-2 rounded-full text-sm font-medium transition-colors duration-200 translate-y-[1px] ${
+            className={`relative px-3 py-1.5 md:px-5 md:py-2 rounded-full text-xs md:text-sm font-medium transition-colors duration-200 translate-y-[1px] ${
               active === type.id
                 ? "text-foreground"
                 : "text-muted-foreground hover:text-foreground"

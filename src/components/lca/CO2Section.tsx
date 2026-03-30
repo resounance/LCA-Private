@@ -27,7 +27,7 @@ export default function CO2Section() {
         borderClass="border-border"
       />
 
-      <StaggerContainer className="grid lg:grid-cols-3 gap-8 items-start" staggerDelay={0.12}>
+      <StaggerContainer className="grid lg:grid-cols-3 gap-4 md:gap-8 items-start" staggerDelay={0.12}>
         <StaggerItem className="lg:col-span-2">
           <ComparisonChart
             data={data}
@@ -43,13 +43,13 @@ export default function CO2Section() {
             equivalence="Per kg of fiber, the CO₂ saved equals a car driving 28 km"
             equivalenceIcon={<Car className="w-5 h-5 text-detail shrink-0" />}
           />
-          <div className="deck-card-glass p-5">
-            <p className="text-sm text-muted-foreground leading-relaxed">
+          <div className="deck-card-glass p-4 md:p-5">
+            <p className="text-xs md:text-sm text-muted-foreground leading-relaxed">
               Tex2Tex® achieves the lowest carbon footprint of any RPET fiber process in all publicly available LCA data. This is achieved
               through our efficient <strong className="text-foreground">Thermo-Mechanical Reactor™</strong> and direct fiber-to-fiber
               conversion that eliminates energy-intensive intermediate steps.
             </p>
-            <p className="text-xs text-muted-foreground/70 mt-3 italic">
+            <p className="text-[10px] md:text-xs text-muted-foreground/70 mt-3 italic">
               Assessment data based on 2022 calendar year; in July we transitioned to biomass boiler from natural gas boiler.
             </p>
           </div>
