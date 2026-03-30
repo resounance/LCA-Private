@@ -29,6 +29,8 @@ export default function ComparisonChart({
   data,
   unit,
   formatValue = (v) => v.toFixed(2),
+  yTicks,
+  yDomain,
 }: ComparisonChartProps) {
   const { ref, isVisible } = useScrollFadeIn();
 
