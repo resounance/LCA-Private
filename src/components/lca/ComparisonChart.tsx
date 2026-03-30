@@ -21,6 +21,8 @@ interface ComparisonChartProps {
   data: ChartDataItem[];
   unit: string;
   formatValue?: (v: number) => string;
+  yTicks?: number[];
+  yDomain?: [number, number];
 }
 
 export default function ComparisonChart({
