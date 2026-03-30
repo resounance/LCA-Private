@@ -40,7 +40,7 @@ function KpiCard({ icon: Icon, value, unit, label, decimals, index }: typeof ind
   );
 }
 
-export default function HeroSection() {
+export default function HeroSection({ productType = "staple" }: { productType?: ProductType }) {
   const sectionRef = useRef<HTMLElement>(null);
   const { scrollYProgress } = useScroll({
     target: sectionRef,
