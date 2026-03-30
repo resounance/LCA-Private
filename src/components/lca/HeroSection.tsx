@@ -1,5 +1,6 @@
 import { motion, useScroll, useTransform } from "framer-motion";
 import { Cloud, Zap, Droplets, Recycle } from "lucide-react";
+import type { ProductType } from "./ProductSwitcher";
 import { useRef } from "react";
 import AnimatedCounter from "./AnimatedCounter";
 import tex2texLogo from "@/assets/tex2tex-earthprotex-logo.svg";
@@ -39,7 +40,7 @@ function KpiCard({ icon: Icon, value, unit, label, decimals, index }: typeof ind
   );
 }
 
-export default function HeroSection() {
+export default function HeroSection({ productType = "staple" }: { productType?: ProductType }) {
   const sectionRef = useRef<HTMLElement>(null);
   const { scrollYProgress } = useScroll({
     target: sectionRef,
@@ -84,9 +85,9 @@ export default function HeroSection() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.5 }}
-            className="text-muted-foreground mt-6 max-w-xl mx-auto text-base font-light tracking-wide"
+            className="text-muted-foreground mt-6 max-w-2xl mx-auto text-sm font-light tracking-wide leading-relaxed"
           >
-            Staple fiber measured impact data. The most sustainable RPET fiber production process available.
+            Tex2Tex® RPET Life Cycle Assessment data overview. Powered by Tex2Tex® RPET Thermo-Mechanical Reactor™. Compiled data is a combination of 3rd party assessments and internal reporting of Tex2Tex® manufacturing processes with publicly reported industry data benchmarks for illustrated comparisons.
           </motion.p>
         </motion.div>
 
@@ -102,7 +103,10 @@ export default function HeroSection() {
           transition={{ delay: 1.6 }}
           className="text-center text-xs text-muted-foreground mt-8 italic font-light translate-y-[1px]"
         >
-          Based on 1 kg of Tex2Tex® RPET Fiber (Cradle-to-Gate) · LCA by EarthProtex
+          Based on 1 kg of Tex2Tex® RPET Fiber (Cradle-to-Gate) ·{" "}
+          {productType === "staple"
+            ? "LCA by Intertek (for Staple Fibers)"
+            : "Earth Protex internally published LCA (for Pellets & Filaments)"}
         </motion.p>
       </motion.div>
     </section>

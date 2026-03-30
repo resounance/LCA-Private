@@ -21,12 +21,16 @@ interface ComparisonChartProps {
   data: ChartDataItem[];
   unit: string;
   formatValue?: (v: number) => string;
+  yTicks?: number[];
+  yDomain?: [number, number];
 }
 
 export default function ComparisonChart({
   data,
   unit,
   formatValue = (v) => v.toFixed(2),
+  yTicks,
+  yDomain,
 }: ComparisonChartProps) {
   const { ref, isVisible } = useScrollFadeIn();
 
@@ -55,8 +59,8 @@ export default function ComparisonChart({
             tick={{ fontSize: 11, fill: "hsl(210 8% 35%)", dy: 1 }}
             axisLine={false}
             tickLine={false}
-            ticks={[0, 1, 2, 3, 4, 5]}
-            domain={[0, 5]}
+            ticks={yTicks}
+            domain={yDomain}
             tickFormatter={(v) => `${v}`}
           />
           <Tooltip

@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { motion } from "framer-motion";
 import StickyNav from "@/components/lca/StickyNav";
 import HeroSection from "@/components/lca/HeroSection";
 import CO2Section from "@/components/lca/CO2Section";
@@ -23,18 +24,38 @@ const Index = () => {
         <div className="min-h-screen bg-background">
           <Watermark />
           <StickyNav />
-          <HeroSection />
+          <HeroSection productType={productType} />
           <ProductSwitcher active={productType} onChange={setProductType} />
           <SectionDivider />
-          <CO2Section />
-          <SectionDivider />
-          <EnergySection />
-          <SectionDivider />
-          <WaterSection />
-          <SectionDivider />
-          <WasteSection />
-          <SectionDivider />
-          <SourcesSection />
+          {productType === "staple" ? (
+            <>
+              <CO2Section />
+              <SectionDivider />
+              <EnergySection />
+              <SectionDivider />
+              <WaterSection />
+              <SectionDivider />
+              <WasteSection />
+              <SectionDivider />
+              <SourcesSection />
+            </>
+          ) : (
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              className="flex flex-col items-center justify-center py-32 px-4"
+            >
+              <div className="deck-card-glass p-10 text-center max-w-md">
+                <p className="text-2xl font-heading font-semibold text-foreground mb-3">
+                  Data Forthcoming
+                </p>
+                <p className="text-sm text-muted-foreground leading-relaxed">
+                  LCA data for {productType === "pellets" ? "Pellets" : "Filaments"} is currently being compiled and will be available soon.
+                </p>
+              </div>
+            </motion.div>
+          )}
           <RequestLCAButton />
           <Footer />
         </div>

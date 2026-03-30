@@ -28,6 +28,8 @@ export default function WaterSection() {
           <ComparisonChart
             data={data}
             unit="L"
+            yTicks={[0, 10, 20, 30, 40, 50, 60, 70]}
+            yDomain={[0, 70]}
           />
         </StaggerItem>
         <StaggerItem className="flex flex-col gap-4">

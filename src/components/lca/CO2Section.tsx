@@ -31,6 +31,8 @@ export default function CO2Section() {
           <ComparisonChart
             data={data}
             unit="kg CO₂e"
+            yTicks={[0, 1, 2, 3, 4, 5]}
+            yDomain={[0, 5]}
           />
         </StaggerItem>
         <StaggerItem className="flex flex-col gap-4">
