@@ -19,13 +19,13 @@ export default function RequestLCAButton() {
       initial={{ opacity: 0, y: 20 }}
       animate={isVisible ? { opacity: 1, y: 0 } : {}}
       transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-      className="flex justify-center py-10"
+      className="flex justify-center py-8 md:py-10 px-4"
     >
       <motion.button
         onClick={handleClick}
         whileHover={{ scale: 1.04, boxShadow: "0 8px 30px -10px hsl(270 14% 56% / 0.4)" }}
         whileTap={{ scale: 0.98 }}
-        className="inline-flex items-center gap-3 px-8 py-4 rounded-full bg-detail text-white font-heading font-semibold text-base shadow-lg transition-colors hover:bg-detail/90"
+        className="w-full sm:w-auto inline-flex items-center justify-center gap-3 px-6 py-3 md:px-8 md:py-4 rounded-full bg-detail text-white font-heading font-semibold text-sm md:text-base shadow-lg transition-colors hover:bg-detail/90"
       >
         <Mail className="w-5 h-5" />
         <span className="translate-y-[1px]">Request Full LCA</span>
