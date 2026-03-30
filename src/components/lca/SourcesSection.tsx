@@ -6,39 +6,55 @@ import { StaggerContainer, StaggerItem } from "./StaggerChildren";
 const sources = [
   {
     id: 1,
-    text: "Eco-profiles of the European Plastics Industry: Polyethylene Terephthalate (PET) (Bottle grade). Eco-profiles of the European Plastics Manufacturers, PlasticsEurope.",
+    text: "Eco-profiles of the European Plastics Industry Polyethylene Terephthalate (PET) (Bottle grade), Eco-profiles of the European Plastics Industry 2005, I Boustead.",
   },
   {
     id: 2,
-    text: "Shen L, Worrell E, Patel MK. Open-loop recycling: A LCA case study of PET bottle-to-fibre recycling. Resources, Conservation and Recycling. 2010;55(1):34-52.",
+    text: "Open-loop recycling: A LCA case study of PET bottle-to-fibre recycling, Resources, Conservation and Recycling 55 (2010) 34–52, Li Shen et al.",
   },
   {
     id: 3,
-    text: "Energy analysis of PET recycled in processes. EST (2018). In: Pacheco-Torgal et al. (Eds), Use of Recycled Plastics in Eco-efficient Concrete. Woodhead Publishing.",
+    text: "Energy analysis of 108 industrial processes, 207–209. U.S. Department of Energy; 1985, Brown et Al, (as extracted from ref 2).",
   },
   {
     id: 4,
-    text: "Comparing the life-cycle energy and GHG emissions of alternative PET recycling pathways. Journal of Cleaner Production. 2021;292:126-143.",
+    text: "PET bottles recycling in China: An LCA coupled with LCC case study of blanket production made of waste PET bottles, Journal of Environmental Management 260 (2020) 110062, Ruirui Zhang et al.",
   },
   {
     id: 5,
-    text: "A review of chemical recycling pathways for PET plastic. Greater Manchester Combined Authority Report. August 2022.",
+    text: "Amut Friction Washer Cleans Contaminated PET Flakes, Recycling Today, August, 2012.",
   },
   {
     id: 6,
-    text: "Environmental implications of textile recycling. Intergovernmental Panel on Climate Change; Climate Change and Land. Cambridge University Press.",
+    text: 'Bottle Flake Washing "Super Clean Process" (SCP) Description, Bo-Re-Tech Brochure.',
   },
   {
     id: 7,
-    text: "Carbon footprint of global polyester fiber production, Applied Economics. 2019.",
+    text: "Water consumption management in polyethylene terephthalate (PET) bottles washing process via wastewater pretreatment and reuse, Journal of Environmental Management 224 (2018) 215–224, Jablonska.",
   },
   {
     id: 8,
-    text: "The evolution of China's daily polyester production in China. In: Sustainability in the Textile and Apparel Industries. Springer. 2020.",
+    text: "Comparing life cycle energy and GHG emissions of biobased PET, recycled PET, PLA, and man-made cellulosics, Biofuels, Bioprod. Bioref. 6:625–639 (2012), Li Shen et al.",
   },
   {
     id: 9,
-    text: "Water consumption management in polyethylene terephthalate (PET) production. Journal of Environmental Management. 2019;238:408-418.",
+    text: "State of Analysis of Water Footprint Assessments in Polyester, Cotton & Viscose, Water Footprint Network Stockholm WWW, August 30 2017, Matthews et al.",
+  },
+  {
+    id: 10,
+    text: "Identifying Low Carbon Sources of Cotton and Polyester Fibers, United Nations Framework Convention on Climate Change 2020 p 78.",
+  },
+  {
+    id: 11,
+    text: "Life cycle analysis of greenhouse gas emissions of China's power generation, Energy Sci Eng. 2022;10:1083–1095, Zhu et al.",
+  },
+  {
+    id: 12,
+    text: "Carbon footprint of global natural gas supplies to China, NATURE COMMUNICATIONS (2020) 11:824, Gan et al.",
+  },
+  {
+    id: 13,
+    text: "The evolution of heavy-duty vehicles in China: A retrospective evaluation of CO2 and pollutant emissions from 2012 to 2021, International Council on Cleaner Transportation Working Paper 2022.",
   },
 ];
 
