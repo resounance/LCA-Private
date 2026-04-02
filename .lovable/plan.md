@@ -1,33 +1,22 @@
 
 
-## Ajustes: Asterisco no Solid Waste + Cores mais vivas
+## Disclaimer de Confidencialidade — Pós-Login
 
-### 1. Asterisco no "0.0 kg" Solid Waste (HeroSection.tsx)
+Após o usuário digitar a senha correta no `PasswordGate`, em vez de mostrar o conteúdo diretamente, exibir uma tela intermediária de disclaimer com:
 
-Adicionar uma propriedade `asterisk` ao indicador de Solid Waste. No `KpiCard`, renderizar um `*` pequeno ao lado do valor quando `asterisk === true`, com uma nota de rodapé abaixo do grid de KPIs explicando o significado (ex: "* Zero polymer waste to landfill — non-polymer residue managed via government incineration").
+### Conteúdo do Disclaimer
+- Título: "Termo de Confidencialidade"
+- Texto explicando que todo o conteúdo é proprietário e confidencial da Tex2Tex / Earth Protex
+- Declaração de que o usuário se compromete a não compartilhar, copiar, reproduzir ou distribuir as informações com terceiros não autorizados
+- Checkbox obrigatório: "Declaro que estou ciente e me comprometo a não compartilhar este conteúdo com pessoas não autorizadas"
+- Botão "Concordo e desejo prosseguir" (habilitado somente com checkbox marcado)
 
-### 2. Cores mais vivas — sair do monocromático (index.css)
+### Implementação
+Adicionar um estado `disclaimerAccepted` no `PasswordGate.tsx`. Após autenticação bem-sucedida (`unlocked === true`), verificar se o disclaimer foi aceito. Se não, mostrar a tela do disclaimer. Ao aceitar, salvar em `sessionStorage` para não pedir novamente na mesma sessão (mas pedir a cada nova sessão).
 
-Atualmente todas as cores de marca (`--ep-coral`, `--ep-purple`, `--ep-teal`, etc.) estão definidas como tons de cinza (`0 0% 15%`). Trocar para cores reais e vibrantes:
-
-| Token | Atual (cinza) | Novo (vivo) |
-|-------|--------------|-------------|
-| `--detail` | `270 14% 56%` | `160 84% 39%` (verde Earth Protex) |
-| `--ep-coral` | `0 0% 15%` | `4 90% 58%` (coral vibrante) |
-| `--ep-purple` | `0 0% 25%` | `270 60% 55%` (roxo vivo) |
-| `--ep-teal` | `0 0% 20%` | `174 72% 40%` (teal/verde-água) |
-| `--ep-green` | `0 0% 15%` | `152 76% 36%` (verde sustentabilidade) |
-| `--ep-slate` | `0 0% 40%` | `215 20% 50%` (azul-cinza) |
-| `--muted-foreground` | `210 8% 35%` | `210 12% 40%` (levemente mais vivo) |
-
-A cor `--detail` é usada nos ícones dos KPIs, badges e destaques — trocá-la para verde dará identidade visual ligada à sustentabilidade. As cores `--ep-*` são usadas nos gráficos de barras (`ComparisonChart`), que atualmente ficam todos cinza — com cores reais, cada barra terá destaque visual.
-
-Também aplicar as mesmas mudanças na variante `.dark`.
-
-### Arquivos modificados
+### Arquivo modificado
 
 | Arquivo | Mudança |
 |---------|---------|
-| `HeroSection.tsx` | Prop `asterisk` no KPI de Waste + nota de rodapé |
-| `index.css` | Tokens de cor vivos no `:root` e `.dark` |
+| `PasswordGate.tsx` | Tela intermediária de disclaimer com checkbox + sessionStorage |
 
