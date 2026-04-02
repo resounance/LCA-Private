@@ -46,6 +46,7 @@ function KpiCard({ icon: Icon, value, unit, label, decimals, description, index,
           className="text-3xl md:text-4xl font-heading font-bold text-foreground tabular-nums translate-y-[1px]"
         />
         <span className="text-base md:text-lg font-heading font-medium text-muted-foreground ml-1 translate-y-[1px]">{unit}</span>
+        {asterisk && <span className="text-detail text-lg md:text-xl font-bold ml-0.5 translate-y-[-4px]">*</span>}
       </div>
       <p className="text-xs md:text-sm text-muted-foreground font-medium translate-y-[1px]">{label}</p>
       <p className="hidden md:block text-[10px] text-muted-foreground/70 leading-snug mt-1">{description}</p>
