@@ -182,9 +182,7 @@ export default function ComparisonChart({
               ))}
               <LabelList
                 dataKey="value"
-                position="right"
-                formatter={(v: number) => `${formatValue(v)} ${unit}`}
-                style={{ fontSize: 9, fill: "hsl(210 8% 35%)", fontFamily: "Nexa, system-ui" }}
+                content={<CustomBarLabel formatValue={formatValue} unit={unit} />}
               />
             </Bar>
           </BarChart>
