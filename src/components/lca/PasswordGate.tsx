@@ -183,10 +183,12 @@ const PasswordGate = ({ children }: PasswordGateProps) => {
             <Lock className="w-7 h-7 text-foreground" />
           </div>
           <div>
-            <h1 className="text-2xl font-semibold text-foreground font-['Space_Grotesk']">
-              {t.restrictedAccess}
+            <h1 className="text-2xl font-semibold text-foreground font-['Nexa']">
+              <span className="translate-y-[2px] inline-block">{t.restrictedAccess}</span>
             </h1>
-            <p className="text-sm text-muted-foreground mt-2">{t.enterPassword}</p>
+            <p className="text-sm text-muted-foreground mt-2 font-['Nexa']">
+              <span className="translate-y-[1px] inline-block">{t.enterPassword}</span>
+            </p>
           </div>
         </div>
 
