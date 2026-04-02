@@ -202,8 +202,8 @@ const PasswordGate = ({ children }: PasswordGateProps) => {
             autoFocus
           />
           {error && <p className="text-sm text-destructive">{t.incorrect}</p>}
-          <Button type="submit" className="w-full" disabled={loading || !password}>
-            {loading ? t.verifying : t.accessBtn}
+          <Button type="submit" className="w-full font-['Nexa']" disabled={loading || !password}>
+            <span className="translate-y-[2px]">{loading ? t.verifying : t.accessBtn}</span>
           </Button>
         </form>
 
