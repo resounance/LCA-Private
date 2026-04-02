@@ -1,32 +1,63 @@
 
 
-## Corrigir tamanho do ® em todo o site
+## Otimização Mobile-First dos Gráficos
 
-O símbolo `®` está sendo renderizado no tamanho normal do texto, quando deveria ser pequeno e elevado (superscript), como em tipografia profissional.
+### Problema
 
-### Abordagem
+No viewport de 390px, os gráficos de barras do Recharts ficam comprimidos: labels rotacionados ilegíveis, barras finas, tooltip depende de hover (inexistente no touch), e o chart ocupa apenas 300px de altura com 7 labels empilhados.
 
-Substituir todas as ocorrências de `®` em texto JSX por `<span className="text-[0.6em] align-super">®</span>` para que fique pequeno e acima da linha base, independente do tamanho da fonte do contexto.
+### Solução: Layout Horizontal + Valores Inline no Mobile
 
-O `ComparisonChart.tsx` já trata o `®` nos labels SVG com `<tspan>` — esse continua como está.
+No mobile, substituir o `BarChart` vertical por um `BarChart` com layout **horizontal** (barras deitadas). Isso resolve todos os problemas de uma vez:
+
+- Labels ficam legíveis à esquerda (sem rotação)
+- Barras usam toda a largura disponível
+- Valores aparecem na ponta de cada barra (sem precisar de tooltip/hover)
+- Altura se adapta ao número de itens
+
+```text
+Desktop (mantém como está):
+  │
+  │  ██
+  │  ██  ██
+  │  ██  ██  ██
+  └──────────────
+
+Mobile (horizontal):
+  Tex2Tex® Pellet    ██ 0.33
+  Tex2Tex® Ecru      ████ 0.63
+  Bottle Thermo-Mech ██████ 0.96
+  Bottle via Pellets ████████████ 1.88
+  Bottle BHET        ████████████████ 2.59
+  Bottle DMT         ██████████████████ 3.08
+  Virgin PET         ████████████████████████ 4.06
+```
+
+### Detalhes Técnicos
+
+**Arquivo: `ComparisonChart.tsx`**
+
+1. No mobile (`isMobile`), renderizar `<BarChart layout="vertical">` com `XAxis type="number"` e `YAxis type="category" dataKey="name"`
+2. Adicionar `<LabelList>` com `position="right"` mostrando o valor formatado na ponta de cada barra — elimina necessidade de tooltip no touch
+3. Aumentar altura para `h-[420px]` no mobile (mais espaço vertical para as barras horizontais)
+4. Desabilitar `<Tooltip>` no mobile (sem hover, não serve)
+5. Ajustar `YAxis width` para ~120px para caber os labels sem truncar
+6. Manter o desktop exatamente como está
+
+**Arquivo: Seções (CO2, Energy, Water)**
+
+7. No mobile, o grid `lg:grid-cols-3` já colapsa para coluna única — sem mudanças necessárias no layout das seções
+
+### Resultado esperado
+
+- Labels 100% legíveis sem rotação
+- Valores visíveis sem interação (LabelList inline)
+- Barras destacadas (Tex2Tex) claramente diferenciadas
+- Experiência consistente touch-first
 
 ### Arquivos modificados
 
-| Arquivo | Ocorrências |
-|---------|-------------|
-| `HeroSection.tsx` | ~4 ocorrências no alt, parágrafo e nota de rodapé |
-| `CO2Section.tsx` | ~4 ocorrências nos dados e texto |
-| `EnergySection.tsx` | ~3 ocorrências nos dados e texto |
-| `WaterSection.tsx` | ~4 ocorrências nos dados e texto |
-| `WasteSection.tsx` | Ocorrências no texto |
-| `PasswordGate.tsx` | ~6 ocorrências nas traduções EN/ZH/HI |
-| `RequestLCAButton.tsx` | ~2 ocorrências no subject/body do email |
-| `SourcesSection.tsx` | Ocorrências no texto |
-| `Footer.tsx` | ~1 ocorrência no subtítulo |
-
-Para strings em atributos (`alt`, `mailto`), manter `®` normal pois não é renderizado visualmente como HTML.
-
-Para strings usadas como `name` nos dados de gráficos (arrays `data`), manter `®` pois o `ComparisonChart` já cuida do rendering via `CustomXTick`.
-
-Apenas textos visíveis em JSX receberão o `<span>` estilizado.
+| Arquivo | Mudança |
+|---------|---------|
+| `ComparisonChart.tsx` | Layout horizontal condicional, LabelList, tooltip condicional, altura ajustada |
 
