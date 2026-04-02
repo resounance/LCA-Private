@@ -139,8 +139,14 @@ const PasswordGate = ({ children }: PasswordGateProps) => {
           <LangSelector lang={lang} setLang={setLang} />
 
           <div className="flex flex-col items-center gap-4">
-            <div className="w-16 h-16 rounded-full bg-secondary flex items-center justify-center">
-              <ShieldCheck className="w-7 h-7 text-foreground" />
+            <img
+              src="/lovable-uploads/tex2tex-earthprotex-logo.svg"
+              alt="Tex2Tex® by Earth Protex™"
+              className="h-16 md:h-20 w-auto"
+              onError={(e) => { e.currentTarget.style.display = 'none'; }}
+            />
+            <div className="w-12 h-12 rounded-full bg-secondary flex items-center justify-center">
+              <ShieldCheck className="w-6 h-6 text-foreground" />
             </div>
             <h1 className="text-2xl font-semibold text-foreground font-['Nexa']">
               <span className="translate-y-[2px] inline-block">{t.disclaimerTitle}</span>
