@@ -65,27 +65,50 @@ function CustomXTick(props: any) {
   );
 }
 
-/* Custom Y-axis tick for mobile horizontal layout — renders ® smaller */
+/* Helper: wrap text into lines of ~maxChars */
+function wrapText(text: string, maxChars = 18): string[] {
+  const words = text.split(" ");
+  const lines: string[] = [];
+  let current = "";
+  for (const word of words) {
+    if (current && (current + " " + word).length > maxChars) {
+      lines.push(current);
+      current = word;
+    } else {
+      current = current ? current + " " + word : word;
+    }
+  }
+  if (current) lines.push(current);
+  return lines;
+}
+
+/* Custom Y-axis tick for mobile horizontal layout — renders multi-line + ® smaller */
 function MobileYTick(props: any) {
   const { x, y, payload } = props;
   const text = payload.value as string;
   const fontSize = 10;
   const regSize = 6;
+  const lineHeight = 12;
 
-  if (!text.includes("®")) {
-    return (
-      <g transform={`translate(${x},${y})`}>
-        <text x={-4} y={0} dy={4} textAnchor="end" fill="hsl(210 8% 35%)" fontSize={fontSize}>
-          {text}
-        </text>
-      </g>
-    );
-  }
-  const parts = text.split("®");
+  const lines = wrapText(text, 18);
+  const totalHeight = (lines.length - 1) * lineHeight;
+  const startDy = 4 - totalHeight / 2;
+
   return (
     <g transform={`translate(${x},${y})`}>
-      <text x={-4} y={0} dy={4} textAnchor="end" fill="hsl(210 8% 35%)" fontSize={fontSize}>
-        {parts[0]}<tspan fontSize={regSize} dy={-3}>®</tspan><tspan dy={3}>{parts[1]}</tspan>
+      <text x={-4} y={0} textAnchor="end" fill="hsl(210 8% 35%)" fontSize={fontSize}>
+        {lines.map((line, i) => {
+          const dy = i === 0 ? startDy : lineHeight;
+          if (!line.includes("®")) {
+            return <tspan x={-4} dy={dy} key={i}>{line}</tspan>;
+          }
+          const parts = line.split("®");
+          return (
+            <tspan x={-4} dy={dy} key={i}>
+              {parts[0]}<tspan fontSize={regSize} dy={-3}>®</tspan><tspan dy={3}>{parts[1]}</tspan>
+            </tspan>
+          );
+        })}
       </text>
     </g>
   );

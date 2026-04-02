@@ -8,7 +8,7 @@ import { StaggerContainer, StaggerItem } from "./StaggerChildren";
 const data = [
   { name: "Tex2Tex® RPET", value: 3.25, isHighlight: true },
   { name: "Bottle Thermo-Mechanical", value: 13 },
-  { name: "Bottle Thermo-Mech. via Pellets", value: 23 },
+  { name: "Bottle Thermo-Mechanical via Pellets", value: 23 },
   { name: "Bottle Chemical (BHET Method)", value: 39 },
   { name: "Bottle Chemical (DMT Method)", value: 51 },
   { name: "Virgin PET", value: 95 },
