@@ -85,16 +85,16 @@
     --radius: 0.75rem;
 
     /* EarthProtex brand tokens — monochrome */
-    --ep-coral: 0 0% 15%;
-    --ep-coral-light: 0 0% 96%;
-    --ep-purple: 0 0% 25%;
-    --ep-purple-light: 0 0% 96%;
-    --ep-teal: 0 0% 20%;
-    --ep-teal-light: 0 0% 96%;
-    --ep-slate: 0 0% 40%;
-    --ep-slate-light: 0 0% 96%;
-    --ep-green: 0 0% 15%;
-    --ep-green-light: 0 0% 96%;
+    --ep-coral: 4 90% 58%;
+    --ep-coral-light: 4 90% 95%;
+    --ep-purple: 270 60% 55%;
+    --ep-purple-light: 270 60% 95%;
+    --ep-teal: 174 72% 40%;
+    --ep-teal-light: 174 72% 94%;
+    --ep-slate: 215 20% 50%;
+    --ep-slate-light: 215 20% 95%;
+    --ep-green: 152 76% 36%;
+    --ep-green-light: 152 76% 94%;
 
     /* Liquid glass */
     --lg-bg-color: rgba(255, 255, 255, 0.18);

@@ -103,8 +103,16 @@ export default function HeroSection({ productType = "staple" }: { productType?: 
         <motion.p
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
+          transition={{ delay: 1.5 }}
+          className="text-center text-[10px] md:text-xs text-muted-foreground mt-4 md:mt-6 font-light translate-y-[1px]"
+        >
+          <span className="text-detail font-bold">*</span> Zero polymer waste to landfill — non-polymer residue managed via government incineration.
+        </motion.p>
+        <motion.p
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
           transition={{ delay: 1.6 }}
-          className="text-center text-[10px] md:text-xs text-muted-foreground mt-6 md:mt-8 italic font-light translate-y-[1px]"
+          className="text-center text-[10px] md:text-xs text-muted-foreground mt-2 md:mt-3 italic font-light translate-y-[1px]"
         >
           Based on 1 kg of Tex2Tex® RPET Fiber (Cradle-to-Gate) ·{" "}
           {productType === "staple"
