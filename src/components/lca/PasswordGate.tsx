@@ -165,8 +165,8 @@ const PasswordGate = ({ children }: PasswordGateProps) => {
             </label>
           </div>
 
-          <Button onClick={handleAcceptDisclaimer} className="w-full" disabled={!agreed}>
-            {t.agreeBtn}
+          <Button onClick={handleAcceptDisclaimer} className="w-full font-['Nexa']" disabled={!agreed}>
+            <span className="translate-y-[2px]">{t.agreeBtn}</span>
           </Button>
         </div>
       </div>
