@@ -141,10 +141,9 @@ const PasswordGate = ({ children }: PasswordGateProps) => {
 
           <div className="flex flex-col items-center gap-4">
             <img
-              src="/lovable-uploads/tex2tex-earthprotex-logo.svg"
+              src={tex2texLogo}
               alt="Tex2Tex® by Earth Protex™"
               className="h-16 md:h-20 w-auto"
-              onError={(e) => { e.currentTarget.style.display = 'none'; }}
             />
             <div className="w-12 h-12 rounded-full bg-secondary flex items-center justify-center">
               <ShieldCheck className="w-6 h-6 text-foreground" />
