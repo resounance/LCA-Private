@@ -140,7 +140,7 @@ export default function ComparisonChart({
           <BarChart
             layout="vertical"
             data={data}
-            margin={{ top: 5, right: 80, left: 10, bottom: 5 }}
+            margin={{ top: 5, right: 105, left: 10, bottom: 5 }}
             barCategoryGap="20%"
           >
             <CartesianGrid strokeDasharray="3 3" horizontal={false} stroke="hsl(0 0% 90%)" />
