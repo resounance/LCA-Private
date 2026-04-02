@@ -21,8 +21,8 @@ const translations = {
     disclaimerTitle: "Confidentiality Agreement",
     disclaimerP1: (
       <>All content available on this platform is the exclusive property of{" "}
-        <span className="font-semibold text-foreground">Tex2Tex® / Earth Protex</span> and is strictly{" "}
-        <span className="font-semibold text-foreground">confidential</span>.</>
+         <span className="font-semibold text-foreground">Tex2Tex<span className="text-[0.6em] align-super">®</span> / Earth Protex</span> and is strictly{" "}
+         <span className="font-semibold text-foreground">confidential</span>.</>
     ),
     disclaimerP2:
       "The information presented herein, including data, analyses, charts, and reports, is intended solely for authorized individuals and must not be shared, copied, reproduced, or distributed to third parties without prior express authorization.",
