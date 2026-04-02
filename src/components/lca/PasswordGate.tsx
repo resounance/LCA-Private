@@ -207,7 +207,9 @@ const PasswordGate = ({ children }: PasswordGateProps) => {
           </Button>
         </form>
 
-        <p className="text-xs text-muted-foreground">{t.confidentialNote}</p>
+        <p className="text-xs text-muted-foreground font-['Nexa']">
+          <span className="translate-y-[1px] inline-block">{t.confidentialNote}</span>
+        </p>
       </div>
     </div>
   );
