@@ -149,7 +149,7 @@ export default function ComparisonChart({
               type="category"
               dataKey="name"
               tick={<MobileYTick />}
-              width={130}
+              width={120}
               axisLine={false}
               tickLine={false}
             />
