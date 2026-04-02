@@ -45,7 +45,7 @@ const translations = {
         的专有财产，属于严格<span className="font-semibold text-foreground">机密</span>信息。</>
     ),
     disclaimerP2:
-      "此处展示的信息——包括数据、分析、图表和报告——仅供授权人员使用，未经事先明确授权，不得与第三方分享、复制、转载或分发。",
+      "此处展示的信息，包括数据、分析、图表和报告，仅供授权人员使用，未经事先明确授权，不得与第三方分享、复制、转载或分发。",
     disclaimerP3: "滥用本信息可能导致相应的法律追究。",
     checkboxLabel: "我确认并承诺不会与未授权人员分享此内容。",
     agreeBtn: "同意并继续",
