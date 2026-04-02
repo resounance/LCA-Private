@@ -9,7 +9,7 @@ const data = [
   { name: "Tex2Tex® Pellet", value: 0.33, isHighlight: true },
   { name: "Tex2Tex® Ecru Fiber", value: 0.63, isHighlight: true },
   { name: "Bottle Thermo-Mechanical", value: 0.96 },
-  { name: "Bottle Thermo-Mech. via Pellets", value: 1.88 },
+  { name: "Bottle Thermo-Mechanical via Pellets", value: 1.88 },
   { name: "Bottle Chemical (BHET Method)", value: 2.59 },
   { name: "Bottle Chemical (DMT Method)", value: 3.08 },
   { name: "Virgin PET", value: 4.06 },

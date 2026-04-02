@@ -65,27 +65,50 @@ function CustomXTick(props: any) {
   );
 }
 
-/* Custom Y-axis tick for mobile horizontal layout — renders ® smaller */
+/* Helper: wrap text into lines of ~maxChars */
+function wrapText(text: string, maxChars = 18): string[] {
+  const words = text.split(" ");
+  const lines: string[] = [];
+  let current = "";
+  for (const word of words) {
+    if (current && (current + " " + word).length > maxChars) {
+      lines.push(current);
+      current = word;
+    } else {
+      current = current ? current + " " + word : word;
+    }
+  }
+  if (current) lines.push(current);
+  return lines;
+}
+
+/* Custom Y-axis tick for mobile horizontal layout — renders multi-line + ® smaller */
 function MobileYTick(props: any) {
   const { x, y, payload } = props;
   const text = payload.value as string;
   const fontSize = 10;
   const regSize = 6;
+  const lineHeight = 12;
 
-  if (!text.includes("®")) {
-    return (
-      <g transform={`translate(${x},${y})`}>
-        <text x={-4} y={0} dy={4} textAnchor="end" fill="hsl(210 8% 35%)" fontSize={fontSize}>
-          {text}
-        </text>
-      </g>
-    );
-  }
-  const parts = text.split("®");
+  const lines = wrapText(text, 18);
+  const totalHeight = (lines.length - 1) * lineHeight;
+  const startDy = 4 - totalHeight / 2;
+
   return (
     <g transform={`translate(${x},${y})`}>
-      <text x={-4} y={0} dy={4} textAnchor="end" fill="hsl(210 8% 35%)" fontSize={fontSize}>
-        {parts[0]}<tspan fontSize={regSize} dy={-3}>®</tspan><tspan dy={3}>{parts[1]}</tspan>
+      <text x={-4} y={0} textAnchor="end" fill="hsl(210 8% 35%)" fontSize={fontSize}>
+        {lines.map((line, i) => {
+          const dy = i === 0 ? startDy : lineHeight;
+          if (!line.includes("®")) {
+            return <tspan x={-4} dy={dy} key={i}>{line}</tspan>;
+          }
+          const parts = line.split("®");
+          return (
+            <tspan x={-4} dy={dy} key={i}>
+              {parts[0]}<tspan fontSize={regSize} dy={-3}>®</tspan><tspan dy={3}>{parts[1]}</tspan>
+            </tspan>
+          );
+        })}
       </text>
     </g>
   );
@@ -101,7 +124,7 @@ export default function ComparisonChart({
   const { ref, isVisible } = useScrollFadeIn();
   const isMobile = useIsMobile();
 
-  const mobileHeight = Math.max(280, data.length * 52);
+  const mobileHeight = Math.max(280, data.length * 62);
 
   return (
     <motion.div
@@ -117,7 +140,7 @@ export default function ComparisonChart({
           <BarChart
             layout="vertical"
             data={data}
-            margin={{ top: 5, right: 50, left: 10, bottom: 5 }}
+            margin={{ top: 5, right: 65, left: 10, bottom: 5 }}
             barCategoryGap="20%"
           >
             <CartesianGrid strokeDasharray="3 3" horizontal={false} stroke="hsl(0 0% 90%)" />
@@ -126,7 +149,7 @@ export default function ComparisonChart({
               type="category"
               dataKey="name"
               tick={<MobileYTick />}
-              width={120}
+              width={130}
               axisLine={false}
               tickLine={false}
             />
@@ -143,7 +166,7 @@ export default function ComparisonChart({
                 dataKey="value"
                 position="right"
                 formatter={(v: number) => `${formatValue(v)} ${unit}`}
-                style={{ fontSize: 10, fill: "hsl(210 8% 35%)", fontFamily: "Nexa, system-ui" }}
+                style={{ fontSize: 9, fill: "hsl(210 8% 35%)", fontFamily: "Nexa, system-ui" }}
               />
             </Bar>
           </BarChart>
