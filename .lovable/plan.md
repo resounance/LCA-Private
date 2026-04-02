@@ -1,22 +1,37 @@
 
 
-## Disclaimer de Confidencialidade — Pós-Login
+## Seletor de Idioma com Botões — PasswordGate
 
-Após o usuário digitar a senha correta no `PasswordGate`, em vez de mostrar o conteúdo diretamente, exibir uma tela intermediária de disclaimer com:
-
-### Conteúdo do Disclaimer
-- Título: "Termo de Confidencialidade"
-- Texto explicando que todo o conteúdo é proprietário e confidencial da Tex2Tex / Earth Protex
-- Declaração de que o usuário se compromete a não compartilhar, copiar, reproduzir ou distribuir as informações com terceiros não autorizados
-- Checkbox obrigatório: "Declaro que estou ciente e me comprometo a não compartilhar este conteúdo com pessoas não autorizadas"
-- Botão "Concordo e desejo prosseguir" (habilitado somente com checkbox marcado)
+Substituir as traduções expostas simultaneamente por um sistema de idioma selecionável via botões. O inglês é o padrão; ao clicar em "中文" ou "हिन्दी", todo o conteúdo da tela muda para aquele idioma.
 
 ### Implementação
-Adicionar um estado `disclaimerAccepted` no `PasswordGate.tsx`. Após autenticação bem-sucedida (`unlocked === true`), verificar se o disclaimer foi aceito. Se não, mostrar a tela do disclaimer. Ao aceitar, salvar em `sessionStorage` para não pedir novamente na mesma sessão (mas pedir a cada nova sessão).
+
+**Arquivo: `PasswordGate.tsx`**
+
+1. Criar um objeto `translations` com chaves `en`, `zh`, `hi`, contendo todos os textos: título, parágrafo do disclaimer, checkbox label, botão, placeholder, erro, subtítulo da tela de senha, etc.
+
+2. Adicionar estado `lang` (`"en" | "zh" | "hi"`) com default `"en"`.
+
+3. Renderizar 3 botões de idioma (EN / 中文 / हिन्दी) no topo de ambas as telas (senha e disclaimer). O botão ativo fica com estilo `default`, os inativos com `ghost` ou `outline`. Usar tamanho `sm`.
+
+4. Remover todo texto multilíngue inline (os `·` separando idiomas). Cada texto vem do objeto `translations[lang]`.
+
+5. Remover o grid de traduções chinês/hindi do disclaimer — o conteúdo principal muda conforme o idioma selecionado.
+
+### Estrutura do seletor
+
+```text
+┌─────────────────────┐
+│  [EN] [中文] [हिन्दी]  │  ← botões no topo
+│                     │
+│  (conteúdo no       │
+│   idioma ativo)     │
+└─────────────────────┘
+```
 
 ### Arquivo modificado
 
 | Arquivo | Mudança |
 |---------|---------|
-| `PasswordGate.tsx` | Tela intermediária de disclaimer com checkbox + sessionStorage |
+| `PasswordGate.tsx` | Objeto `translations`, estado `lang`, botões seletores, remoção de texto inline multilíngue |
 
