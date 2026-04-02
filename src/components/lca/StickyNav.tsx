@@ -33,7 +33,7 @@ export default function StickyNav() {
         <img
           src={earthprotexLogo}
           alt="Earth Protex"
-          className="h-6 brightness-0 invert"
+          className="h-8 md:h-9 brightness-0 invert"
         />
         {/* Desktop nav */}
         <div className="hidden md:flex items-center gap-6">
