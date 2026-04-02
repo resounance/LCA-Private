@@ -41,7 +41,7 @@ export default function WaterSection() {
           />
           <div className="deck-card-glass p-4 md:p-5">
             <p className="text-xs md:text-sm text-muted-foreground leading-relaxed">
-              Tex2Tex® discharges extremely low volumes of water (<strong className="text-foreground">0.19 l/kg</strong>). Over <strong className="text-foreground">80% rate of water recycling</strong>. Very low COD and is treated on-site. Water is only used in the Tex2Tex® process for heat setting, drafting and the application of spinning oils. In comparison, bottle flake RPET requires significant washing water.
+              Tex2Tex<span className="text-[0.6em] align-super">®</span> discharges extremely low volumes of water (<strong className="text-foreground">0.19 l/kg</strong>). Over <strong className="text-foreground">80% rate of water recycling</strong>. Very low COD and is treated on-site. Water is only used in the Tex2Tex<span className="text-[0.6em] align-super">®</span> process for heat setting, drafting and the application of spinning oils. In comparison, bottle flake RPET requires significant washing water.
             </p>
           </div>
         </StaggerItem>
