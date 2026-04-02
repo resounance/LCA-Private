@@ -166,7 +166,7 @@ export default function ComparisonChart({
                 dataKey="value"
                 position="right"
                 formatter={(v: number) => `${formatValue(v)} ${unit}`}
-                style={{ fontSize: 10, fill: "hsl(210 8% 35%)", fontFamily: "Nexa, system-ui" }}
+                style={{ fontSize: 9, fill: "hsl(210 8% 35%)", fontFamily: "Nexa, system-ui" }}
               />
             </Bar>
           </BarChart>
