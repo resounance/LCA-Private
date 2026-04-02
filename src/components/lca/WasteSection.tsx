@@ -34,7 +34,7 @@ export default function WasteSection() {
             <div>
               <h3 className="font-heading font-semibold text-foreground mb-1 text-sm md:text-base translate-y-[1px]">Circular Production</h3>
               <p className="text-xs md:text-sm text-muted-foreground leading-relaxed">
-                100% of Tex2Tex® solid production wastage polymers from fiber, yarn and fabric production are recycled back into Tex2Tex® Fibers.
+                100% of Tex2Tex<span className="text-[0.6em] align-super">®</span> solid production wastage polymers from fiber, yarn and fabric production are recycled back into Tex2Tex<span className="text-[0.6em] align-super">®</span> Fibers.
               </p>
             </div>
           </div>

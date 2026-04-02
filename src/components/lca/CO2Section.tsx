@@ -45,7 +45,7 @@ export default function CO2Section() {
           />
           <div className="deck-card-glass p-4 md:p-5">
             <p className="text-xs md:text-sm text-muted-foreground leading-relaxed">
-              Tex2Tex® achieves the lowest carbon footprint of any RPET fiber process in all publicly available LCA data. This is achieved
+              Tex2Tex<span className="text-[0.6em] align-super">®</span> achieves the lowest carbon footprint of any RPET fiber process in all publicly available LCA data. This is achieved
               through our efficient <strong className="text-foreground">Thermo-Mechanical Reactor™</strong> and direct fiber-to-fiber
               conversion that eliminates energy-intensive intermediate steps.
             </p>

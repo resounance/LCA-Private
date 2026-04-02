@@ -7,7 +7,7 @@ export default function Footer() {
         <div className="flex flex-col items-center md:items-start gap-2">
           <img src={tex2texLogo} alt="Tex2Tex® by Earth Protex™" className="h-7 md:h-8 w-auto" />
           <p className="text-[10px] md:text-xs text-muted-foreground translate-y-[1px]">
-            Tex2Tex® RPET Fiber · Life Cycle Assessment Data
+            Tex2Tex<span className="text-[0.6em] align-super">®</span> RPET Fiber · Life Cycle Assessment Data
           </p>
         </div>
         <p className="text-[10px] md:text-xs text-muted-foreground translate-y-[1px]">

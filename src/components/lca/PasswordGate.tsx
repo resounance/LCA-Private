@@ -21,8 +21,8 @@ const translations = {
     disclaimerTitle: "Confidentiality Agreement",
     disclaimerP1: (
       <>All content available on this platform is the exclusive property of{" "}
-        <span className="font-semibold text-foreground">Tex2Tex® / Earth Protex</span> and is strictly{" "}
-        <span className="font-semibold text-foreground">confidential</span>.</>
+         <span className="font-semibold text-foreground">Tex2Tex<span className="text-[0.6em] align-super">®</span> / Earth Protex</span> and is strictly{" "}
+         <span className="font-semibold text-foreground">confidential</span>.</>
     ),
     disclaimerP2:
       "The information presented herein, including data, analyses, charts, and reports, is intended solely for authorized individuals and must not be shared, copied, reproduced, or distributed to third parties without prior express authorization.",
@@ -41,8 +41,8 @@ const translations = {
     disclaimerTitle: "保密协议",
     disclaimerP1: (
       <>本平台所有内容均为{" "}
-        <span className="font-semibold text-foreground">Tex2Tex® / Earth Protex</span>{" "}
-        的专有财产，属于严格<span className="font-semibold text-foreground">机密</span>信息。</>
+         <span className="font-semibold text-foreground">Tex2Tex<span className="text-[0.6em] align-super">®</span> / Earth Protex</span>{" "}
+         的专有财产，属于严格<span className="font-semibold text-foreground">机密</span>信息。</>
     ),
     disclaimerP2:
       "此处展示的信息，包括数据、分析、图表和报告，仅供授权人员使用，未经事先明确授权，不得与第三方分享、复制、转载或分发。",
@@ -61,8 +61,8 @@ const translations = {
     disclaimerTitle: "गोपनीयता समझौता",
     disclaimerP1: (
       <>इस प्लेटफ़ॉर्म पर उपलब्ध सभी सामग्री{" "}
-        <span className="font-semibold text-foreground">Tex2Tex® / Earth Protex</span>{" "}
-        की विशेष संपत्ति है और पूर्णतः <span className="font-semibold text-foreground">गोपनीय</span> है।</>
+         <span className="font-semibold text-foreground">Tex2Tex<span className="text-[0.6em] align-super">®</span> / Earth Protex</span>{" "}
+         की विशेष संपत्ति है और पूर्णतः <span className="font-semibold text-foreground">गोपनीय</span> है।</>
     ),
     disclaimerP2:
       "यहाँ प्रस्तुत जानकारी, जिसमें डेटा, विश्लेषण, चार्ट और रिपोर्ट शामिल हैं, केवल अधिकृत व्यक्तियों के लिए है और बिना पूर्व स्पष्ट अनुमति के इसे तीसरे पक्ष के साथ साझा, कॉपी, पुनरुत्पादित या वितरित नहीं किया जा सकता।",
