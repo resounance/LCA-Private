@@ -25,7 +25,7 @@ const translations = {
         <span className="font-semibold text-foreground">confidential</span>.</>
     ),
     disclaimerP2:
-      "The information presented herein — including data, analyses, charts, and reports — is intended solely for authorized individuals and must not be shared, copied, reproduced, or distributed to third parties without prior express authorization.",
+      "The information presented herein, including data, analyses, charts, and reports, is intended solely for authorized individuals and must not be shared, copied, reproduced, or distributed to third parties without prior express authorization.",
     disclaimerP3: "Misuse of this information may result in applicable legal action.",
     checkboxLabel: "I acknowledge and commit not to share this content with unauthorized persons.",
     agreeBtn: "I Agree & Proceed",
