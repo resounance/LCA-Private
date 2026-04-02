@@ -25,7 +25,7 @@ const translations = {
         <span className="font-semibold text-foreground">confidential</span>.</>
     ),
     disclaimerP2:
-      "The information presented herein — including data, analyses, charts, and reports — is intended solely for authorized individuals and must not be shared, copied, reproduced, or distributed to third parties without prior express authorization.",
+      "The information presented herein, including data, analyses, charts, and reports, is intended solely for authorized individuals and must not be shared, copied, reproduced, or distributed to third parties without prior express authorization.",
     disclaimerP3: "Misuse of this information may result in applicable legal action.",
     checkboxLabel: "I acknowledge and commit not to share this content with unauthorized persons.",
     agreeBtn: "I Agree & Proceed",
@@ -45,7 +45,7 @@ const translations = {
         的专有财产，属于严格<span className="font-semibold text-foreground">机密</span>信息。</>
     ),
     disclaimerP2:
-      "此处展示的信息——包括数据、分析、图表和报告——仅供授权人员使用，未经事先明确授权，不得与第三方分享、复制、转载或分发。",
+      "此处展示的信息，包括数据、分析、图表和报告，仅供授权人员使用，未经事先明确授权，不得与第三方分享、复制、转载或分发。",
     disclaimerP3: "滥用本信息可能导致相应的法律追究。",
     checkboxLabel: "我确认并承诺不会与未授权人员分享此内容。",
     agreeBtn: "同意并继续",
@@ -65,7 +65,7 @@ const translations = {
         की विशेष संपत्ति है और पूर्णतः <span className="font-semibold text-foreground">गोपनीय</span> है।</>
     ),
     disclaimerP2:
-      "यहाँ प्रस्तुत जानकारी — जिसमें डेटा, विश्लेषण, चार्ट और रिपोर्ट शामिल हैं — केवल अधिकृत व्यक्तियों के लिए है और बिना पूर्व स्पष्ट अनुमति के इसे तीसरे पक्ष के साथ साझा, कॉपी, पुनरुत्पादित या वितरित नहीं किया जा सकता।",
+      "यहाँ प्रस्तुत जानकारी, जिसमें डेटा, विश्लेषण, चार्ट और रिपोर्ट शामिल हैं, केवल अधिकृत व्यक्तियों के लिए है और बिना पूर्व स्पष्ट अनुमति के इसे तीसरे पक्ष के साथ साझा, कॉपी, पुनरुत्पादित या वितरित नहीं किया जा सकता।",
     disclaimerP3: "इस जानकारी का दुरुपयोग कानूनी कार्रवाई का कारण बन सकता है।",
     checkboxLabel: "मैं स्वीकार करता/करती हूँ और इस सामग्री को अनधिकृत व्यक्तियों के साथ साझा न करने की प्रतिबद्धता व्यक्त करता/करती हूँ।",
     agreeBtn: "सहमत और आगे बढ़ें",
@@ -90,9 +90,9 @@ const LangSelector = ({ lang, setLang }: { lang: Lang; setLang: (l: Lang) => voi
         size="sm"
         variant={lang === key ? "default" : "outline"}
         onClick={() => setLang(key)}
-        className="text-xs px-3"
+        className="text-xs px-3 font-['Nexa']"
       >
-        {label}
+        <span className="translate-y-[2px]">{label}</span>
       </Button>
     ))}
   </div>
@@ -142,12 +142,12 @@ const PasswordGate = ({ children }: PasswordGateProps) => {
             <div className="w-16 h-16 rounded-full bg-secondary flex items-center justify-center">
               <ShieldCheck className="w-7 h-7 text-foreground" />
             </div>
-            <h1 className="text-2xl font-semibold text-foreground font-['Space_Grotesk']">
-              {t.disclaimerTitle}
+            <h1 className="text-2xl font-semibold text-foreground font-['Nexa']">
+              <span className="translate-y-[2px] inline-block">{t.disclaimerTitle}</span>
             </h1>
           </div>
 
-          <div className="text-left text-sm text-muted-foreground leading-relaxed space-y-4 bg-secondary/50 rounded-lg p-6 border border-border">
+          <div className="text-left text-sm text-muted-foreground leading-relaxed space-y-4 bg-secondary/50 rounded-lg p-6 border border-border font-['Nexa']">
             <p>{t.disclaimerP1}</p>
             <p>{t.disclaimerP2}</p>
             <p>{t.disclaimerP3}</p>
@@ -160,13 +160,13 @@ const PasswordGate = ({ children }: PasswordGateProps) => {
               onCheckedChange={(checked) => setAgreed(checked === true)}
               className="mt-0.5"
             />
-            <label htmlFor="disclaimer-agree" className="text-sm text-foreground cursor-pointer leading-snug">
-              {t.checkboxLabel}
+            <label htmlFor="disclaimer-agree" className="text-sm text-foreground cursor-pointer leading-snug font-['Nexa']">
+              <span className="translate-y-[1px] inline-block">{t.checkboxLabel}</span>
             </label>
           </div>
 
-          <Button onClick={handleAcceptDisclaimer} className="w-full" disabled={!agreed}>
-            {t.agreeBtn}
+          <Button onClick={handleAcceptDisclaimer} className="w-full font-['Nexa']" disabled={!agreed}>
+            <span className="translate-y-[2px]">{t.agreeBtn}</span>
           </Button>
         </div>
       </div>
@@ -183,10 +183,12 @@ const PasswordGate = ({ children }: PasswordGateProps) => {
             <Lock className="w-7 h-7 text-foreground" />
           </div>
           <div>
-            <h1 className="text-2xl font-semibold text-foreground font-['Space_Grotesk']">
-              {t.restrictedAccess}
+            <h1 className="text-2xl font-semibold text-foreground font-['Nexa']">
+              <span className="translate-y-[2px] inline-block">{t.restrictedAccess}</span>
             </h1>
-            <p className="text-sm text-muted-foreground mt-2">{t.enterPassword}</p>
+            <p className="text-sm text-muted-foreground mt-2 font-['Nexa']">
+              <span className="translate-y-[1px] inline-block">{t.enterPassword}</span>
+            </p>
           </div>
         </div>
 
@@ -200,12 +202,14 @@ const PasswordGate = ({ children }: PasswordGateProps) => {
             autoFocus
           />
           {error && <p className="text-sm text-destructive">{t.incorrect}</p>}
-          <Button type="submit" className="w-full" disabled={loading || !password}>
-            {loading ? t.verifying : t.accessBtn}
+          <Button type="submit" className="w-full font-['Nexa']" disabled={loading || !password}>
+            <span className="translate-y-[2px]">{loading ? t.verifying : t.accessBtn}</span>
           </Button>
         </form>
 
-        <p className="text-xs text-muted-foreground">{t.confidentialNote}</p>
+        <p className="text-xs text-muted-foreground font-['Nexa']">
+          <span className="translate-y-[1px] inline-block">{t.confidentialNote}</span>
+        </p>
       </div>
     </div>
   );
