@@ -1,32 +1,17 @@
 
 
-## Corrigir Labels dos Gráficos Mobile
+## Manter valores dos gráficos em uma única linha no mobile
 
-### Problemas
-1. Labels longos como "Bottle Thermo-Mechanical" são renderizados numa única `<text>` SVG e cortam no mobile
-2. Valores com unidade (`0.33 kg CO₂e`) quebram linha por falta de espaço à direita
-3. Nomes abreviados ("Thermo-Mech.") nos dados devem ser escritos por extenso
+### Problema
+Os valores na ponta das barras (ex: "0.33 kg CO₂e", "23.0 MJ") estão quebrando em duas linhas no mobile por falta de espaço à direita.
 
 ### Solução
 
-**1. Dados — Nomes completos (CO2Section.tsx, EnergySection.tsx)**
-- `"Bottle Thermo-Mech. via Pellets"` → `"Bottle Thermo-Mechanical via Pellets"`
+**Arquivo: `ComparisonChart.tsx`**
 
-**2. MobileYTick multi-linha (ComparisonChart.tsx)**
+1. Aumentar `margin.right` de `65` para `80` para garantir espaço suficiente para o texto completo
+2. Reduzir levemente `YAxis width` de `130` para `120` para compensar o espaço cedido à direita
+3. Manter `fontSize: 9` no `LabelList` (já está adequado)
 
-Refatorar o `MobileYTick` para quebrar nomes longos em múltiplas linhas SVG usando `<tspan>`. Lógica: agrupar palavras em linhas de ~18 caracteres max, renderizar cada linha como `<tspan>` com `dy` de 12px. Centralizar verticalmente baseado no número de linhas.
-
-**3. Ajustes de layout mobile (ComparisonChart.tsx)**
-- `mobileHeight`: de `data.length * 52` para `data.length * 62` (mais espaço por barra para labels multi-linha)
-- `YAxis width`: de `120` para `130` (mais espaço para texto)
-- `margin.right`: de `50` para `65` (evitar corte dos valores)
-- `LabelList fontSize`: de `10` para `9` (valores cabem numa linha)
-
-### Arquivos modificados
-
-| Arquivo | Mudança |
-|---------|---------|
-| `CO2Section.tsx` | Nome completo "Bottle Thermo-Mechanical via Pellets" |
-| `EnergySection.tsx` | Nome completo "Bottle Thermo-Mechanical via Pellets" |
-| `ComparisonChart.tsx` | MobileYTick com quebra multi-linha, ajustes de height/width/margin/fontSize |
+Essas mudanças garantem que valores como "0.33 kg CO₂e" e "23.0 MJ" caibam em uma única linha sem cortar.
 
