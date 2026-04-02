@@ -114,7 +114,7 @@ export default function HeroSection({ productType = "staple" }: { productType?: 
           transition={{ delay: 1.6 }}
           className="text-center text-[10px] md:text-xs text-muted-foreground mt-2 md:mt-3 italic font-light translate-y-[1px]"
         >
-          Based on 1 kg of Tex2Tex® RPET Fiber (Cradle-to-Gate) ·{" "}
+          Based on 1 kg of Tex2Tex<span className="text-[0.6em] align-super">®</span> RPET Fiber (Cradle-to-Gate) ·{" "}
           {productType === "staple"
             ? "LCA by Intertek (for Staple Fibers)"
             : "Earth Protex internally published LCA (for Pellets & Filaments)"}

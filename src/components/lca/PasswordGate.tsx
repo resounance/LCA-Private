@@ -61,8 +61,8 @@ const translations = {
     disclaimerTitle: "गोपनीयता समझौता",
     disclaimerP1: (
       <>इस प्लेटफ़ॉर्म पर उपलब्ध सभी सामग्री{" "}
-        <span className="font-semibold text-foreground">Tex2Tex® / Earth Protex</span>{" "}
-        की विशेष संपत्ति है और पूर्णतः <span className="font-semibold text-foreground">गोपनीय</span> है।</>
+         <span className="font-semibold text-foreground">Tex2Tex<span className="text-[0.6em] align-super">®</span> / Earth Protex</span>{" "}
+         की विशेष संपत्ति है और पूर्णतः <span className="font-semibold text-foreground">गोपनीय</span> है।</>
     ),
     disclaimerP2:
       "यहाँ प्रस्तुत जानकारी, जिसमें डेटा, विश्लेषण, चार्ट और रिपोर्ट शामिल हैं, केवल अधिकृत व्यक्तियों के लिए है और बिना पूर्व स्पष्ट अनुमति के इसे तीसरे पक्ष के साथ साझा, कॉपी, पुनरुत्पादित या वितरित नहीं किया जा सकता।",

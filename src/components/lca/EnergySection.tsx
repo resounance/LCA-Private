@@ -46,7 +46,7 @@ export default function EnergySection() {
           <div className="deck-card-glass p-4 md:p-5">
             <p className="text-xs md:text-sm text-muted-foreground leading-relaxed">
               Virgin PET consumes <strong className="text-foreground">29× more energy</strong> than
-              Tex2Tex®. Even the best alternative recycling process uses 4× as much non-renewable energy.
+              Tex2Tex<span className="text-[0.6em] align-super">®</span>. Even the best alternative recycling process uses 4× as much non-renewable energy.
             </p>
           </div>
         </StaggerItem>
