@@ -160,8 +160,8 @@ const PasswordGate = ({ children }: PasswordGateProps) => {
               onCheckedChange={(checked) => setAgreed(checked === true)}
               className="mt-0.5"
             />
-            <label htmlFor="disclaimer-agree" className="text-sm text-foreground cursor-pointer leading-snug">
-              {t.checkboxLabel}
+            <label htmlFor="disclaimer-agree" className="text-sm text-foreground cursor-pointer leading-snug font-['Nexa']">
+              <span className="translate-y-[1px] inline-block">{t.checkboxLabel}</span>
             </label>
           </div>
 
