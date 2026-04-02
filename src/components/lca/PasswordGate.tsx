@@ -142,8 +142,8 @@ const PasswordGate = ({ children }: PasswordGateProps) => {
             <div className="w-16 h-16 rounded-full bg-secondary flex items-center justify-center">
               <ShieldCheck className="w-7 h-7 text-foreground" />
             </div>
-            <h1 className="text-2xl font-semibold text-foreground font-['Space_Grotesk']">
-              {t.disclaimerTitle}
+            <h1 className="text-2xl font-semibold text-foreground font-['Nexa']">
+              <span className="translate-y-[2px] inline-block">{t.disclaimerTitle}</span>
             </h1>
           </div>
 
