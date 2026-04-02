@@ -24,7 +24,7 @@ const indicators = [
   },
 ];
 
-function KpiCard({ icon: Icon, value, unit, label, decimals, description, index }: typeof indicators[0] & { index: number }) {
+function KpiCard({ icon: Icon, value, unit, label, decimals, description, index, asterisk }: typeof indicators[0] & { index: number }) {
   return (
     <motion.div
       initial={{ opacity: 0, y: 30, scale: 0.97, filter: "blur(6px)" }}
