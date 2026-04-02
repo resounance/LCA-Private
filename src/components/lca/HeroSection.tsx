@@ -19,11 +19,12 @@ const indicators = [
   },
   {
     icon: Recycle, value: 0.0, unit: "kg", label: "Solid Waste Disposal", decimals: 1,
-    description: "Solid waste disposal from industrial manufacturing processes. Based on total solid waste disposed in kilograms (Kg) per Kg output produced."
+    description: "Solid waste disposal from industrial manufacturing processes. Based on total solid waste disposed in kilograms (Kg) per Kg output produced.",
+    asterisk: true,
   },
 ];
 
-function KpiCard({ icon: Icon, value, unit, label, decimals, description, index }: typeof indicators[0] & { index: number }) {
+function KpiCard({ icon: Icon, value, unit, label, decimals, description, index, asterisk }: typeof indicators[0] & { index: number }) {
   return (
     <motion.div
       initial={{ opacity: 0, y: 30, scale: 0.97, filter: "blur(6px)" }}
@@ -45,6 +46,7 @@ function KpiCard({ icon: Icon, value, unit, label, decimals, description, index 
           className="text-3xl md:text-4xl font-heading font-bold text-foreground tabular-nums translate-y-[1px]"
         />
         <span className="text-base md:text-lg font-heading font-medium text-muted-foreground ml-1 translate-y-[1px]">{unit}</span>
+        {asterisk && <span className="text-detail text-lg md:text-xl font-bold ml-0.5 translate-y-[-4px]">*</span>}
       </div>
       <p className="text-xs md:text-sm text-muted-foreground font-medium translate-y-[1px]">{label}</p>
       <p className="hidden md:block text-[10px] text-muted-foreground/70 leading-snug mt-1">{description}</p>
@@ -101,8 +103,16 @@ export default function HeroSection({ productType = "staple" }: { productType?: 
         <motion.p
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
+          transition={{ delay: 1.5 }}
+          className="text-center text-[10px] md:text-xs text-muted-foreground mt-4 md:mt-6 font-light translate-y-[1px]"
+        >
+          <span className="text-detail font-bold">*</span> Zero polymer waste to landfill — non-polymer residue managed via government incineration.
+        </motion.p>
+        <motion.p
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
           transition={{ delay: 1.6 }}
-          className="text-center text-[10px] md:text-xs text-muted-foreground mt-6 md:mt-8 italic font-light translate-y-[1px]"
+          className="text-center text-[10px] md:text-xs text-muted-foreground mt-2 md:mt-3 italic font-light translate-y-[1px]"
         >
           Based on 1 kg of Tex2Tex® RPET Fiber (Cradle-to-Gate) ·{" "}
           {productType === "staple"
