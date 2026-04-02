@@ -90,9 +90,9 @@ const LangSelector = ({ lang, setLang }: { lang: Lang; setLang: (l: Lang) => voi
         size="sm"
         variant={lang === key ? "default" : "outline"}
         onClick={() => setLang(key)}
-        className="text-xs px-3"
+        className="text-xs px-3 font-['Nexa']"
       >
-        {label}
+        <span className="translate-y-[2px]">{label}</span>
       </Button>
     ))}
   </div>
