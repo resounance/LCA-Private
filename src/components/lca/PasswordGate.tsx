@@ -147,7 +147,7 @@ const PasswordGate = ({ children }: PasswordGateProps) => {
             </h1>
           </div>
 
-          <div className="text-left text-sm text-muted-foreground leading-relaxed space-y-4 bg-secondary/50 rounded-lg p-6 border border-border">
+          <div className="text-left text-sm text-muted-foreground leading-relaxed space-y-4 bg-secondary/50 rounded-lg p-6 border border-border font-['Nexa']">
             <p>{t.disclaimerP1}</p>
             <p>{t.disclaimerP2}</p>
             <p>{t.disclaimerP3}</p>
