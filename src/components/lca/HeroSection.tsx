@@ -90,7 +90,7 @@ export default function HeroSection({ productType = "staple" }: { productType?: 
             transition={{ duration: 0.8, delay: 0.5 }}
             className="text-muted-foreground mt-4 md:mt-6 max-w-2xl mx-auto text-xs md:text-sm font-light tracking-wide leading-relaxed"
           >
-            Tex2Tex® RPET Life Cycle Assessment data overview. Powered by Tex2Tex® RPET Thermo-Mechanical Reactor™. Compiled data is a combination of 3rd party assessments and internal reporting of Tex2Tex® manufacturing processes with publicly reported industry data benchmarks for illustrated comparisons.
+            Tex2Tex<span className="text-[0.6em] align-super">®</span> RPET Life Cycle Assessment data overview. Powered by Tex2Tex<span className="text-[0.6em] align-super">®</span> RPET Thermo-Mechanical Reactor™. Compiled data is a combination of 3rd party assessments and internal reporting of Tex2Tex<span className="text-[0.6em] align-super">®</span> manufacturing processes with publicly reported industry data benchmarks for illustrated comparisons.
           </motion.p>
         </motion.div>
 
