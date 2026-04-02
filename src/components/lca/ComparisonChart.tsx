@@ -140,7 +140,7 @@ export default function ComparisonChart({
           <BarChart
             layout="vertical"
             data={data}
-            margin={{ top: 5, right: 65, left: 10, bottom: 5 }}
+            margin={{ top: 5, right: 80, left: 10, bottom: 5 }}
             barCategoryGap="20%"
           >
             <CartesianGrid strokeDasharray="3 3" horizontal={false} stroke="hsl(0 0% 90%)" />
@@ -149,7 +149,7 @@ export default function ComparisonChart({
               type="category"
               dataKey="name"
               tick={<MobileYTick />}
-              width={130}
+              width={120}
               axisLine={false}
               tickLine={false}
             />
