@@ -124,7 +124,7 @@ export default function ComparisonChart({
   const { ref, isVisible } = useScrollFadeIn();
   const isMobile = useIsMobile();
 
-  const mobileHeight = Math.max(280, data.length * 52);
+  const mobileHeight = Math.max(280, data.length * 62);
 
   return (
     <motion.div
