@@ -1,63 +1,32 @@
 
 
-## Otimização Mobile-First dos Gráficos
+## Corrigir Labels dos Gráficos Mobile
 
-### Problema
+### Problemas
+1. Labels longos como "Bottle Thermo-Mechanical" são renderizados numa única `<text>` SVG e cortam no mobile
+2. Valores com unidade (`0.33 kg CO₂e`) quebram linha por falta de espaço à direita
+3. Nomes abreviados ("Thermo-Mech.") nos dados devem ser escritos por extenso
 
-No viewport de 390px, os gráficos de barras do Recharts ficam comprimidos: labels rotacionados ilegíveis, barras finas, tooltip depende de hover (inexistente no touch), e o chart ocupa apenas 300px de altura com 7 labels empilhados.
+### Solução
 
-### Solução: Layout Horizontal + Valores Inline no Mobile
+**1. Dados — Nomes completos (CO2Section.tsx, EnergySection.tsx)**
+- `"Bottle Thermo-Mech. via Pellets"` → `"Bottle Thermo-Mechanical via Pellets"`
 
-No mobile, substituir o `BarChart` vertical por um `BarChart` com layout **horizontal** (barras deitadas). Isso resolve todos os problemas de uma vez:
+**2. MobileYTick multi-linha (ComparisonChart.tsx)**
 
-- Labels ficam legíveis à esquerda (sem rotação)
-- Barras usam toda a largura disponível
-- Valores aparecem na ponta de cada barra (sem precisar de tooltip/hover)
-- Altura se adapta ao número de itens
+Refatorar o `MobileYTick` para quebrar nomes longos em múltiplas linhas SVG usando `<tspan>`. Lógica: agrupar palavras em linhas de ~18 caracteres max, renderizar cada linha como `<tspan>` com `dy` de 12px. Centralizar verticalmente baseado no número de linhas.
 
-```text
-Desktop (mantém como está):
-  │
-  │  ██
-  │  ██  ██
-  │  ██  ██  ██
-  └──────────────
-
-Mobile (horizontal):
-  Tex2Tex® Pellet    ██ 0.33
-  Tex2Tex® Ecru      ████ 0.63
-  Bottle Thermo-Mech ██████ 0.96
-  Bottle via Pellets ████████████ 1.88
-  Bottle BHET        ████████████████ 2.59
-  Bottle DMT         ██████████████████ 3.08
-  Virgin PET         ████████████████████████ 4.06
-```
-
-### Detalhes Técnicos
-
-**Arquivo: `ComparisonChart.tsx`**
-
-1. No mobile (`isMobile`), renderizar `<BarChart layout="vertical">` com `XAxis type="number"` e `YAxis type="category" dataKey="name"`
-2. Adicionar `<LabelList>` com `position="right"` mostrando o valor formatado na ponta de cada barra — elimina necessidade de tooltip no touch
-3. Aumentar altura para `h-[420px]` no mobile (mais espaço vertical para as barras horizontais)
-4. Desabilitar `<Tooltip>` no mobile (sem hover, não serve)
-5. Ajustar `YAxis width` para ~120px para caber os labels sem truncar
-6. Manter o desktop exatamente como está
-
-**Arquivo: Seções (CO2, Energy, Water)**
-
-7. No mobile, o grid `lg:grid-cols-3` já colapsa para coluna única — sem mudanças necessárias no layout das seções
-
-### Resultado esperado
-
-- Labels 100% legíveis sem rotação
-- Valores visíveis sem interação (LabelList inline)
-- Barras destacadas (Tex2Tex) claramente diferenciadas
-- Experiência consistente touch-first
+**3. Ajustes de layout mobile (ComparisonChart.tsx)**
+- `mobileHeight`: de `data.length * 52` para `data.length * 62` (mais espaço por barra para labels multi-linha)
+- `YAxis width`: de `120` para `130` (mais espaço para texto)
+- `margin.right`: de `50` para `65` (evitar corte dos valores)
+- `LabelList fontSize`: de `10` para `9` (valores cabem numa linha)
 
 ### Arquivos modificados
 
 | Arquivo | Mudança |
 |---------|---------|
-| `ComparisonChart.tsx` | Layout horizontal condicional, LabelList, tooltip condicional, altura ajustada |
+| `CO2Section.tsx` | Nome completo "Bottle Thermo-Mechanical via Pellets" |
+| `EnergySection.tsx` | Nome completo "Bottle Thermo-Mechanical via Pellets" |
+| `ComparisonChart.tsx` | MobileYTick com quebra multi-linha, ajustes de height/width/margin/fontSize |
 
