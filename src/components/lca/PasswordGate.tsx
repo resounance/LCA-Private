@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Lock, ShieldCheck } from "lucide-react";
+import tex2texLogo from "@/assets/tex2tex-earthprotex-logo.svg";
 
 const DISCLAIMER_KEY = "tex2tex_disclaimer_accepted";
 
