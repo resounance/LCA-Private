@@ -41,8 +41,8 @@ const translations = {
     disclaimerTitle: "保密协议",
     disclaimerP1: (
       <>本平台所有内容均为{" "}
-        <span className="font-semibold text-foreground">Tex2Tex® / Earth Protex</span>{" "}
-        的专有财产，属于严格<span className="font-semibold text-foreground">机密</span>信息。</>
+         <span className="font-semibold text-foreground">Tex2Tex<span className="text-[0.6em] align-super">®</span> / Earth Protex</span>{" "}
+         的专有财产，属于严格<span className="font-semibold text-foreground">机密</span>信息。</>
     ),
     disclaimerP2:
       "此处展示的信息，包括数据、分析、图表和报告，仅供授权人员使用，未经事先明确授权，不得与第三方分享、复制、转载或分发。",
