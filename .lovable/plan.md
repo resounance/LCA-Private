@@ -1,37 +1,32 @@
 
 
-## Seletor de Idioma com Botões — PasswordGate
+## Corrigir tamanho do ® em todo o site
 
-Substituir as traduções expostas simultaneamente por um sistema de idioma selecionável via botões. O inglês é o padrão; ao clicar em "中文" ou "हिन्दी", todo o conteúdo da tela muda para aquele idioma.
+O símbolo `®` está sendo renderizado no tamanho normal do texto, quando deveria ser pequeno e elevado (superscript), como em tipografia profissional.
 
-### Implementação
+### Abordagem
 
-**Arquivo: `PasswordGate.tsx`**
+Substituir todas as ocorrências de `®` em texto JSX por `<span className="text-[0.6em] align-super">®</span>` para que fique pequeno e acima da linha base, independente do tamanho da fonte do contexto.
 
-1. Criar um objeto `translations` com chaves `en`, `zh`, `hi`, contendo todos os textos: título, parágrafo do disclaimer, checkbox label, botão, placeholder, erro, subtítulo da tela de senha, etc.
+O `ComparisonChart.tsx` já trata o `®` nos labels SVG com `<tspan>` — esse continua como está.
 
-2. Adicionar estado `lang` (`"en" | "zh" | "hi"`) com default `"en"`.
+### Arquivos modificados
 
-3. Renderizar 3 botões de idioma (EN / 中文 / हिन्दी) no topo de ambas as telas (senha e disclaimer). O botão ativo fica com estilo `default`, os inativos com `ghost` ou `outline`. Usar tamanho `sm`.
+| Arquivo | Ocorrências |
+|---------|-------------|
+| `HeroSection.tsx` | ~4 ocorrências no alt, parágrafo e nota de rodapé |
+| `CO2Section.tsx` | ~4 ocorrências nos dados e texto |
+| `EnergySection.tsx` | ~3 ocorrências nos dados e texto |
+| `WaterSection.tsx` | ~4 ocorrências nos dados e texto |
+| `WasteSection.tsx` | Ocorrências no texto |
+| `PasswordGate.tsx` | ~6 ocorrências nas traduções EN/ZH/HI |
+| `RequestLCAButton.tsx` | ~2 ocorrências no subject/body do email |
+| `SourcesSection.tsx` | Ocorrências no texto |
+| `Footer.tsx` | ~1 ocorrência no subtítulo |
 
-4. Remover todo texto multilíngue inline (os `·` separando idiomas). Cada texto vem do objeto `translations[lang]`.
+Para strings em atributos (`alt`, `mailto`), manter `®` normal pois não é renderizado visualmente como HTML.
 
-5. Remover o grid de traduções chinês/hindi do disclaimer — o conteúdo principal muda conforme o idioma selecionado.
+Para strings usadas como `name` nos dados de gráficos (arrays `data`), manter `®` pois o `ComparisonChart` já cuida do rendering via `CustomXTick`.
 
-### Estrutura do seletor
-
-```text
-┌─────────────────────┐
-│  [EN] [中文] [हिन्दी]  │  ← botões no topo
-│                     │
-│  (conteúdo no       │
-│   idioma ativo)     │
-└─────────────────────┘
-```
-
-### Arquivo modificado
-
-| Arquivo | Mudança |
-|---------|---------|
-| `PasswordGate.tsx` | Objeto `translations`, estado `lang`, botões seletores, remoção de texto inline multilíngue |
+Apenas textos visíveis em JSX receberão o `<span>` estilizado.
 
