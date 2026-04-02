@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Lock, ShieldCheck } from "lucide-react";
+import tex2texLogo from "@/assets/tex2tex-earthprotex-logo.svg";
 
 const DISCLAIMER_KEY = "tex2tex_disclaimer_accepted";
 
@@ -139,8 +140,13 @@ const PasswordGate = ({ children }: PasswordGateProps) => {
           <LangSelector lang={lang} setLang={setLang} />
 
           <div className="flex flex-col items-center gap-4">
-            <div className="w-16 h-16 rounded-full bg-secondary flex items-center justify-center">
-              <ShieldCheck className="w-7 h-7 text-foreground" />
+            <img
+              src={tex2texLogo}
+              alt="Tex2Tex® by Earth Protex™"
+              className="h-16 md:h-20 w-auto"
+            />
+            <div className="w-12 h-12 rounded-full bg-secondary flex items-center justify-center">
+              <ShieldCheck className="w-6 h-6 text-foreground" />
             </div>
             <h1 className="text-2xl font-semibold text-foreground font-['Nexa']">
               <span className="translate-y-[2px] inline-block">{t.disclaimerTitle}</span>
