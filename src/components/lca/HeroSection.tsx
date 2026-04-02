@@ -19,7 +19,8 @@ const indicators = [
   },
   {
     icon: Recycle, value: 0.0, unit: "kg", label: "Solid Waste Disposal", decimals: 1,
-    description: "Solid waste disposal from industrial manufacturing processes. Based on total solid waste disposed in kilograms (Kg) per Kg output produced."
+    description: "Solid waste disposal from industrial manufacturing processes. Based on total solid waste disposed in kilograms (Kg) per Kg output produced.",
+    asterisk: true,
   },
 ];
 
