@@ -114,6 +114,24 @@ function MobileYTick(props: any) {
   );
 }
 
+/* Custom label rendered as a single SVG <text> to prevent line breaks */
+function CustomBarLabel(props: any) {
+  const { x, y, width, height, value, formatValue, unit } = props;
+  return (
+    <text
+      x={x + width + 6}
+      y={y + height / 2}
+      dy={4}
+      fill="hsl(210 8% 35%)"
+      fontSize={9}
+      fontFamily="Nexa, system-ui"
+      textAnchor="start"
+    >
+      {formatValue(value)} {unit}
+    </text>
+  );
+}
+
 export default function ComparisonChart({
   data,
   unit,
